@@ -1,6 +1,8 @@
 ## InsideOut
 
 This is our first BI project.
+Our task:
+  Customer needs to build datawarehouse (using Microsoft product stack). Also we need to make initial data loading to our datawarehouse, after initial data loading all data should be loaded on daily basis using SSIS. Based on datawarehouse we should build cube (SSAS) for data analysis and build report subsystem using different tools (Tableau, Tibco and SSRS).
 
 Team Members:
 - Alina
