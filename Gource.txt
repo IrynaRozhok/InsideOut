@@ -1,0 +1,3 @@
+gource -1280x720 --elasticity 0.1 --auto-skip-seconds 0.5 --highlight-users --max-user-speed 100 --title InsideOut --bloom-multiplier 1.0 --user-friction 0.9 --seconds-per-day 3 --time-scale 2 --user-image-dir avatars my-project-custom.log -o gource.ppm
+
+d:\ffmpeg\bin\ffmpeg.exe -y -r 60 -f image2pipe -vcodec ppm -i gource.ppm -vcodec libx264 -preset veryslow -pix_fmt yuv420p -crf 1 -threads 0 -bf 0 gource.x264.avi
