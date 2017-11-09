@@ -1,0 +1,181 @@
+<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="10/20/2017 2:17:09 PM"
+  DTS:CreationName="SSIS.Package.3"
+  DTS:CreatorComputerName="IDEA-PC"
+  DTS:CreatorName="idea-PC\Admin"
+  DTS:DTSID="{42711A49-5D5A-4FD2-A71F-20F0605FDC3D}"
+  DTS:ExecutableType="SSIS.Package.3"
+  DTS:LastModifiedProductVersion="11.0.5583.0"
+  DTS:LocaleID="1049"
+  DTS:ObjectName="Package2"
+  DTS:PackageType="5"
+  DTS:VersionBuild="1"
+  DTS:VersionGUID="{F759B918-2735-4BC6-B56E-2CD85DDBAD08}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">6</DTS:Property>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\Sequence Container"
+      DTS:CreationName="STOCK:SEQUENCE"
+      DTS:Description="Sequence Container"
+      DTS:DTSID="{3DEB611C-39B8-41B2-8567-5B471CFC825B}"
+      DTS:ExecutableType="STOCK:SEQUENCE"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Sequence Container">
+      <DTS:Variables />
+      <DTS:Executables>
+        <DTS:Executable
+          DTS:refId="Package\Sequence Container\Execute Package Task"
+          DTS:CreationName="SSIS.ExecutePackageTask.3"
+          DTS:Description="Execute Package Task"
+          DTS:DTSID="{3B6AC0D0-54CE-4F09-AC8B-0D4C5F6C68E0}"
+          DTS:ExecutableType="SSIS.ExecutePackageTask.3"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Execute Package Task"
+          DTS:TaskContact="Microsoft Corporation; Microsoft SQL Server; Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <ExecutePackageTask>
+              <UseProjectReference>True</UseProjectReference>
+              <PackageName>Package.dtsx</PackageName>
+            </ExecutePackageTask>
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\Sequence Container\Execute Package Task 1"
+          DTS:CreationName="SSIS.ExecutePackageTask.3"
+          DTS:Description="Execute Package Task"
+          DTS:DTSID="{855A22BA-70BC-417B-ACE8-9A7100879FE3}"
+          DTS:ExecutableType="SSIS.ExecutePackageTask.3"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Execute Package Task 1"
+          DTS:TaskContact="Microsoft Corporation; Microsoft SQL Server; Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <ExecutePackageTask>
+              <UseProjectReference>True</UseProjectReference>
+              <PackageName>Package1.dtsx</PackageName>
+            </ExecutePackageTask>
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\Sequence Container\Execute Package Task 2"
+          DTS:CreationName="SSIS.ExecutePackageTask.3"
+          DTS:Description="Execute Package Task"
+          DTS:DTSID="{844847F2-02A3-4739-9F25-24F5CED3DCA9}"
+          DTS:ExecutableType="SSIS.ExecutePackageTask.3"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Execute Package Task 2"
+          DTS:TaskContact="Microsoft Corporation; Microsoft SQL Server; Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <ExecutePackageTask>
+              <UseProjectReference>True</UseProjectReference>
+              <PackageName>DatePackage.dtsx</PackageName>
+            </ExecutePackageTask>
+          </DTS:ObjectData>
+        </DTS:Executable>
+      </DTS:Executables>
+      <DTS:PrecedenceConstraints>
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\Sequence Container.PrecedenceConstraints[Constraint]"
+          DTS:CreationName=""
+          DTS:DTSID="{D7AE327E-AF45-4118-889B-775FDFF62EBD}"
+          DTS:From="Package\Sequence Container\Execute Package Task"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint"
+          DTS:To="Package\Sequence Container\Execute Package Task 1" />
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\Sequence Container.PrecedenceConstraints[Constraint 1]"
+          DTS:CreationName=""
+          DTS:DTSID="{88BEB807-777E-4FB9-B774-C41FB4236BE6}"
+          DTS:From="Package\Sequence Container\Execute Package Task 1"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint 1"
+          DTS:To="Package\Sequence Container\Execute Package Task 2" />
+      </DTS:PrecedenceConstraints>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="sql11">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="183,42"
+          Id="Package\Sequence Container\Execute Package Task"
+          TopLeft="67,20" />
+        <NodeLayout
+          Size="192,42"
+          Id="Package\Sequence Container\Execute Package Task 1"
+          TopLeft="64,100" />
+        <EdgeLayout
+          Id="Package\Sequence Container.PrecedenceConstraints[Constraint]"
+          TopLeft="159.25,62">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,38"
+              Start="0,0"
+              End="0,30.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,30.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="192,42"
+          Id="Package\Sequence Container\Execute Package Task 2"
+          TopLeft="63,186" />
+        <EdgeLayout
+          Id="Package\Sequence Container.PrecedenceConstraints[Constraint 1]"
+          TopLeft="159.5,142">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,44"
+              Start="0,0"
+              End="0,36.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,36.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <ContainerLayout
+          HeaderHeight="43"
+          IsExpanded="True"
+          PanelSize="383,288"
+          Size="383,331"
+          Id="Package\Sequence Container"
+          TopLeft="136,53" />
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>
