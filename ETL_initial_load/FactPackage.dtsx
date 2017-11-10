@@ -11,8 +11,8 @@
   DTS:LocaleID="1049"
   DTS:ObjectName="FactPackage"
   DTS:PackageType="5"
-  DTS:VersionBuild="53"
-  DTS:VersionGUID="{2C3202B0-6EED-4E88-AF88-A63398034F0E}">
+  DTS:VersionBuild="55"
+  DTS:VersionGUID="{AE505A61-77C0-47BC-A9B4-8D26A0E77519}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -144,6 +144,203 @@
           version="1">
           <components>
             <component
+              refId="Package\Loading into Fact\Aggregate"
+              componentClassID="Microsoft.Aggregate"
+              contactInfo="Aggregate;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;3"
+              description="Aggregates data with functions such as Average, Sum, Count, Max, and Min. For example, group data to compute the sum of sales per product or the average visits per day."
+              name="Aggregate"
+              version="3">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the approximate number of group by keys that the aggregation produces. Low indicates 500,000 key values, Medium indicates 5 million key values, and High indicates more than 25 million key values. Unspecified indicates no KeyScale value is used."
+                  name="KeyScale"
+                  typeConverter="KeyScaleType">0</property>
+                <property
+                  dataType="System.Null"
+                  description="Specifies the exact number of group by keys that the aggregation produces. If a KeyScale value is specified, the value in Keys takes precedence."
+                  name="Keys" />
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the approximate number of distinct values in a column that the aggregation counts distinctly. Low indicates 500,000 key values, Medium indicates 5 million key values, and High indicates more than 25 million key values. Unspecified indicates no CountDistinctScale value is used."
+                  name="CountDistinctScale"
+                  typeConverter="KeyScaleType">0</property>
+                <property
+                  dataType="System.Null"
+                  description="Specifies the exact number of distinct values in a column that the aggregation counts distinctly. If a CountDistinctScale value is specified, the value in CountDistinctKeys takes precedence."
+                  name="CountDistinctKeys" />
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the percentage by which memory can be extended during the aggregation. Valid values are between 1 and 100."
+                  name="AutoExtendFactor">25</property>
+              </properties>
+              <inputs>
+                <input
+                  refId="Package\Loading into Fact\Aggregate.Inputs[Aggregate Input 1]"
+                  name="Aggregate Input 1">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Loading into Fact\Aggregate.Inputs[Aggregate Input 1].Columns[ORDERID]"
+                      cachedDataType="i4"
+                      cachedName="ORDERID"
+                      lineageId="Package\Loading into Fact\Fact Source Staging Table.Outputs[OLE DB Source Output].Columns[ORDERID]" />
+                    <inputColumn
+                      refId="Package\Loading into Fact\Aggregate.Inputs[Aggregate Input 1].Columns[NetAmountOrder]"
+                      cachedDataType="numeric"
+                      cachedName="NetAmountOrder"
+                      cachedPrecision="30"
+                      cachedScale="4"
+                      lineageId="Package\Loading into Fact\Calculated Column.Outputs[Derived Column Output].Columns[NetAmountOrder]" />
+                    <inputColumn
+                      refId="Package\Loading into Fact\Aggregate.Inputs[Aggregate Input 1].Columns[TaxOrder]"
+                      cachedDataType="numeric"
+                      cachedName="TaxOrder"
+                      cachedPrecision="35"
+                      cachedScale="7"
+                      lineageId="Package\Loading into Fact\Calculated Column.Outputs[Derived Column Output].Columns[TaxOrder]" />
+                    <inputColumn
+                      refId="Package\Loading into Fact\Aggregate.Inputs[Aggregate Input 1].Columns[TotelAmountOrder]"
+                      cachedDataType="numeric"
+                      cachedName="TotelAmountOrder"
+                      cachedPrecision="36"
+                      cachedScale="7"
+                      lineageId="Package\Loading into Fact\Calculated Column.Outputs[Derived Column Output].Columns[TotelAmountOrder]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Loading into Fact\Aggregate.Outputs[Aggregate Output 1]"
+                  name="Aggregate Output 1">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the approximate number of group by keys that the aggregation produces. Low indicates 500,000 key values, Medium indicates 5 million key values, and High indicates more than 25 million key values. Unspecified indicates no KeyScale value is used."
+                      name="KeyScale"
+                      typeConverter="KeyScaleType">0</property>
+                    <property
+                      dataType="System.Null"
+                      description="Specifies the exact number of group by keys that the aggregation produces. If a KeyScale value is specified, the value in Keys takes precedence."
+                      name="Keys" />
+                  </properties>
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Loading into Fact\Aggregate.Outputs[Aggregate Output 1].Columns[ORDERID]"
+                      dataType="i4"
+                      lineageId="Package\Loading into Fact\Aggregate.Outputs[Aggregate Output 1].Columns[ORDERID]"
+                      name="ORDERID">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the ID of the input column used in the aggregation."
+                          name="AggregationColumnId">#{Package\Loading into Fact\Fact Source Staging Table.Outputs[OLE DB Source Output].Columns[ORDERID]}</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the type of aggregation."
+                          name="AggregationType"
+                          typeConverter="AggregationType">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Indicates whether the column requires special handling because it may contain oversized data or it requires precision beyond a float data type."
+                          name="IsBig">1</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the string comparison options."
+                          name="AggregationComparisonFlags">0</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Loading into Fact\Aggregate.Outputs[Aggregate Output 1].Columns[NetAmountOrder]"
+                      dataType="numeric"
+                      lineageId="Package\Loading into Fact\Aggregate.Outputs[Aggregate Output 1].Columns[NetAmountOrder]"
+                      name="NetAmountOrder"
+                      precision="30"
+                      scale="4">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the ID of the input column used in the aggregation."
+                          name="AggregationColumnId">#{Package\Loading into Fact\Calculated Column.Outputs[Derived Column Output].Columns[NetAmountOrder]}</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the type of aggregation."
+                          name="AggregationType"
+                          typeConverter="AggregationType">4</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Indicates whether the column requires special handling because it may contain oversized data or it requires precision beyond a float data type."
+                          name="IsBig">1</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the string comparison options."
+                          name="AggregationComparisonFlags">0</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Loading into Fact\Aggregate.Outputs[Aggregate Output 1].Columns[TaxOrder]"
+                      dataType="numeric"
+                      lineageId="Package\Loading into Fact\Aggregate.Outputs[Aggregate Output 1].Columns[TaxOrder]"
+                      name="TaxOrder"
+                      precision="35"
+                      scale="7">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the ID of the input column used in the aggregation."
+                          name="AggregationColumnId">#{Package\Loading into Fact\Calculated Column.Outputs[Derived Column Output].Columns[TaxOrder]}</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the type of aggregation."
+                          name="AggregationType"
+                          typeConverter="AggregationType">4</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Indicates whether the column requires special handling because it may contain oversized data or it requires precision beyond a float data type."
+                          name="IsBig">1</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the string comparison options."
+                          name="AggregationComparisonFlags">0</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Loading into Fact\Aggregate.Outputs[Aggregate Output 1].Columns[TotelAmountOrder]"
+                      dataType="numeric"
+                      lineageId="Package\Loading into Fact\Aggregate.Outputs[Aggregate Output 1].Columns[TotelAmountOrder]"
+                      name="TotelAmountOrder"
+                      precision="36"
+                      scale="7">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the ID of the input column used in the aggregation."
+                          name="AggregationColumnId">#{Package\Loading into Fact\Calculated Column.Outputs[Derived Column Output].Columns[TotelAmountOrder]}</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the type of aggregation."
+                          name="AggregationType"
+                          typeConverter="AggregationType">4</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Indicates whether the column requires special handling because it may contain oversized data or it requires precision beyond a float data type."
+                          name="IsBig">1</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the string comparison options."
+                          name="AggregationComparisonFlags">0</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
               refId="Package\Loading into Fact\Calculated Column"
               componentClassID="Microsoft.DerivedColumn"
               contactInfo="Derived Column;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
@@ -199,7 +396,7 @@
                           dataType="System.String"
                           description="Derived Column Friendly Expression"
                           expressionType="Notify"
-                          name="FriendlyExpression">PRICE * QUANTITY</property>
+                          name="FriendlyExpression">Price * QUANTITY</property>
                       </properties>
                     </outputColumn>
                     <outputColumn
@@ -223,7 +420,7 @@
                           dataType="System.String"
                           description="Derived Column Friendly Expression"
                           expressionType="Notify"
-                          name="FriendlyExpression">PRICE * QUANTITY * 0.085</property>
+                          name="FriendlyExpression">Price * QUANTITY * 0.085</property>
                       </properties>
                     </outputColumn>
                     <outputColumn
@@ -247,7 +444,79 @@
                           dataType="System.String"
                           description="Derived Column Friendly Expression"
                           expressionType="Notify"
-                          name="FriendlyExpression">PRICE * QUANTITY + PRICE * QUANTITY * 0.085</property>
+                          name="FriendlyExpression">Price * QUANTITY + Price * QUANTITY * 0.085</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Loading into Fact\Calculated Column.Outputs[Derived Column Output].Columns[NetAmountOrder]"
+                      dataType="numeric"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\Loading into Fact\Calculated Column.Outputs[Derived Column Output].Columns[NetAmountOrder]"
+                      name="NetAmountOrder"
+                      precision="30"
+                      scale="4"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">#{Package\Loading into Fact\Fact Source Staging Table.Outputs[OLE DB Source Output].Columns[PRICE]} * #{Package\Loading into Fact\Fact Source Staging Table.Outputs[OLE DB Source Output].Columns[QUANTITY]}</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">Price * QUANTITY</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Loading into Fact\Calculated Column.Outputs[Derived Column Output].Columns[TaxOrder]"
+                      dataType="numeric"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\Loading into Fact\Calculated Column.Outputs[Derived Column Output].Columns[TaxOrder]"
+                      name="TaxOrder"
+                      precision="35"
+                      scale="7"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">#{Package\Loading into Fact\Fact Source Staging Table.Outputs[OLE DB Source Output].Columns[PRICE]} * #{Package\Loading into Fact\Fact Source Staging Table.Outputs[OLE DB Source Output].Columns[QUANTITY]} * 0.085</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">Price * QUANTITY * 0.085</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Loading into Fact\Calculated Column.Outputs[Derived Column Output].Columns[TotelAmountOrder]"
+                      dataType="numeric"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\Loading into Fact\Calculated Column.Outputs[Derived Column Output].Columns[TotelAmountOrder]"
+                      name="TotelAmountOrder"
+                      precision="36"
+                      scale="7"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">#{Package\Loading into Fact\Fact Source Staging Table.Outputs[OLE DB Source Output].Columns[PRICE]} * #{Package\Loading into Fact\Fact Source Staging Table.Outputs[OLE DB Source Output].Columns[QUANTITY]} + #{Package\Loading into Fact\Fact Source Staging Table.Outputs[OLE DB Source Output].Columns[PRICE]} * #{Package\Loading into Fact\Fact Source Staging Table.Outputs[OLE DB Source Output].Columns[QUANTITY]} * 0.085</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">Price * QUANTITY + Price * QUANTITY * 0.085</property>
                       </properties>
                     </outputColumn>
                   </outputColumns>
@@ -295,7 +564,7 @@
                       refId="Package\Loading into Fact\Conditional Split.Inputs[Conditional Split Input].Columns[QUANTITY]"
                       cachedDataType="i4"
                       cachedName="QUANTITY"
-                      lineageId="Package\Loading into Fact\Fact Source Staging Table.Outputs[OLE DB Source Output].Columns[QUANTITY]" />
+                      lineageId="Package\Loading into Fact\Merge Join.Outputs[Merge Join Output].Columns[QUANTITY]" />
                   </inputColumns>
                   <externalMetadataColumns />
                 </input>
@@ -315,7 +584,7 @@
                       containsID="true"
                       dataType="System.String"
                       description="Specifies the expression. This expression version uses lineage identifiers instead of column names."
-                      name="Expression">#{Package\Loading into Fact\Fact Source Staging Table.Outputs[OLE DB Source Output].Columns[QUANTITY]} &gt; 0</property>
+                      name="Expression">#{Package\Loading into Fact\Merge Join.Outputs[Merge Join Output].Columns[QUANTITY]} &gt; 0</property>
                     <property
                       containsID="true"
                       dataType="System.String"
@@ -759,31 +1028,26 @@ where [refTable].[FullDate] = ?</property>
                       cachedDataType="i4"
                       cachedName="DateID"
                       externalMetadataColumnId="Package\Loading into Fact\DW Destination.Inputs[OLE DB Destination Input].ExternalColumns[DateID]"
-                      lineageId="Package\Loading into Fact\Date Lookup.Outputs[Lookup Match Output].Columns[DateID]" />
+                      lineageId="Package\Loading into Fact\Merge Join.Outputs[Merge Join Output].Columns[DateID]" />
                     <inputColumn
                       refId="Package\Loading into Fact\DW Destination.Inputs[OLE DB Destination Input].Columns[ORDERID]"
                       cachedDataType="i4"
                       cachedName="ORDERID"
+                      cachedSortKeyPosition="1"
                       externalMetadataColumnId="Package\Loading into Fact\DW Destination.Inputs[OLE DB Destination Input].ExternalColumns[OrderID]"
-                      lineageId="Package\Loading into Fact\Fact Source Staging Table.Outputs[OLE DB Source Output].Columns[ORDERID]" />
+                      lineageId="Package\Loading into Fact\Merge Join.Outputs[Merge Join Output].Columns[ORDERID]" />
                     <inputColumn
                       refId="Package\Loading into Fact\DW Destination.Inputs[OLE DB Destination Input].Columns[ProductID]"
                       cachedDataType="i4"
                       cachedName="ProductID"
                       externalMetadataColumnId="Package\Loading into Fact\DW Destination.Inputs[OLE DB Destination Input].ExternalColumns[ProductID]"
-                      lineageId="Package\Loading into Fact\Product Lookup.Outputs[Lookup Match Output].Columns[ProductID]" />
-                    <inputColumn
-                      refId="Package\Loading into Fact\DW Destination.Inputs[OLE DB Destination Input].Columns[CustomerID]"
-                      cachedDataType="i4"
-                      cachedName="CustomerID"
-                      externalMetadataColumnId="Package\Loading into Fact\DW Destination.Inputs[OLE DB Destination Input].ExternalColumns[CustomerID]"
-                      lineageId="Package\Loading into Fact\Customer Lookup.Outputs[Lookup Match Output].Columns[CustomerID]" />
+                      lineageId="Package\Loading into Fact\Merge Join.Outputs[Merge Join Output].Columns[ProductID]" />
                     <inputColumn
                       refId="Package\Loading into Fact\DW Destination.Inputs[OLE DB Destination Input].Columns[QUANTITY]"
                       cachedDataType="i4"
                       cachedName="QUANTITY"
                       externalMetadataColumnId="Package\Loading into Fact\DW Destination.Inputs[OLE DB Destination Input].ExternalColumns[Quantity]"
-                      lineageId="Package\Loading into Fact\Fact Source Staging Table.Outputs[OLE DB Source Output].Columns[QUANTITY]" />
+                      lineageId="Package\Loading into Fact\Merge Join.Outputs[Merge Join Output].Columns[QUANTITY]" />
                     <inputColumn
                       refId="Package\Loading into Fact\DW Destination.Inputs[OLE DB Destination Input].Columns[NetAmountLine]"
                       cachedDataType="numeric"
@@ -791,7 +1055,7 @@ where [refTable].[FullDate] = ?</property>
                       cachedPrecision="30"
                       cachedScale="4"
                       externalMetadataColumnId="Package\Loading into Fact\DW Destination.Inputs[OLE DB Destination Input].ExternalColumns[NetAmountLine]"
-                      lineageId="Package\Loading into Fact\Calculated Column.Outputs[Derived Column Output].Columns[NetAmountLine]" />
+                      lineageId="Package\Loading into Fact\Merge Join.Outputs[Merge Join Output].Columns[NetAmountLine]" />
                     <inputColumn
                       refId="Package\Loading into Fact\DW Destination.Inputs[OLE DB Destination Input].Columns[TaxLine]"
                       cachedDataType="numeric"
@@ -799,7 +1063,7 @@ where [refTable].[FullDate] = ?</property>
                       cachedPrecision="35"
                       cachedScale="7"
                       externalMetadataColumnId="Package\Loading into Fact\DW Destination.Inputs[OLE DB Destination Input].ExternalColumns[TaxLine]"
-                      lineageId="Package\Loading into Fact\Calculated Column.Outputs[Derived Column Output].Columns[TaxLine]" />
+                      lineageId="Package\Loading into Fact\Merge Join.Outputs[Merge Join Output].Columns[TaxLine]" />
                     <inputColumn
                       refId="Package\Loading into Fact\DW Destination.Inputs[OLE DB Destination Input].Columns[TotalAmountLine]"
                       cachedDataType="numeric"
@@ -807,7 +1071,37 @@ where [refTable].[FullDate] = ?</property>
                       cachedPrecision="36"
                       cachedScale="7"
                       externalMetadataColumnId="Package\Loading into Fact\DW Destination.Inputs[OLE DB Destination Input].ExternalColumns[TotalAmountLine]"
-                      lineageId="Package\Loading into Fact\Calculated Column.Outputs[Derived Column Output].Columns[TotalAmountLine]" />
+                      lineageId="Package\Loading into Fact\Merge Join.Outputs[Merge Join Output].Columns[TotalAmountLine]" />
+                    <inputColumn
+                      refId="Package\Loading into Fact\DW Destination.Inputs[OLE DB Destination Input].Columns[NetAmountOrder]"
+                      cachedDataType="numeric"
+                      cachedName="NetAmountOrder"
+                      cachedPrecision="30"
+                      cachedScale="4"
+                      externalMetadataColumnId="Package\Loading into Fact\DW Destination.Inputs[OLE DB Destination Input].ExternalColumns[NetAmountOrder]"
+                      lineageId="Package\Loading into Fact\Merge Join.Outputs[Merge Join Output].Columns[NetAmountOrder]" />
+                    <inputColumn
+                      refId="Package\Loading into Fact\DW Destination.Inputs[OLE DB Destination Input].Columns[TaxOrder]"
+                      cachedDataType="numeric"
+                      cachedName="TaxOrder"
+                      cachedPrecision="35"
+                      cachedScale="7"
+                      externalMetadataColumnId="Package\Loading into Fact\DW Destination.Inputs[OLE DB Destination Input].ExternalColumns[TaxOrder]"
+                      lineageId="Package\Loading into Fact\Merge Join.Outputs[Merge Join Output].Columns[TaxOrder]" />
+                    <inputColumn
+                      refId="Package\Loading into Fact\DW Destination.Inputs[OLE DB Destination Input].Columns[TotelAmountOrder]"
+                      cachedDataType="numeric"
+                      cachedName="TotelAmountOrder"
+                      cachedPrecision="36"
+                      cachedScale="7"
+                      externalMetadataColumnId="Package\Loading into Fact\DW Destination.Inputs[OLE DB Destination Input].ExternalColumns[TotalAmountOrder]"
+                      lineageId="Package\Loading into Fact\Merge Join.Outputs[Merge Join Output].Columns[TotelAmountOrder]" />
+                    <inputColumn
+                      refId="Package\Loading into Fact\DW Destination.Inputs[OLE DB Destination Input].Columns[CustomerID]"
+                      cachedDataType="i4"
+                      cachedName="CustomerID"
+                      externalMetadataColumnId="Package\Loading into Fact\DW Destination.Inputs[OLE DB Destination Input].ExternalColumns[CustomerID]"
+                      lineageId="Package\Loading into Fact\Merge Join.Outputs[Merge Join Output].Columns[CustomerID]" />
                   </inputColumns>
                   <externalMetadataColumns
                     isUsed="True">
@@ -843,6 +1137,18 @@ where [refTable].[FullDate] = ?</property>
                       refId="Package\Loading into Fact\DW Destination.Inputs[OLE DB Destination Input].ExternalColumns[TotalAmountLine]"
                       dataType="cy"
                       name="TotalAmountLine" />
+                    <externalMetadataColumn
+                      refId="Package\Loading into Fact\DW Destination.Inputs[OLE DB Destination Input].ExternalColumns[NetAmountOrder]"
+                      dataType="cy"
+                      name="NetAmountOrder" />
+                    <externalMetadataColumn
+                      refId="Package\Loading into Fact\DW Destination.Inputs[OLE DB Destination Input].ExternalColumns[TaxOrder]"
+                      dataType="cy"
+                      name="TaxOrder" />
+                    <externalMetadataColumn
+                      refId="Package\Loading into Fact\DW Destination.Inputs[OLE DB Destination Input].ExternalColumns[TotalAmountOrder]"
+                      dataType="cy"
+                      name="TotalAmountOrder" />
                   </externalMetadataColumns>
                 </input>
               </inputs>
@@ -1236,6 +1542,329 @@ ORDER BY ORDERID</property>
               </outputs>
             </component>
             <component
+              refId="Package\Loading into Fact\Merge Join"
+              componentClassID="Microsoft.MergeJoin"
+              contactInfo="Merge Join;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+              description="Combine two sorted data flows into one using the FULL, LEFT, or INNER join. We recommend this transformation when data flows can be sorted at their sources."
+              name="Merge Join"
+              version="1">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the type of join to perform."
+                  name="JoinType"
+                  typeConverter="JoinType">1</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the number of columns in the ordering key."
+                  name="NumKeyColumns">1</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the null values are treated as equal values."
+                  name="TreatNullsAsEqual">true</property>
+                <property
+                  dataType="System.Int32"
+                  description="Indicates the requested maximum buffers per input before blocking."
+                  name="MaxBuffersPerInput">5</property>
+              </properties>
+              <inputs>
+                <input
+                  refId="Package\Loading into Fact\Merge Join.Inputs[Merge Join Left Input]"
+                  hasSideEffects="true"
+                  name="Merge Join Left Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Loading into Fact\Merge Join.Inputs[Merge Join Left Input].Columns[ORDERID]"
+                      cachedDataType="i4"
+                      cachedName="ORDERID"
+                      cachedSortKeyPosition="1"
+                      lineageId="Package\Loading into Fact\Sort.Outputs[Sort Output].Columns[ORDERID]" />
+                    <inputColumn
+                      refId="Package\Loading into Fact\Merge Join.Inputs[Merge Join Left Input].Columns[ProductID]"
+                      cachedDataType="i4"
+                      cachedName="ProductID"
+                      lineageId="Package\Loading into Fact\Sort.Outputs[Sort Output].Columns[ProductID]" />
+                    <inputColumn
+                      refId="Package\Loading into Fact\Merge Join.Inputs[Merge Join Left Input].Columns[DateID]"
+                      cachedDataType="i4"
+                      cachedName="DateID"
+                      lineageId="Package\Loading into Fact\Sort.Outputs[Sort Output].Columns[DateID]" />
+                    <inputColumn
+                      refId="Package\Loading into Fact\Merge Join.Inputs[Merge Join Left Input].Columns[CustomerID]"
+                      cachedDataType="i4"
+                      cachedName="CustomerID"
+                      lineageId="Package\Loading into Fact\Sort.Outputs[Sort Output].Columns[CustomerID]" />
+                    <inputColumn
+                      refId="Package\Loading into Fact\Merge Join.Inputs[Merge Join Left Input].Columns[NetAmountLine]"
+                      cachedDataType="numeric"
+                      cachedName="NetAmountLine"
+                      cachedPrecision="30"
+                      cachedScale="4"
+                      lineageId="Package\Loading into Fact\Sort.Outputs[Sort Output].Columns[NetAmountLine]" />
+                    <inputColumn
+                      refId="Package\Loading into Fact\Merge Join.Inputs[Merge Join Left Input].Columns[TaxLine]"
+                      cachedDataType="numeric"
+                      cachedName="TaxLine"
+                      cachedPrecision="35"
+                      cachedScale="7"
+                      lineageId="Package\Loading into Fact\Sort.Outputs[Sort Output].Columns[TaxLine]" />
+                    <inputColumn
+                      refId="Package\Loading into Fact\Merge Join.Inputs[Merge Join Left Input].Columns[TotalAmountLine]"
+                      cachedDataType="numeric"
+                      cachedName="TotalAmountLine"
+                      cachedPrecision="36"
+                      cachedScale="7"
+                      lineageId="Package\Loading into Fact\Sort.Outputs[Sort Output].Columns[TotalAmountLine]" />
+                    <inputColumn
+                      refId="Package\Loading into Fact\Merge Join.Inputs[Merge Join Left Input].Columns[QUANTITY]"
+                      cachedDataType="i4"
+                      cachedName="QUANTITY"
+                      lineageId="Package\Loading into Fact\Sort.Outputs[Sort Output].Columns[QUANTITY]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+                <input
+                  refId="Package\Loading into Fact\Merge Join.Inputs[Merge Join Right Input]"
+                  hasSideEffects="true"
+                  name="Merge Join Right Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Loading into Fact\Merge Join.Inputs[Merge Join Right Input].Columns[ORDERID]"
+                      cachedDataType="i4"
+                      cachedName="ORDERID"
+                      cachedSortKeyPosition="1"
+                      lineageId="Package\Loading into Fact\Sort 1.Outputs[Sort Output].Columns[ORDERID]" />
+                    <inputColumn
+                      refId="Package\Loading into Fact\Merge Join.Inputs[Merge Join Right Input].Columns[NetAmountOrder]"
+                      cachedDataType="numeric"
+                      cachedName="NetAmountOrder"
+                      cachedPrecision="30"
+                      cachedScale="4"
+                      lineageId="Package\Loading into Fact\Sort 1.Outputs[Sort Output].Columns[NetAmountOrder]" />
+                    <inputColumn
+                      refId="Package\Loading into Fact\Merge Join.Inputs[Merge Join Right Input].Columns[TaxOrder]"
+                      cachedDataType="numeric"
+                      cachedName="TaxOrder"
+                      cachedPrecision="35"
+                      cachedScale="7"
+                      lineageId="Package\Loading into Fact\Sort 1.Outputs[Sort Output].Columns[TaxOrder]" />
+                    <inputColumn
+                      refId="Package\Loading into Fact\Merge Join.Inputs[Merge Join Right Input].Columns[TotelAmountOrder]"
+                      cachedDataType="numeric"
+                      cachedName="TotelAmountOrder"
+                      cachedPrecision="36"
+                      cachedScale="7"
+                      lineageId="Package\Loading into Fact\Sort 1.Outputs[Sort Output].Columns[TotelAmountOrder]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Loading into Fact\Merge Join.Outputs[Merge Join Output]"
+                  isSorted="true"
+                  name="Merge Join Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Loading into Fact\Merge Join.Outputs[Merge Join Output].Columns[ProductID]"
+                      dataType="i4"
+                      lineageId="Package\Loading into Fact\Merge Join.Outputs[Merge Join Output].Columns[ProductID]"
+                      name="ProductID">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="The input column associated with this output column"
+                          name="InputColumnID">#{Package\Loading into Fact\Merge Join.Inputs[Merge Join Left Input].Columns[ProductID]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Loading into Fact\Merge Join.Outputs[Merge Join Output].Columns[DateID]"
+                      dataType="i4"
+                      lineageId="Package\Loading into Fact\Merge Join.Outputs[Merge Join Output].Columns[DateID]"
+                      name="DateID">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="The input column associated with this output column"
+                          name="InputColumnID">#{Package\Loading into Fact\Merge Join.Inputs[Merge Join Left Input].Columns[DateID]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Loading into Fact\Merge Join.Outputs[Merge Join Output].Columns[CustomerID]"
+                      dataType="i4"
+                      lineageId="Package\Loading into Fact\Merge Join.Outputs[Merge Join Output].Columns[CustomerID]"
+                      name="CustomerID">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="The input column associated with this output column"
+                          name="InputColumnID">#{Package\Loading into Fact\Merge Join.Inputs[Merge Join Left Input].Columns[CustomerID]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Loading into Fact\Merge Join.Outputs[Merge Join Output].Columns[NetAmountLine]"
+                      dataType="numeric"
+                      lineageId="Package\Loading into Fact\Merge Join.Outputs[Merge Join Output].Columns[NetAmountLine]"
+                      name="NetAmountLine"
+                      precision="30"
+                      scale="4">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="The input column associated with this output column"
+                          name="InputColumnID">#{Package\Loading into Fact\Merge Join.Inputs[Merge Join Left Input].Columns[NetAmountLine]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Loading into Fact\Merge Join.Outputs[Merge Join Output].Columns[TaxLine]"
+                      dataType="numeric"
+                      lineageId="Package\Loading into Fact\Merge Join.Outputs[Merge Join Output].Columns[TaxLine]"
+                      name="TaxLine"
+                      precision="35"
+                      scale="7">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="The input column associated with this output column"
+                          name="InputColumnID">#{Package\Loading into Fact\Merge Join.Inputs[Merge Join Left Input].Columns[TaxLine]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Loading into Fact\Merge Join.Outputs[Merge Join Output].Columns[TotalAmountLine]"
+                      dataType="numeric"
+                      lineageId="Package\Loading into Fact\Merge Join.Outputs[Merge Join Output].Columns[TotalAmountLine]"
+                      name="TotalAmountLine"
+                      precision="36"
+                      scale="7">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="The input column associated with this output column"
+                          name="InputColumnID">#{Package\Loading into Fact\Merge Join.Inputs[Merge Join Left Input].Columns[TotalAmountLine]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Loading into Fact\Merge Join.Outputs[Merge Join Output].Columns[NetAmountOrder]"
+                      dataType="numeric"
+                      lineageId="Package\Loading into Fact\Merge Join.Outputs[Merge Join Output].Columns[NetAmountOrder]"
+                      name="NetAmountOrder"
+                      precision="30"
+                      scale="4">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="The input column associated with this output column"
+                          name="InputColumnID">#{Package\Loading into Fact\Merge Join.Inputs[Merge Join Right Input].Columns[NetAmountOrder]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Loading into Fact\Merge Join.Outputs[Merge Join Output].Columns[TaxOrder]"
+                      dataType="numeric"
+                      lineageId="Package\Loading into Fact\Merge Join.Outputs[Merge Join Output].Columns[TaxOrder]"
+                      name="TaxOrder"
+                      precision="35"
+                      scale="7">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="The input column associated with this output column"
+                          name="InputColumnID">#{Package\Loading into Fact\Merge Join.Inputs[Merge Join Right Input].Columns[TaxOrder]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Loading into Fact\Merge Join.Outputs[Merge Join Output].Columns[TotelAmountOrder]"
+                      dataType="numeric"
+                      lineageId="Package\Loading into Fact\Merge Join.Outputs[Merge Join Output].Columns[TotelAmountOrder]"
+                      name="TotelAmountOrder"
+                      precision="36"
+                      scale="7">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="The input column associated with this output column"
+                          name="InputColumnID">#{Package\Loading into Fact\Merge Join.Inputs[Merge Join Right Input].Columns[TotelAmountOrder]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Loading into Fact\Merge Join.Outputs[Merge Join Output].Columns[QUANTITY]"
+                      dataType="i4"
+                      lineageId="Package\Loading into Fact\Merge Join.Outputs[Merge Join Output].Columns[QUANTITY]"
+                      name="QUANTITY">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="The input column associated with this output column"
+                          name="InputColumnID">#{Package\Loading into Fact\Merge Join.Inputs[Merge Join Left Input].Columns[QUANTITY]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Loading into Fact\Merge Join.Outputs[Merge Join Output].Columns[ORDERID]"
+                      dataType="i4"
+                      lineageId="Package\Loading into Fact\Merge Join.Outputs[Merge Join Output].Columns[ORDERID]"
+                      name="ORDERID"
+                      sortKeyPosition="1">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="The input column associated with this output column"
+                          name="InputColumnID">#{Package\Loading into Fact\Merge Join.Inputs[Merge Join Left Input].Columns[ORDERID]}</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Loading into Fact\Multicast"
+              componentClassID="Microsoft.Multicast"
+              contactInfo="Multicast;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Distributes every input row to every row in one or more outputs. For example, branch your data flow to make a copy of data so that some values can be masked before sharing with external partners."
+              name="Multicast">
+              <inputs>
+                <input
+                  refId="Package\Loading into Fact\Multicast.Inputs[Multicast Input 1]"
+                  name="Multicast Input 1">
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Loading into Fact\Multicast.Outputs[Multicast Output 1]"
+                  deleteOutputOnPathDetached="true"
+                  name="Multicast Output 1"
+                  synchronousInputId="Package\Loading into Fact\Multicast.Inputs[Multicast Input 1]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Loading into Fact\Multicast.Outputs[Multicast Output 2]"
+                  deleteOutputOnPathDetached="true"
+                  name="Multicast Output 2"
+                  synchronousInputId="Package\Loading into Fact\Multicast.Inputs[Multicast Input 1]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Loading into Fact\Multicast.Outputs[Multicast Output 3]"
+                  dangling="true"
+                  deleteOutputOnPathDetached="true"
+                  name="Multicast Output 3"
+                  synchronousInputId="Package\Loading into Fact\Multicast.Inputs[Multicast Input 1]">
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
               refId="Package\Loading into Fact\Product Lookup"
               componentClassID="Microsoft.Lookup"
               contactInfo="Lookup;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;6"
@@ -1414,6 +2043,572 @@ where [refTable].[ProductBusinessID] = ?</property>
               </outputs>
             </component>
             <component
+              refId="Package\Loading into Fact\Sort"
+              componentClassID="Microsoft.Sort"
+              contactInfo="Sort;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+              description="Sorts input data in ascending or descending order when it cannot be sorted at its source. For example, sort sales data by 'customer id' before it is written to a flat file and delivered to another department. Note: We do not recommend this transformation for large data flows."
+              name="Sort"
+              version="1">
+              <properties>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the Sort transformation removes rows with duplicate sort values."
+                  name="EliminateDuplicates">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the maximum number of threads to use for sorting."
+                  expressionType="Notify"
+                  name="MaximumThreads">-1</property>
+              </properties>
+              <inputs>
+                <input
+                  refId="Package\Loading into Fact\Sort.Inputs[Sort Input]"
+                  name="Sort Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Loading into Fact\Sort.Inputs[Sort Input].Columns[ORDERDATE]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="ORDERDATE"
+                      lineageId="Package\Loading into Fact\Fact Source Staging Table.Outputs[OLE DB Source Output].Columns[ORDERDATE]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Loading into Fact\Sort.Inputs[Sort Input].Columns[CUSTOMERID]"
+                      cachedDataType="i4"
+                      cachedName="CUSTOMERID"
+                      lineageId="Package\Loading into Fact\Fact Source Staging Table.Outputs[OLE DB Source Output].Columns[CUSTOMERID]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Loading into Fact\Sort.Inputs[Sort Input].Columns[PROD_ID]"
+                      cachedDataType="i4"
+                      cachedName="PROD_ID"
+                      lineageId="Package\Loading into Fact\Fact Source Staging Table.Outputs[OLE DB Source Output].Columns[PROD_ID]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Loading into Fact\Sort.Inputs[Sort Input].Columns[ORDERID]"
+                      cachedDataType="i4"
+                      cachedName="ORDERID"
+                      lineageId="Package\Loading into Fact\Fact Source Staging Table.Outputs[OLE DB Source Output].Columns[ORDERID]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">1</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Loading into Fact\Sort.Inputs[Sort Input].Columns[QUANTITY]"
+                      cachedDataType="i4"
+                      cachedName="QUANTITY"
+                      lineageId="Package\Loading into Fact\Fact Source Staging Table.Outputs[OLE DB Source Output].Columns[QUANTITY]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Loading into Fact\Sort.Inputs[Sort Input].Columns[PRICE]"
+                      cachedDataType="cy"
+                      cachedName="PRICE"
+                      lineageId="Package\Loading into Fact\Fact Source Staging Table.Outputs[OLE DB Source Output].Columns[PRICE]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Loading into Fact\Sort.Inputs[Sort Input].Columns[ProductID]"
+                      cachedDataType="i4"
+                      cachedName="ProductID"
+                      lineageId="Package\Loading into Fact\Product Lookup.Outputs[Lookup Match Output].Columns[ProductID]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Loading into Fact\Sort.Inputs[Sort Input].Columns[DateID]"
+                      cachedDataType="i4"
+                      cachedName="DateID"
+                      lineageId="Package\Loading into Fact\Date Lookup.Outputs[Lookup Match Output].Columns[DateID]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Loading into Fact\Sort.Inputs[Sort Input].Columns[CustomerID]"
+                      cachedDataType="i4"
+                      cachedName="CustomerID"
+                      lineageId="Package\Loading into Fact\Customer Lookup.Outputs[Lookup Match Output].Columns[CustomerID]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Loading into Fact\Sort.Inputs[Sort Input].Columns[NetAmountLine]"
+                      cachedDataType="numeric"
+                      cachedName="NetAmountLine"
+                      cachedPrecision="30"
+                      cachedScale="4"
+                      lineageId="Package\Loading into Fact\Calculated Column.Outputs[Derived Column Output].Columns[NetAmountLine]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Loading into Fact\Sort.Inputs[Sort Input].Columns[TaxLine]"
+                      cachedDataType="numeric"
+                      cachedName="TaxLine"
+                      cachedPrecision="35"
+                      cachedScale="7"
+                      lineageId="Package\Loading into Fact\Calculated Column.Outputs[Derived Column Output].Columns[TaxLine]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Loading into Fact\Sort.Inputs[Sort Input].Columns[TotalAmountLine]"
+                      cachedDataType="numeric"
+                      cachedName="TotalAmountLine"
+                      cachedPrecision="36"
+                      cachedScale="7"
+                      lineageId="Package\Loading into Fact\Calculated Column.Outputs[Derived Column Output].Columns[TotalAmountLine]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Loading into Fact\Sort.Outputs[Sort Output]"
+                  isSorted="true"
+                  name="Sort Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Loading into Fact\Sort.Outputs[Sort Output].Columns[ORDERDATE]"
+                      dataType="dbTimeStamp"
+                      lineageId="Package\Loading into Fact\Sort.Outputs[Sort Output].Columns[ORDERDATE]"
+                      name="ORDERDATE">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Loading into Fact\Fact Source Staging Table.Outputs[OLE DB Source Output].Columns[ORDERDATE]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Loading into Fact\Sort.Outputs[Sort Output].Columns[CUSTOMERID]"
+                      dataType="i4"
+                      lineageId="Package\Loading into Fact\Sort.Outputs[Sort Output].Columns[CUSTOMERID]"
+                      name="CUSTOMERID">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Loading into Fact\Fact Source Staging Table.Outputs[OLE DB Source Output].Columns[CUSTOMERID]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Loading into Fact\Sort.Outputs[Sort Output].Columns[PROD_ID]"
+                      dataType="i4"
+                      lineageId="Package\Loading into Fact\Sort.Outputs[Sort Output].Columns[PROD_ID]"
+                      name="PROD_ID">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Loading into Fact\Fact Source Staging Table.Outputs[OLE DB Source Output].Columns[PROD_ID]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Loading into Fact\Sort.Outputs[Sort Output].Columns[ORDERID]"
+                      dataType="i4"
+                      lineageId="Package\Loading into Fact\Sort.Outputs[Sort Output].Columns[ORDERID]"
+                      name="ORDERID"
+                      sortKeyPosition="1">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Loading into Fact\Fact Source Staging Table.Outputs[OLE DB Source Output].Columns[ORDERID]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Loading into Fact\Sort.Outputs[Sort Output].Columns[QUANTITY]"
+                      dataType="i4"
+                      lineageId="Package\Loading into Fact\Sort.Outputs[Sort Output].Columns[QUANTITY]"
+                      name="QUANTITY">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Loading into Fact\Fact Source Staging Table.Outputs[OLE DB Source Output].Columns[QUANTITY]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Loading into Fact\Sort.Outputs[Sort Output].Columns[Price]"
+                      dataType="cy"
+                      lineageId="Package\Loading into Fact\Sort.Outputs[Sort Output].Columns[Price]"
+                      name="Price">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Loading into Fact\Fact Source Staging Table.Outputs[OLE DB Source Output].Columns[PRICE]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Loading into Fact\Sort.Outputs[Sort Output].Columns[ProductID]"
+                      dataType="i4"
+                      lineageId="Package\Loading into Fact\Sort.Outputs[Sort Output].Columns[ProductID]"
+                      name="ProductID">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Loading into Fact\Product Lookup.Outputs[Lookup Match Output].Columns[ProductID]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Loading into Fact\Sort.Outputs[Sort Output].Columns[DateID]"
+                      dataType="i4"
+                      lineageId="Package\Loading into Fact\Sort.Outputs[Sort Output].Columns[DateID]"
+                      name="DateID">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Loading into Fact\Date Lookup.Outputs[Lookup Match Output].Columns[DateID]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Loading into Fact\Sort.Outputs[Sort Output].Columns[CustomerID]"
+                      dataType="i4"
+                      lineageId="Package\Loading into Fact\Sort.Outputs[Sort Output].Columns[CustomerID]"
+                      name="CustomerID">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Loading into Fact\Customer Lookup.Outputs[Lookup Match Output].Columns[CustomerID]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Loading into Fact\Sort.Outputs[Sort Output].Columns[NetAmountLine]"
+                      dataType="numeric"
+                      lineageId="Package\Loading into Fact\Sort.Outputs[Sort Output].Columns[NetAmountLine]"
+                      name="NetAmountLine"
+                      precision="30"
+                      scale="4">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Loading into Fact\Calculated Column.Outputs[Derived Column Output].Columns[NetAmountLine]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Loading into Fact\Sort.Outputs[Sort Output].Columns[TaxLine]"
+                      dataType="numeric"
+                      lineageId="Package\Loading into Fact\Sort.Outputs[Sort Output].Columns[TaxLine]"
+                      name="TaxLine"
+                      precision="35"
+                      scale="7">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Loading into Fact\Calculated Column.Outputs[Derived Column Output].Columns[TaxLine]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Loading into Fact\Sort.Outputs[Sort Output].Columns[TotalAmountLine]"
+                      dataType="numeric"
+                      lineageId="Package\Loading into Fact\Sort.Outputs[Sort Output].Columns[TotalAmountLine]"
+                      name="TotalAmountLine"
+                      precision="36"
+                      scale="7">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Loading into Fact\Calculated Column.Outputs[Derived Column Output].Columns[TotalAmountLine]}</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Loading into Fact\Sort 1"
+              componentClassID="Microsoft.Sort"
+              contactInfo="Sort;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+              description="Sorts input data in ascending or descending order when it cannot be sorted at its source. For example, sort sales data by 'customer id' before it is written to a flat file and delivered to another department. Note: We do not recommend this transformation for large data flows."
+              name="Sort 1"
+              version="1">
+              <properties>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the Sort transformation removes rows with duplicate sort values."
+                  name="EliminateDuplicates">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the maximum number of threads to use for sorting."
+                  expressionType="Notify"
+                  name="MaximumThreads">-1</property>
+              </properties>
+              <inputs>
+                <input
+                  refId="Package\Loading into Fact\Sort 1.Inputs[Sort Input]"
+                  name="Sort Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Loading into Fact\Sort 1.Inputs[Sort Input].Columns[ORDERID]"
+                      cachedDataType="i4"
+                      cachedName="ORDERID"
+                      lineageId="Package\Loading into Fact\Aggregate.Outputs[Aggregate Output 1].Columns[ORDERID]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">1</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Loading into Fact\Sort 1.Inputs[Sort Input].Columns[NetAmountOrder]"
+                      cachedDataType="numeric"
+                      cachedName="NetAmountOrder"
+                      cachedPrecision="30"
+                      cachedScale="4"
+                      lineageId="Package\Loading into Fact\Aggregate.Outputs[Aggregate Output 1].Columns[NetAmountOrder]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Loading into Fact\Sort 1.Inputs[Sort Input].Columns[TaxOrder]"
+                      cachedDataType="numeric"
+                      cachedName="TaxOrder"
+                      cachedPrecision="35"
+                      cachedScale="7"
+                      lineageId="Package\Loading into Fact\Aggregate.Outputs[Aggregate Output 1].Columns[TaxOrder]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Loading into Fact\Sort 1.Inputs[Sort Input].Columns[TotelAmountOrder]"
+                      cachedDataType="numeric"
+                      cachedName="TotelAmountOrder"
+                      cachedPrecision="36"
+                      cachedScale="7"
+                      lineageId="Package\Loading into Fact\Aggregate.Outputs[Aggregate Output 1].Columns[TotelAmountOrder]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Loading into Fact\Sort 1.Outputs[Sort Output]"
+                  isSorted="true"
+                  name="Sort Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Loading into Fact\Sort 1.Outputs[Sort Output].Columns[ORDERID]"
+                      dataType="i4"
+                      lineageId="Package\Loading into Fact\Sort 1.Outputs[Sort Output].Columns[ORDERID]"
+                      name="ORDERID"
+                      sortKeyPosition="1">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Loading into Fact\Aggregate.Outputs[Aggregate Output 1].Columns[ORDERID]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Loading into Fact\Sort 1.Outputs[Sort Output].Columns[NetAmountOrder]"
+                      dataType="numeric"
+                      lineageId="Package\Loading into Fact\Sort 1.Outputs[Sort Output].Columns[NetAmountOrder]"
+                      name="NetAmountOrder"
+                      precision="30"
+                      scale="4">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Loading into Fact\Aggregate.Outputs[Aggregate Output 1].Columns[NetAmountOrder]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Loading into Fact\Sort 1.Outputs[Sort Output].Columns[TaxOrder]"
+                      dataType="numeric"
+                      lineageId="Package\Loading into Fact\Sort 1.Outputs[Sort Output].Columns[TaxOrder]"
+                      name="TaxOrder"
+                      precision="35"
+                      scale="7">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Loading into Fact\Aggregate.Outputs[Aggregate Output 1].Columns[TaxOrder]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Loading into Fact\Sort 1.Outputs[Sort Output].Columns[TotelAmountOrder]"
+                      dataType="numeric"
+                      lineageId="Package\Loading into Fact\Sort 1.Outputs[Sort Output].Columns[TotelAmountOrder]"
+                      name="TotelAmountOrder"
+                      precision="36"
+                      scale="7">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Loading into Fact\Aggregate.Outputs[Aggregate Output 1].Columns[TotelAmountOrder]}</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
               refId="Package\Loading into Fact\Union All"
               componentClassID="Microsoft.UnionAll"
               contactInfo="Union All;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
@@ -1426,88 +2621,10 @@ where [refTable].[ProductBusinessID] = ?</property>
                   name="Union All Input 1">
                   <inputColumns>
                     <inputColumn
-                      refId="Package\Loading into Fact\Union All.Inputs[Union All Input 1].Columns[ORDERDATE]"
-                      cachedDataType="dbTimeStamp"
-                      cachedName="ORDERDATE"
-                      lineageId="Package\Loading into Fact\Fact Source Staging Table.Outputs[OLE DB Source Output].Columns[ORDERDATE]">
-                      <properties>
-                        <property
-                          containsID="true"
-                          dataType="System.Int32"
-                          description="Output column lineage ID"
-                          name="OutputColumnLineageID">#{Package\Loading into Fact\Union All.Outputs[Union All Output 1].Columns[ORDERDATE]}</property>
-                      </properties>
-                    </inputColumn>
-                    <inputColumn
-                      refId="Package\Loading into Fact\Union All.Inputs[Union All Input 1].Columns[CUSTOMERID]"
-                      cachedDataType="i4"
-                      cachedName="CUSTOMERID"
-                      lineageId="Package\Loading into Fact\Fact Source Staging Table.Outputs[OLE DB Source Output].Columns[CUSTOMERID]">
-                      <properties>
-                        <property
-                          containsID="true"
-                          dataType="System.Int32"
-                          description="Output column lineage ID"
-                          name="OutputColumnLineageID">#{Package\Loading into Fact\Union All.Outputs[Union All Output 1].Columns[CUSTOMERID]}</property>
-                      </properties>
-                    </inputColumn>
-                    <inputColumn
-                      refId="Package\Loading into Fact\Union All.Inputs[Union All Input 1].Columns[PROD_ID]"
-                      cachedDataType="i4"
-                      cachedName="PROD_ID"
-                      lineageId="Package\Loading into Fact\Fact Source Staging Table.Outputs[OLE DB Source Output].Columns[PROD_ID]">
-                      <properties>
-                        <property
-                          containsID="true"
-                          dataType="System.Int32"
-                          description="Output column lineage ID"
-                          name="OutputColumnLineageID">#{Package\Loading into Fact\Union All.Outputs[Union All Output 1].Columns[PROD_ID]}</property>
-                      </properties>
-                    </inputColumn>
-                    <inputColumn
-                      refId="Package\Loading into Fact\Union All.Inputs[Union All Input 1].Columns[ORDERID]"
-                      cachedDataType="i4"
-                      cachedName="ORDERID"
-                      lineageId="Package\Loading into Fact\Fact Source Staging Table.Outputs[OLE DB Source Output].Columns[ORDERID]">
-                      <properties>
-                        <property
-                          containsID="true"
-                          dataType="System.Int32"
-                          description="Output column lineage ID"
-                          name="OutputColumnLineageID">#{Package\Loading into Fact\Union All.Outputs[Union All Output 1].Columns[ORDERID]}</property>
-                      </properties>
-                    </inputColumn>
-                    <inputColumn
-                      refId="Package\Loading into Fact\Union All.Inputs[Union All Input 1].Columns[PRICE]"
-                      cachedDataType="cy"
-                      cachedName="PRICE"
-                      lineageId="Package\Loading into Fact\Fact Source Staging Table.Outputs[OLE DB Source Output].Columns[PRICE]">
-                      <properties>
-                        <property
-                          containsID="true"
-                          dataType="System.Int32"
-                          description="Output column lineage ID"
-                          name="OutputColumnLineageID">#{Package\Loading into Fact\Union All.Outputs[Union All Output 1].Columns[Price]}</property>
-                      </properties>
-                    </inputColumn>
-                    <inputColumn
-                      refId="Package\Loading into Fact\Union All.Inputs[Union All Input 1].Columns[QUANTITY]"
-                      cachedDataType="i4"
-                      cachedName="QUANTITY"
-                      lineageId="Package\Loading into Fact\Fact Source Staging Table.Outputs[OLE DB Source Output].Columns[QUANTITY]">
-                      <properties>
-                        <property
-                          containsID="true"
-                          dataType="System.Int32"
-                          description="Output column lineage ID"
-                          name="OutputColumnLineageID">#{Package\Loading into Fact\Union All.Outputs[Union All Output 1].Columns[QUANTITY]}</property>
-                      </properties>
-                    </inputColumn>
-                    <inputColumn
                       refId="Package\Loading into Fact\Union All.Inputs[Union All Input 1].Columns[ProductID]"
                       cachedDataType="i4"
                       cachedName="ProductID"
-                      lineageId="Package\Loading into Fact\Product Lookup.Outputs[Lookup Match Output].Columns[ProductID]">
+                      lineageId="Package\Loading into Fact\Merge Join.Outputs[Merge Join Output].Columns[ProductID]">
                       <properties>
                         <property
                           containsID="true"
@@ -1520,7 +2637,7 @@ where [refTable].[ProductBusinessID] = ?</property>
                       refId="Package\Loading into Fact\Union All.Inputs[Union All Input 1].Columns[DateID]"
                       cachedDataType="i4"
                       cachedName="DateID"
-                      lineageId="Package\Loading into Fact\Date Lookup.Outputs[Lookup Match Output].Columns[DateID]">
+                      lineageId="Package\Loading into Fact\Merge Join.Outputs[Merge Join Output].Columns[DateID]">
                       <properties>
                         <property
                           containsID="true"
@@ -1533,7 +2650,7 @@ where [refTable].[ProductBusinessID] = ?</property>
                       refId="Package\Loading into Fact\Union All.Inputs[Union All Input 1].Columns[CustomerID]"
                       cachedDataType="i4"
                       cachedName="CustomerID"
-                      lineageId="Package\Loading into Fact\Customer Lookup.Outputs[Lookup Match Output].Columns[CustomerID]">
+                      lineageId="Package\Loading into Fact\Merge Join.Outputs[Merge Join Output].Columns[CustomerID]">
                       <properties>
                         <property
                           containsID="true"
@@ -1548,7 +2665,7 @@ where [refTable].[ProductBusinessID] = ?</property>
                       cachedName="NetAmountLine"
                       cachedPrecision="30"
                       cachedScale="4"
-                      lineageId="Package\Loading into Fact\Calculated Column.Outputs[Derived Column Output].Columns[NetAmountLine]">
+                      lineageId="Package\Loading into Fact\Merge Join.Outputs[Merge Join Output].Columns[NetAmountLine]">
                       <properties>
                         <property
                           containsID="true"
@@ -1563,7 +2680,7 @@ where [refTable].[ProductBusinessID] = ?</property>
                       cachedName="TaxLine"
                       cachedPrecision="35"
                       cachedScale="7"
-                      lineageId="Package\Loading into Fact\Calculated Column.Outputs[Derived Column Output].Columns[TaxLine]">
+                      lineageId="Package\Loading into Fact\Merge Join.Outputs[Merge Join Output].Columns[TaxLine]">
                       <properties>
                         <property
                           containsID="true"
@@ -1578,13 +2695,85 @@ where [refTable].[ProductBusinessID] = ?</property>
                       cachedName="TotalAmountLine"
                       cachedPrecision="36"
                       cachedScale="7"
-                      lineageId="Package\Loading into Fact\Calculated Column.Outputs[Derived Column Output].Columns[TotalAmountLine]">
+                      lineageId="Package\Loading into Fact\Merge Join.Outputs[Merge Join Output].Columns[TotalAmountLine]">
                       <properties>
                         <property
                           containsID="true"
                           dataType="System.Int32"
                           description="Output column lineage ID"
                           name="OutputColumnLineageID">#{Package\Loading into Fact\Union All.Outputs[Union All Output 1].Columns[TotalAmountLine]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Loading into Fact\Union All.Inputs[Union All Input 1].Columns[NetAmountOrder]"
+                      cachedDataType="numeric"
+                      cachedName="NetAmountOrder"
+                      cachedPrecision="30"
+                      cachedScale="4"
+                      lineageId="Package\Loading into Fact\Merge Join.Outputs[Merge Join Output].Columns[NetAmountOrder]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Loading into Fact\Union All.Outputs[Union All Output 1].Columns[NetAmountOrder]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Loading into Fact\Union All.Inputs[Union All Input 1].Columns[TaxOrder]"
+                      cachedDataType="numeric"
+                      cachedName="TaxOrder"
+                      cachedPrecision="35"
+                      cachedScale="7"
+                      lineageId="Package\Loading into Fact\Merge Join.Outputs[Merge Join Output].Columns[TaxOrder]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Loading into Fact\Union All.Outputs[Union All Output 1].Columns[TaxOrder]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Loading into Fact\Union All.Inputs[Union All Input 1].Columns[TotelAmountOrder]"
+                      cachedDataType="numeric"
+                      cachedName="TotelAmountOrder"
+                      cachedPrecision="36"
+                      cachedScale="7"
+                      lineageId="Package\Loading into Fact\Merge Join.Outputs[Merge Join Output].Columns[TotelAmountOrder]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Loading into Fact\Union All.Outputs[Union All Output 1].Columns[TotelAmountOrder]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Loading into Fact\Union All.Inputs[Union All Input 1].Columns[QUANTITY]"
+                      cachedDataType="i4"
+                      cachedName="QUANTITY"
+                      lineageId="Package\Loading into Fact\Merge Join.Outputs[Merge Join Output].Columns[QUANTITY]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Loading into Fact\Union All.Outputs[Union All Output 1].Columns[QUANTITY]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Loading into Fact\Union All.Inputs[Union All Input 1].Columns[ORDERID]"
+                      cachedDataType="i4"
+                      cachedName="ORDERID"
+                      cachedSortKeyPosition="1"
+                      lineageId="Package\Loading into Fact\Merge Join.Outputs[Merge Join Output].Columns[ORDERID]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Loading into Fact\Union All.Outputs[Union All Output 1].Columns[ORDERID]}</property>
                       </properties>
                     </inputColumn>
                     <inputColumn
@@ -1622,88 +2811,10 @@ where [refTable].[ProductBusinessID] = ?</property>
                   name="Union All Input 2">
                   <inputColumns>
                     <inputColumn
-                      refId="Package\Loading into Fact\Union All.Inputs[Union All Input 2].Columns[ORDERDATE]"
-                      cachedDataType="dbTimeStamp"
-                      cachedName="ORDERDATE"
-                      lineageId="Package\Loading into Fact\Fact Source Staging Table.Outputs[OLE DB Source Output].Columns[ORDERDATE]">
-                      <properties>
-                        <property
-                          containsID="true"
-                          dataType="System.Int32"
-                          description="Output column lineage ID"
-                          name="OutputColumnLineageID">#{Package\Loading into Fact\Union All.Outputs[Union All Output 1].Columns[ORDERDATE]}</property>
-                      </properties>
-                    </inputColumn>
-                    <inputColumn
-                      refId="Package\Loading into Fact\Union All.Inputs[Union All Input 2].Columns[CUSTOMERID]"
-                      cachedDataType="i4"
-                      cachedName="CUSTOMERID"
-                      lineageId="Package\Loading into Fact\Fact Source Staging Table.Outputs[OLE DB Source Output].Columns[CUSTOMERID]">
-                      <properties>
-                        <property
-                          containsID="true"
-                          dataType="System.Int32"
-                          description="Output column lineage ID"
-                          name="OutputColumnLineageID">#{Package\Loading into Fact\Union All.Outputs[Union All Output 1].Columns[CustomerID]}</property>
-                      </properties>
-                    </inputColumn>
-                    <inputColumn
-                      refId="Package\Loading into Fact\Union All.Inputs[Union All Input 2].Columns[PROD_ID]"
-                      cachedDataType="i4"
-                      cachedName="PROD_ID"
-                      lineageId="Package\Loading into Fact\Fact Source Staging Table.Outputs[OLE DB Source Output].Columns[PROD_ID]">
-                      <properties>
-                        <property
-                          containsID="true"
-                          dataType="System.Int32"
-                          description="Output column lineage ID"
-                          name="OutputColumnLineageID">#{Package\Loading into Fact\Union All.Outputs[Union All Output 1].Columns[PROD_ID]}</property>
-                      </properties>
-                    </inputColumn>
-                    <inputColumn
-                      refId="Package\Loading into Fact\Union All.Inputs[Union All Input 2].Columns[ORDERID]"
-                      cachedDataType="i4"
-                      cachedName="ORDERID"
-                      lineageId="Package\Loading into Fact\Fact Source Staging Table.Outputs[OLE DB Source Output].Columns[ORDERID]">
-                      <properties>
-                        <property
-                          containsID="true"
-                          dataType="System.Int32"
-                          description="Output column lineage ID"
-                          name="OutputColumnLineageID">#{Package\Loading into Fact\Union All.Outputs[Union All Output 1].Columns[ORDERID]}</property>
-                      </properties>
-                    </inputColumn>
-                    <inputColumn
-                      refId="Package\Loading into Fact\Union All.Inputs[Union All Input 2].Columns[PRICE]"
-                      cachedDataType="cy"
-                      cachedName="PRICE"
-                      lineageId="Package\Loading into Fact\Fact Source Staging Table.Outputs[OLE DB Source Output].Columns[PRICE]">
-                      <properties>
-                        <property
-                          containsID="true"
-                          dataType="System.Int32"
-                          description="Output column lineage ID"
-                          name="OutputColumnLineageID">#{Package\Loading into Fact\Union All.Outputs[Union All Output 1].Columns[Price]}</property>
-                      </properties>
-                    </inputColumn>
-                    <inputColumn
-                      refId="Package\Loading into Fact\Union All.Inputs[Union All Input 2].Columns[QUANTITY]"
-                      cachedDataType="i4"
-                      cachedName="QUANTITY"
-                      lineageId="Package\Loading into Fact\Fact Source Staging Table.Outputs[OLE DB Source Output].Columns[QUANTITY]">
-                      <properties>
-                        <property
-                          containsID="true"
-                          dataType="System.Int32"
-                          description="Output column lineage ID"
-                          name="OutputColumnLineageID">#{Package\Loading into Fact\Union All.Outputs[Union All Output 1].Columns[QUANTITY]}</property>
-                      </properties>
-                    </inputColumn>
-                    <inputColumn
                       refId="Package\Loading into Fact\Union All.Inputs[Union All Input 2].Columns[ProductID]"
                       cachedDataType="i4"
                       cachedName="ProductID"
-                      lineageId="Package\Loading into Fact\Product Lookup.Outputs[Lookup Match Output].Columns[ProductID]">
+                      lineageId="Package\Loading into Fact\Merge Join.Outputs[Merge Join Output].Columns[ProductID]">
                       <properties>
                         <property
                           containsID="true"
@@ -1716,7 +2827,7 @@ where [refTable].[ProductBusinessID] = ?</property>
                       refId="Package\Loading into Fact\Union All.Inputs[Union All Input 2].Columns[DateID]"
                       cachedDataType="i4"
                       cachedName="DateID"
-                      lineageId="Package\Loading into Fact\Date Lookup.Outputs[Lookup Match Output].Columns[DateID]">
+                      lineageId="Package\Loading into Fact\Merge Join.Outputs[Merge Join Output].Columns[DateID]">
                       <properties>
                         <property
                           containsID="true"
@@ -1726,12 +2837,25 @@ where [refTable].[ProductBusinessID] = ?</property>
                       </properties>
                     </inputColumn>
                     <inputColumn
+                      refId="Package\Loading into Fact\Union All.Inputs[Union All Input 2].Columns[CustomerID]"
+                      cachedDataType="i4"
+                      cachedName="CustomerID"
+                      lineageId="Package\Loading into Fact\Merge Join.Outputs[Merge Join Output].Columns[CustomerID]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Loading into Fact\Union All.Outputs[Union All Output 1].Columns[CustomerID]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
                       refId="Package\Loading into Fact\Union All.Inputs[Union All Input 2].Columns[NetAmountLine]"
                       cachedDataType="numeric"
                       cachedName="NetAmountLine"
                       cachedPrecision="30"
                       cachedScale="4"
-                      lineageId="Package\Loading into Fact\Calculated Column.Outputs[Derived Column Output].Columns[NetAmountLine]">
+                      lineageId="Package\Loading into Fact\Merge Join.Outputs[Merge Join Output].Columns[NetAmountLine]">
                       <properties>
                         <property
                           containsID="true"
@@ -1746,7 +2870,7 @@ where [refTable].[ProductBusinessID] = ?</property>
                       cachedName="TaxLine"
                       cachedPrecision="35"
                       cachedScale="7"
-                      lineageId="Package\Loading into Fact\Calculated Column.Outputs[Derived Column Output].Columns[TaxLine]">
+                      lineageId="Package\Loading into Fact\Merge Join.Outputs[Merge Join Output].Columns[TaxLine]">
                       <properties>
                         <property
                           containsID="true"
@@ -1761,13 +2885,85 @@ where [refTable].[ProductBusinessID] = ?</property>
                       cachedName="TotalAmountLine"
                       cachedPrecision="36"
                       cachedScale="7"
-                      lineageId="Package\Loading into Fact\Calculated Column.Outputs[Derived Column Output].Columns[TotalAmountLine]">
+                      lineageId="Package\Loading into Fact\Merge Join.Outputs[Merge Join Output].Columns[TotalAmountLine]">
                       <properties>
                         <property
                           containsID="true"
                           dataType="System.Int32"
                           description="Output column lineage ID"
                           name="OutputColumnLineageID">#{Package\Loading into Fact\Union All.Outputs[Union All Output 1].Columns[TotalAmountLine]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Loading into Fact\Union All.Inputs[Union All Input 2].Columns[NetAmountOrder]"
+                      cachedDataType="numeric"
+                      cachedName="NetAmountOrder"
+                      cachedPrecision="30"
+                      cachedScale="4"
+                      lineageId="Package\Loading into Fact\Merge Join.Outputs[Merge Join Output].Columns[NetAmountOrder]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Loading into Fact\Union All.Outputs[Union All Output 1].Columns[NetAmountOrder]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Loading into Fact\Union All.Inputs[Union All Input 2].Columns[TaxOrder]"
+                      cachedDataType="numeric"
+                      cachedName="TaxOrder"
+                      cachedPrecision="35"
+                      cachedScale="7"
+                      lineageId="Package\Loading into Fact\Merge Join.Outputs[Merge Join Output].Columns[TaxOrder]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Loading into Fact\Union All.Outputs[Union All Output 1].Columns[TaxOrder]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Loading into Fact\Union All.Inputs[Union All Input 2].Columns[TotelAmountOrder]"
+                      cachedDataType="numeric"
+                      cachedName="TotelAmountOrder"
+                      cachedPrecision="36"
+                      cachedScale="7"
+                      lineageId="Package\Loading into Fact\Merge Join.Outputs[Merge Join Output].Columns[TotelAmountOrder]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Loading into Fact\Union All.Outputs[Union All Output 1].Columns[TotelAmountOrder]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Loading into Fact\Union All.Inputs[Union All Input 2].Columns[QUANTITY]"
+                      cachedDataType="i4"
+                      cachedName="QUANTITY"
+                      lineageId="Package\Loading into Fact\Merge Join.Outputs[Merge Join Output].Columns[QUANTITY]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Loading into Fact\Union All.Outputs[Union All Output 1].Columns[QUANTITY]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Loading into Fact\Union All.Inputs[Union All Input 2].Columns[ORDERID]"
+                      cachedDataType="i4"
+                      cachedName="ORDERID"
+                      cachedSortKeyPosition="1"
+                      lineageId="Package\Loading into Fact\Merge Join.Outputs[Merge Join Output].Columns[ORDERID]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Loading into Fact\Union All.Outputs[Union All Output 1].Columns[ORDERID]}</property>
                       </properties>
                     </inputColumn>
                     <inputColumn
@@ -1805,88 +3001,10 @@ where [refTable].[ProductBusinessID] = ?</property>
                   name="Union All Input 3">
                   <inputColumns>
                     <inputColumn
-                      refId="Package\Loading into Fact\Union All.Inputs[Union All Input 3].Columns[ORDERDATE]"
-                      cachedDataType="dbTimeStamp"
-                      cachedName="ORDERDATE"
-                      lineageId="Package\Loading into Fact\Fact Source Staging Table.Outputs[OLE DB Source Output].Columns[ORDERDATE]">
-                      <properties>
-                        <property
-                          containsID="true"
-                          dataType="System.Int32"
-                          description="Output column lineage ID"
-                          name="OutputColumnLineageID">#{Package\Loading into Fact\Union All.Outputs[Union All Output 1].Columns[ORDERDATE]}</property>
-                      </properties>
-                    </inputColumn>
-                    <inputColumn
-                      refId="Package\Loading into Fact\Union All.Inputs[Union All Input 3].Columns[CUSTOMERID]"
-                      cachedDataType="i4"
-                      cachedName="CUSTOMERID"
-                      lineageId="Package\Loading into Fact\Fact Source Staging Table.Outputs[OLE DB Source Output].Columns[CUSTOMERID]">
-                      <properties>
-                        <property
-                          containsID="true"
-                          dataType="System.Int32"
-                          description="Output column lineage ID"
-                          name="OutputColumnLineageID">#{Package\Loading into Fact\Union All.Outputs[Union All Output 1].Columns[CustomerID]}</property>
-                      </properties>
-                    </inputColumn>
-                    <inputColumn
-                      refId="Package\Loading into Fact\Union All.Inputs[Union All Input 3].Columns[PROD_ID]"
-                      cachedDataType="i4"
-                      cachedName="PROD_ID"
-                      lineageId="Package\Loading into Fact\Fact Source Staging Table.Outputs[OLE DB Source Output].Columns[PROD_ID]">
-                      <properties>
-                        <property
-                          containsID="true"
-                          dataType="System.Int32"
-                          description="Output column lineage ID"
-                          name="OutputColumnLineageID">#{Package\Loading into Fact\Union All.Outputs[Union All Output 1].Columns[PROD_ID]}</property>
-                      </properties>
-                    </inputColumn>
-                    <inputColumn
-                      refId="Package\Loading into Fact\Union All.Inputs[Union All Input 3].Columns[ORDERID]"
-                      cachedDataType="i4"
-                      cachedName="ORDERID"
-                      lineageId="Package\Loading into Fact\Fact Source Staging Table.Outputs[OLE DB Source Output].Columns[ORDERID]">
-                      <properties>
-                        <property
-                          containsID="true"
-                          dataType="System.Int32"
-                          description="Output column lineage ID"
-                          name="OutputColumnLineageID">#{Package\Loading into Fact\Union All.Outputs[Union All Output 1].Columns[ORDERID]}</property>
-                      </properties>
-                    </inputColumn>
-                    <inputColumn
-                      refId="Package\Loading into Fact\Union All.Inputs[Union All Input 3].Columns[PRICE]"
-                      cachedDataType="cy"
-                      cachedName="PRICE"
-                      lineageId="Package\Loading into Fact\Fact Source Staging Table.Outputs[OLE DB Source Output].Columns[PRICE]">
-                      <properties>
-                        <property
-                          containsID="true"
-                          dataType="System.Int32"
-                          description="Output column lineage ID"
-                          name="OutputColumnLineageID">#{Package\Loading into Fact\Union All.Outputs[Union All Output 1].Columns[Price]}</property>
-                      </properties>
-                    </inputColumn>
-                    <inputColumn
-                      refId="Package\Loading into Fact\Union All.Inputs[Union All Input 3].Columns[QUANTITY]"
-                      cachedDataType="i4"
-                      cachedName="QUANTITY"
-                      lineageId="Package\Loading into Fact\Fact Source Staging Table.Outputs[OLE DB Source Output].Columns[QUANTITY]">
-                      <properties>
-                        <property
-                          containsID="true"
-                          dataType="System.Int32"
-                          description="Output column lineage ID"
-                          name="OutputColumnLineageID">#{Package\Loading into Fact\Union All.Outputs[Union All Output 1].Columns[QUANTITY]}</property>
-                      </properties>
-                    </inputColumn>
-                    <inputColumn
                       refId="Package\Loading into Fact\Union All.Inputs[Union All Input 3].Columns[ProductID]"
                       cachedDataType="i4"
                       cachedName="ProductID"
-                      lineageId="Package\Loading into Fact\Product Lookup.Outputs[Lookup Match Output].Columns[ProductID]">
+                      lineageId="Package\Loading into Fact\Merge Join.Outputs[Merge Join Output].Columns[ProductID]">
                       <properties>
                         <property
                           containsID="true"
@@ -1899,7 +3017,7 @@ where [refTable].[ProductBusinessID] = ?</property>
                       refId="Package\Loading into Fact\Union All.Inputs[Union All Input 3].Columns[DateID]"
                       cachedDataType="i4"
                       cachedName="DateID"
-                      lineageId="Package\Loading into Fact\Date Lookup.Outputs[Lookup Match Output].Columns[DateID]">
+                      lineageId="Package\Loading into Fact\Merge Join.Outputs[Merge Join Output].Columns[DateID]">
                       <properties>
                         <property
                           containsID="true"
@@ -1909,12 +3027,25 @@ where [refTable].[ProductBusinessID] = ?</property>
                       </properties>
                     </inputColumn>
                     <inputColumn
+                      refId="Package\Loading into Fact\Union All.Inputs[Union All Input 3].Columns[CustomerID]"
+                      cachedDataType="i4"
+                      cachedName="CustomerID"
+                      lineageId="Package\Loading into Fact\Merge Join.Outputs[Merge Join Output].Columns[CustomerID]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Loading into Fact\Union All.Outputs[Union All Output 1].Columns[CustomerID]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
                       refId="Package\Loading into Fact\Union All.Inputs[Union All Input 3].Columns[NetAmountLine]"
                       cachedDataType="numeric"
                       cachedName="NetAmountLine"
                       cachedPrecision="30"
                       cachedScale="4"
-                      lineageId="Package\Loading into Fact\Calculated Column.Outputs[Derived Column Output].Columns[NetAmountLine]">
+                      lineageId="Package\Loading into Fact\Merge Join.Outputs[Merge Join Output].Columns[NetAmountLine]">
                       <properties>
                         <property
                           containsID="true"
@@ -1929,7 +3060,7 @@ where [refTable].[ProductBusinessID] = ?</property>
                       cachedName="TaxLine"
                       cachedPrecision="35"
                       cachedScale="7"
-                      lineageId="Package\Loading into Fact\Calculated Column.Outputs[Derived Column Output].Columns[TaxLine]">
+                      lineageId="Package\Loading into Fact\Merge Join.Outputs[Merge Join Output].Columns[TaxLine]">
                       <properties>
                         <property
                           containsID="true"
@@ -1944,13 +3075,85 @@ where [refTable].[ProductBusinessID] = ?</property>
                       cachedName="TotalAmountLine"
                       cachedPrecision="36"
                       cachedScale="7"
-                      lineageId="Package\Loading into Fact\Calculated Column.Outputs[Derived Column Output].Columns[TotalAmountLine]">
+                      lineageId="Package\Loading into Fact\Merge Join.Outputs[Merge Join Output].Columns[TotalAmountLine]">
                       <properties>
                         <property
                           containsID="true"
                           dataType="System.Int32"
                           description="Output column lineage ID"
                           name="OutputColumnLineageID">#{Package\Loading into Fact\Union All.Outputs[Union All Output 1].Columns[TotalAmountLine]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Loading into Fact\Union All.Inputs[Union All Input 3].Columns[NetAmountOrder]"
+                      cachedDataType="numeric"
+                      cachedName="NetAmountOrder"
+                      cachedPrecision="30"
+                      cachedScale="4"
+                      lineageId="Package\Loading into Fact\Merge Join.Outputs[Merge Join Output].Columns[NetAmountOrder]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Loading into Fact\Union All.Outputs[Union All Output 1].Columns[NetAmountOrder]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Loading into Fact\Union All.Inputs[Union All Input 3].Columns[TaxOrder]"
+                      cachedDataType="numeric"
+                      cachedName="TaxOrder"
+                      cachedPrecision="35"
+                      cachedScale="7"
+                      lineageId="Package\Loading into Fact\Merge Join.Outputs[Merge Join Output].Columns[TaxOrder]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Loading into Fact\Union All.Outputs[Union All Output 1].Columns[TaxOrder]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Loading into Fact\Union All.Inputs[Union All Input 3].Columns[TotelAmountOrder]"
+                      cachedDataType="numeric"
+                      cachedName="TotelAmountOrder"
+                      cachedPrecision="36"
+                      cachedScale="7"
+                      lineageId="Package\Loading into Fact\Merge Join.Outputs[Merge Join Output].Columns[TotelAmountOrder]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Loading into Fact\Union All.Outputs[Union All Output 1].Columns[TotelAmountOrder]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Loading into Fact\Union All.Inputs[Union All Input 3].Columns[QUANTITY]"
+                      cachedDataType="i4"
+                      cachedName="QUANTITY"
+                      lineageId="Package\Loading into Fact\Merge Join.Outputs[Merge Join Output].Columns[QUANTITY]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Loading into Fact\Union All.Outputs[Union All Output 1].Columns[QUANTITY]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Loading into Fact\Union All.Inputs[Union All Input 3].Columns[ORDERID]"
+                      cachedDataType="i4"
+                      cachedName="ORDERID"
+                      cachedSortKeyPosition="1"
+                      lineageId="Package\Loading into Fact\Merge Join.Outputs[Merge Join Output].Columns[ORDERID]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Loading into Fact\Union All.Outputs[Union All Output 1].Columns[ORDERID]}</property>
                       </properties>
                     </inputColumn>
                   </inputColumns>
@@ -1969,36 +3172,6 @@ where [refTable].[ProductBusinessID] = ?</property>
                   refId="Package\Loading into Fact\Union All.Outputs[Union All Output 1]"
                   name="Union All Output 1">
                   <outputColumns>
-                    <outputColumn
-                      refId="Package\Loading into Fact\Union All.Outputs[Union All Output 1].Columns[ORDERDATE]"
-                      dataType="dbTimeStamp"
-                      lineageId="Package\Loading into Fact\Union All.Outputs[Union All Output 1].Columns[ORDERDATE]"
-                      name="ORDERDATE" />
-                    <outputColumn
-                      refId="Package\Loading into Fact\Union All.Outputs[Union All Output 1].Columns[CUSTOMERID]"
-                      dataType="i4"
-                      lineageId="Package\Loading into Fact\Union All.Outputs[Union All Output 1].Columns[CUSTOMERID]"
-                      name="CUSTOMERID" />
-                    <outputColumn
-                      refId="Package\Loading into Fact\Union All.Outputs[Union All Output 1].Columns[PROD_ID]"
-                      dataType="i4"
-                      lineageId="Package\Loading into Fact\Union All.Outputs[Union All Output 1].Columns[PROD_ID]"
-                      name="PROD_ID" />
-                    <outputColumn
-                      refId="Package\Loading into Fact\Union All.Outputs[Union All Output 1].Columns[ORDERID]"
-                      dataType="i4"
-                      lineageId="Package\Loading into Fact\Union All.Outputs[Union All Output 1].Columns[ORDERID]"
-                      name="ORDERID" />
-                    <outputColumn
-                      refId="Package\Loading into Fact\Union All.Outputs[Union All Output 1].Columns[Price]"
-                      dataType="cy"
-                      lineageId="Package\Loading into Fact\Union All.Outputs[Union All Output 1].Columns[Price]"
-                      name="Price" />
-                    <outputColumn
-                      refId="Package\Loading into Fact\Union All.Outputs[Union All Output 1].Columns[QUANTITY]"
-                      dataType="i4"
-                      lineageId="Package\Loading into Fact\Union All.Outputs[Union All Output 1].Columns[QUANTITY]"
-                      name="QUANTITY" />
                     <outputColumn
                       refId="Package\Loading into Fact\Union All.Outputs[Union All Output 1].Columns[ProductID]"
                       dataType="i4"
@@ -2036,6 +3209,37 @@ where [refTable].[ProductBusinessID] = ?</property>
                       precision="36"
                       scale="7" />
                     <outputColumn
+                      refId="Package\Loading into Fact\Union All.Outputs[Union All Output 1].Columns[NetAmountOrder]"
+                      dataType="numeric"
+                      lineageId="Package\Loading into Fact\Union All.Outputs[Union All Output 1].Columns[NetAmountOrder]"
+                      name="NetAmountOrder"
+                      precision="30"
+                      scale="4" />
+                    <outputColumn
+                      refId="Package\Loading into Fact\Union All.Outputs[Union All Output 1].Columns[TaxOrder]"
+                      dataType="numeric"
+                      lineageId="Package\Loading into Fact\Union All.Outputs[Union All Output 1].Columns[TaxOrder]"
+                      name="TaxOrder"
+                      precision="35"
+                      scale="7" />
+                    <outputColumn
+                      refId="Package\Loading into Fact\Union All.Outputs[Union All Output 1].Columns[TotelAmountOrder]"
+                      dataType="numeric"
+                      lineageId="Package\Loading into Fact\Union All.Outputs[Union All Output 1].Columns[TotelAmountOrder]"
+                      name="TotelAmountOrder"
+                      precision="36"
+                      scale="7" />
+                    <outputColumn
+                      refId="Package\Loading into Fact\Union All.Outputs[Union All Output 1].Columns[QUANTITY]"
+                      dataType="i4"
+                      lineageId="Package\Loading into Fact\Union All.Outputs[Union All Output 1].Columns[QUANTITY]"
+                      name="QUANTITY" />
+                    <outputColumn
+                      refId="Package\Loading into Fact\Union All.Outputs[Union All Output 1].Columns[ORDERID]"
+                      dataType="i4"
+                      lineageId="Package\Loading into Fact\Union All.Outputs[Union All Output 1].Columns[ORDERID]"
+                      name="ORDERID" />
+                    <outputColumn
                       refId="Package\Loading into Fact\Union All.Outputs[Union All Output 1].Columns[ErrorCode]"
                       dataType="i4"
                       lineageId="Package\Loading into Fact\Union All.Outputs[Union All Output 1].Columns[ErrorCode]"
@@ -2053,13 +3257,18 @@ where [refTable].[ProductBusinessID] = ?</property>
           </components>
           <paths>
             <path
+              refId="Package\Loading into Fact.Paths[Aggregate Output 1]"
+              endId="Package\Loading into Fact\Sort 1.Inputs[Sort Input]"
+              name="Aggregate Output 1"
+              startId="Package\Loading into Fact\Aggregate.Outputs[Aggregate Output 1]" />
+            <path
               refId="Package\Loading into Fact.Paths[Case]"
               endId="Package\Loading into Fact\DW Destination.Inputs[OLE DB Destination Input]"
               name="Case"
               startId="Package\Loading into Fact\Conditional Split.Outputs[Case]" />
             <path
               refId="Package\Loading into Fact.Paths[Derived Column Output]"
-              endId="Package\Loading into Fact\Conditional Split.Inputs[Conditional Split Input]"
+              endId="Package\Loading into Fact\Multicast.Inputs[Multicast Input 1]"
               name="Derived Column Output"
               startId="Package\Loading into Fact\Calculated Column.Outputs[Derived Column Output]" />
             <path
@@ -2088,10 +3297,35 @@ where [refTable].[ProductBusinessID] = ?</property>
               name="Lookup Match Output"
               startId="Package\Loading into Fact\Customer Lookup.Outputs[Lookup Match Output]" />
             <path
+              refId="Package\Loading into Fact.Paths[Merge Join Output]"
+              endId="Package\Loading into Fact\Conditional Split.Inputs[Conditional Split Input]"
+              name="Merge Join Output"
+              startId="Package\Loading into Fact\Merge Join.Outputs[Merge Join Output]" />
+            <path
+              refId="Package\Loading into Fact.Paths[Multicast Output 1]"
+              endId="Package\Loading into Fact\Aggregate.Inputs[Aggregate Input 1]"
+              name="Multicast Output 1"
+              startId="Package\Loading into Fact\Multicast.Outputs[Multicast Output 1]" />
+            <path
+              refId="Package\Loading into Fact.Paths[Multicast Output 2]"
+              endId="Package\Loading into Fact\Sort.Inputs[Sort Input]"
+              name="Multicast Output 2"
+              startId="Package\Loading into Fact\Multicast.Outputs[Multicast Output 2]" />
+            <path
               refId="Package\Loading into Fact.Paths[OLE DB Source Output]"
               endId="Package\Loading into Fact\Product Lookup.Inputs[Lookup Input]"
               name="OLE DB Source Output"
               startId="Package\Loading into Fact\Fact Source Staging Table.Outputs[OLE DB Source Output]" />
+            <path
+              refId="Package\Loading into Fact.Paths[Sort Output]"
+              endId="Package\Loading into Fact\Merge Join.Inputs[Merge Join Left Input]"
+              name="Sort Output"
+              startId="Package\Loading into Fact\Sort.Outputs[Sort Output]" />
+            <path
+              refId="Package\Loading into Fact.Paths[Sort Output1]"
+              endId="Package\Loading into Fact\Merge Join.Inputs[Merge Join Right Input]"
+              name="Sort Output"
+              startId="Package\Loading into Fact\Sort 1.Outputs[Sort Output]" />
             <path
               refId="Package\Loading into Fact.Paths[Union All Output 1]"
               endId="Package\Loading into Fact\Excel Destination.Inputs[Excel Destination Input]"
@@ -2632,211 +3866,83 @@ FROM            ORDERS INNER JOIN
       <GraphLayout
         Capacity="32" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
-          Size="121,42"
-          Id="Package\Loading into Fact\Union All"
-          TopLeft="639,62" />
-        <NodeLayout
-          Size="161,42"
-          Id="Package\Loading into Fact\Customer Lookup"
-          TopLeft="217,203" />
-        <NodeLayout
-          Size="152,42"
-          Id="Package\Loading into Fact\DW Destination"
-          TopLeft="426,23" />
-        <NodeLayout
-          Size="159,42"
-          Id="Package\Loading into Fact\Excel Destination"
-          TopLeft="624,165" />
-        <NodeLayout
-          Size="167,42"
-          Id="Package\Loading into Fact\Fact Source Staging Table"
-          TopLeft="25,113" />
-        <NodeLayout
-          Size="138,42"
-          Id="Package\Loading into Fact\Date Lookup"
-          TopLeft="221,113" />
-        <NodeLayout
           Size="166,42"
           Id="Package\Loading into Fact\Calculated Column"
-          TopLeft="429,204" />
+          TopLeft="34,279" />
+        <NodeLayout
+          Size="152,42"
+          Id="Package\Loading into Fact\Product Lookup"
+          TopLeft="214,21" />
         <NodeLayout
           Size="155,42"
           Id="Package\Loading into Fact\Conditional Split"
           TopLeft="430,117" />
         <NodeLayout
+          Size="138,42"
+          Id="Package\Loading into Fact\Date Lookup"
+          TopLeft="221,113" />
+        <NodeLayout
+          Size="159,42"
+          Id="Package\Loading into Fact\Excel Destination"
+          TopLeft="624,165" />
+        <NodeLayout
           Size="152,42"
-          Id="Package\Loading into Fact\Product Lookup"
-          TopLeft="214,21" />
+          Id="Package\Loading into Fact\DW Destination"
+          TopLeft="426,23" />
+        <NodeLayout
+          Size="127,42"
+          Id="Package\Loading into Fact\Aggregate"
+          TopLeft="455,335" />
+        <NodeLayout
+          Size="107,42"
+          Id="Package\Loading into Fact\Sort 1"
+          TopLeft="590,280" />
+        <NodeLayout
+          Size="120,42"
+          Id="Package\Loading into Fact\Multicast"
+          TopLeft="217,341" />
+        <NodeLayout
+          Size="167,42"
+          Id="Package\Loading into Fact\Fact Source Staging Table"
+          TopLeft="25,113" />
+        <NodeLayout
+          Size="98,42"
+          Id="Package\Loading into Fact\Sort"
+          TopLeft="351,279" />
+        <NodeLayout
+          Size="130,42"
+          Id="Package\Loading into Fact\Merge Join"
+          TopLeft="444,200" />
+        <NodeLayout
+          Size="161,42"
+          Id="Package\Loading into Fact\Customer Lookup"
+          TopLeft="217,203" />
         <EdgeLayout
-          Id="Package\Loading into Fact.Paths[Lookup Match Output2]"
-          TopLeft="378,224.5">
+          Id="Package\Loading into Fact.Paths[Sort Output1]"
+          TopLeft="643.5,280">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="51,0"
+              EndConnector="-114.166666666667,-38"
               Start="0,0"
-              End="43.5,0">
+              End="-114.166666666667,-30.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="43.5,0" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="-26.44138671875,5,96.3827734375,11.609375"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\Loading into Fact.Paths[Lookup Match Output1]"
-          TopLeft="314,63">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="-24,50"
-              Start="0,0"
-              End="-24,42.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,16.3125" />
+                    End="0,-18.5227963525836" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,16.3125"
-                    Point2="0,20.3125"
-                    Point3="-4,20.3125" />
+                    Point1="0,-18.5227963525836"
+                    Point2="0,-22.5227963525836"
+                    Point3="-4,-22.5227963525836" />
                   <mssgle:LineSegment
-                    End="-20,20.3125" />
+                    End="-110.166666666667,-22.5227963525836" />
                   <mssgle:CubicBezierSegment
-                    Point1="-20,20.3125"
-                    Point2="-24,20.3125"
-                    Point3="-24,24.3125" />
+                    Point1="-110.166666666667,-22.5227963525836"
+                    Point2="-114.166666666667,-22.5227963525836"
+                    Point3="-114.166666666667,-26.5227963525836" />
                   <mssgle:LineSegment
-                    End="-24,42.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="-60.19138671875,25.3125,96.3827734375,11.609375"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\Loading into Fact.Paths[Lookup Match Output]"
-          TopLeft="293.75,155">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,48"
-              Start="0,0"
-              End="0,40.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,40.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="-48.19138671875,14.4453125,96.3827734375,11.609375"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\Loading into Fact.Paths[Error Output1]"
-          TopLeft="585,138">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="54,-49.3333333333333"
-              Start="0,0"
-              End="46.5,-49.3333333333333">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="27.2110091743119,0" />
-                  <mssgle:CubicBezierSegment
-                    Point1="27.2110091743119,0"
-                    Point2="31.2110091743119,0"
-                    Point3="31.2110091743119,-4" />
-                  <mssgle:LineSegment
-                    End="31.2110091743119,-45.3333333333333" />
-                  <mssgle:CubicBezierSegment
-                    Point1="31.2110091743119,-45.3333333333333"
-                    Point2="31.2110091743119,-49.3333333333333"
-                    Point3="35.2110091743119,-49.3333333333333" />
-                  <mssgle:LineSegment
-                    End="46.5,-49.3333333333333" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="2.8746224555619,1,56.6727734375,11.43359375"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\Loading into Fact.Paths[Error Output]"
-          TopLeft="578,44">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="61,33.3333333333333"
-              Start="0,0"
-              End="53.5,33.3333333333333">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="31.256880733945,0" />
-                  <mssgle:CubicBezierSegment
-                    Point1="31.256880733945,0"
-                    Point2="35.256880733945,0"
-                    Point3="35.256880733945,4" />
-                  <mssgle:LineSegment
-                    End="35.256880733945,29.3333333333333" />
-                  <mssgle:CubicBezierSegment
-                    Point1="35.256880733945,29.3333333333333"
-                    Point2="35.256880733945,33.3333333333333"
-                    Point3="39.256880733945,33.3333333333333" />
-                  <mssgle:LineSegment
-                    End="53.5,33.3333333333333" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="6.920494015195,-17.43359375,56.6727734375,11.43359375"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\Loading into Fact.Paths[Derived Column Output]"
-          TopLeft="509.75,204">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,-45"
-              Start="0,0"
-              End="0,-37.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,-37.5" />
+                    End="-114.166666666667,-30.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -2846,79 +3952,31 @@ FROM            ORDERS INNER JOIN
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package\Loading into Fact.Paths[Case]"
-          TopLeft="504.75,117">
+          Id="Package\Loading into Fact.Paths[Sort Output]"
+          TopLeft="400,279">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,-52"
+              EndConnector="88.6666666666667,-37"
               Start="0,0"
-              End="0,-44.5">
+              End="88.6666666666667,-29.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,-44.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="-11.1988671875,-27.02685546875,22.397734375,9.5537109375"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\Loading into Fact.Paths[_]"
-          TopLeft="585,138">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="54,-49.3333333333333"
-              Start="0,0"
-              End="46.5,-49.3333333333333">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="27.2110091743119,0" />
+                    End="0,-17.9300911854103" />
                   <mssgle:CubicBezierSegment
-                    Point1="27.2110091743119,0"
-                    Point2="31.2110091743119,0"
-                    Point3="31.2110091743119,-4" />
+                    Point1="0,-17.9300911854103"
+                    Point2="0,-21.9300911854103"
+                    Point3="4,-21.9300911854103" />
                   <mssgle:LineSegment
-                    End="31.2110091743119,-45.3333333333333" />
+                    End="84.6666666666667,-21.9300911854103" />
                   <mssgle:CubicBezierSegment
-                    Point1="31.2110091743119,-45.3333333333333"
-                    Point2="31.2110091743119,-49.3333333333333"
-                    Point3="35.2110091743119,-49.3333333333333" />
+                    Point1="84.6666666666667,-21.9300911854103"
+                    Point2="88.6666666666667,-21.9300911854103"
+                    Point3="88.6666666666667,-25.9300911854103" />
                   <mssgle:LineSegment
-                    End="46.5,-49.3333333333333" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="27.4033919868119,1,7.615234375,2.634765625"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\Loading into Fact.Paths[Union All Output 1]"
-          TopLeft="701.5,104">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,61"
-              Start="0,0"
-              End="0,53.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,53.5" />
+                    End="88.6666666666667,-29.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -2961,11 +4019,393 @@ FROM            ORDERS INNER JOIN
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Loading into Fact.Paths[Multicast Output 2]"
+          TopLeft="295.666666666667,341">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="55.3333333333334,-41"
+              Start="0,0"
+              End="47.8333333333334,-41">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,-37" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,-37"
+                    Point2="0,-41"
+                    Point3="4,-41" />
+                  <mssgle:LineSegment
+                    End="47.8333333333334,-41" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Loading into Fact.Paths[Multicast Output 1]"
+          TopLeft="337,359">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="118,0"
+              Start="0,0"
+              End="110.5,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="110.5,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Loading into Fact.Paths[Merge Join Output]"
+          TopLeft="508.25,200">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,-41"
+              Start="0,0"
+              End="0,-33.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,-33.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Loading into Fact.Paths[Lookup Match Output2]"
+          TopLeft="297.5,245">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-180.5,34"
+              Start="0,0"
+              End="-180.5,26.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,13" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,13"
+                    Point2="0,17"
+                    Point3="-4,17" />
+                  <mssgle:LineSegment
+                    End="-176.5,17" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-176.5,17"
+                    Point2="-180.5,17"
+                    Point3="-180.5,21" />
+                  <mssgle:LineSegment
+                    End="-180.5,26.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-138.44138671875,22,96.3827734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Loading into Fact.Paths[Lookup Match Output1]"
+          TopLeft="314,63">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-24,50"
+              Start="0,0"
+              End="-24,42.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,16.3125" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,16.3125"
+                    Point2="0,20.3125"
+                    Point3="-4,20.3125" />
+                  <mssgle:LineSegment
+                    End="-20,20.3125" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-20,20.3125"
+                    Point2="-24,20.3125"
+                    Point3="-24,24.3125" />
+                  <mssgle:LineSegment
+                    End="-24,42.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-55.69138671875,25.3125,96.3827734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Loading into Fact.Paths[Lookup Match Output]"
+          TopLeft="293.75,155">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,48"
+              Start="0,0"
+              End="0,40.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,40.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-48.19138671875,14.4453125,96.3827734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Loading into Fact.Paths[Derived Column Output]"
+          TopLeft="200,300">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="58.3333333333333,41"
+              Start="0,0"
+              End="58.3333333333333,33.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="54.3333333333333,0" />
+                  <mssgle:CubicBezierSegment
+                    Point1="54.3333333333333,0"
+                    Point2="58.3333333333333,0"
+                    Point3="58.3333333333333,4" />
+                  <mssgle:LineSegment
+                    End="58.3333333333333,33.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Loading into Fact.Paths[Case]"
+          TopLeft="504.75,117">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,-52"
+              Start="0,0"
+              End="0,-44.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,-44.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-11.1988671875,-27.02685546875,22.397734375,9.5537109375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="121,42"
+          Id="Package\Loading into Fact\Union All"
+          TopLeft="642,67" />
+        <EdgeLayout
+          Id="Package\Loading into Fact.Paths[Error Output]"
+          TopLeft="578,44">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="64,38.3333333333333"
+              Start="0,0"
+              End="56.5,38.3333333333333">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="32.9908256880734,0" />
+                  <mssgle:CubicBezierSegment
+                    Point1="32.9908256880734,0"
+                    Point2="36.9908256880734,0"
+                    Point3="36.9908256880734,4" />
+                  <mssgle:LineSegment
+                    End="36.9908256880734,34.3333333333333" />
+                  <mssgle:CubicBezierSegment
+                    Point1="36.9908256880734,34.3333333333333"
+                    Point2="36.9908256880734,38.3333333333333"
+                    Point3="40.9908256880734,38.3333333333333" />
+                  <mssgle:LineSegment
+                    End="56.5,38.3333333333333" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="8.6544389693234,-17.43359375,56.6727734375,11.43359375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Loading into Fact.Paths[Error Output1]"
+          TopLeft="585,138">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="57,-44.3333333333333"
+              Start="0,0"
+              End="49.5,-44.3333333333333">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="28.9449541284404,0" />
+                  <mssgle:CubicBezierSegment
+                    Point1="28.9449541284404,0"
+                    Point2="32.9449541284404,0"
+                    Point3="32.9449541284404,-4" />
+                  <mssgle:LineSegment
+                    End="32.9449541284404,-40.3333333333333" />
+                  <mssgle:CubicBezierSegment
+                    Point1="32.9449541284404,-40.3333333333333"
+                    Point2="32.9449541284404,-44.3333333333333"
+                    Point3="36.9449541284404,-44.3333333333333" />
+                  <mssgle:LineSegment
+                    End="49.5,-44.3333333333333" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="4.60856740969036,1,56.6727734375,11.43359375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Loading into Fact.Paths[Union All Output 1]"
+          TopLeft="703,109">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,56"
+              Start="0,0"
+              End="0,48.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,48.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Loading into Fact.Paths[_]"
+          TopLeft="585,138">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="57,-44.3333333333333"
+              Start="0,0"
+              End="49.5,-44.3333333333333">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="28.9449541284404,0" />
+                  <mssgle:CubicBezierSegment
+                    Point1="28.9449541284404,0"
+                    Point2="32.9449541284404,0"
+                    Point3="32.9449541284404,-4" />
+                  <mssgle:LineSegment
+                    End="32.9449541284404,-40.3333333333333" />
+                  <mssgle:CubicBezierSegment
+                    Point1="32.9449541284404,-40.3333333333333"
+                    Point2="32.9449541284404,-44.3333333333333"
+                    Point3="36.9449541284404,-44.3333333333333" />
+                  <mssgle:LineSegment
+                    End="49.5,-44.3333333333333" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="29.1373369409404,1,7.615234375,2.634765625"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Loading into Fact.Paths[Aggregate Output 1]"
+          TopLeft="518.5,335">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="71.5,-34"
+              Start="0,0"
+              End="64,-34">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,-30" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,-30"
+                    Point2="0,-34"
+                    Point3="4,-34" />
+                  <mssgle:LineSegment
+                    End="64,-34" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
       </GraphLayout>
     </LayoutInfo>
   </TaskHost>
   <PipelineComponentMetadata
-    design-time-name="Package\Loading into Fact\Customer Lookup">
+    design-time-name="Package\Loading into Fact\Product Lookup">
     <Properties>
       <Property>
         <Name>OverwriteParamsSQLProp</Name>
@@ -2975,7 +4415,7 @@ FROM            ORDERS INNER JOIN
       <Property>
         <Name>UsedTableName</Name>
         <Value
-          type="q3:string">[dbo].[CustomerDim]</Value>
+          type="q3:string">[dbo].[ProductDim]</Value>
       </Property>
       <Property>
         <Name>TableInfoObjectType</Name>
@@ -2984,45 +4424,6 @@ FROM            ORDERS INNER JOIN
       </Property>
       <Property>
         <Name>DataSourceViewID</Name>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\Loading into Fact\DW Destination">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q2:string">Table</Value>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\Loading into Fact\Excel Destination">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q2:string">Table</Value>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\Loading into Fact\Fact Source Staging Table">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q2:string">Table</Value>
       </Property>
     </Properties>
   </PipelineComponentMetadata>
@@ -3050,7 +4451,46 @@ FROM            ORDERS INNER JOIN
     </Properties>
   </PipelineComponentMetadata>
   <PipelineComponentMetadata
-    design-time-name="Package\Loading into Fact\Product Lookup">
+    design-time-name="Package\Loading into Fact\Excel Destination">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Loading into Fact\DW Destination">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Loading into Fact\Fact Source Staging Table">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Loading into Fact\Customer Lookup">
     <Properties>
       <Property>
         <Name>OverwriteParamsSQLProp</Name>
@@ -3060,7 +4500,7 @@ FROM            ORDERS INNER JOIN
       <Property>
         <Name>UsedTableName</Name>
         <Value
-          type="q3:string">[dbo].[ProductDim]</Value>
+          type="q3:string">[dbo].[CustomerDim]</Value>
       </Property>
       <Property>
         <Name>TableInfoObjectType</Name>
