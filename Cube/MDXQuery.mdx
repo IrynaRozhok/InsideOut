@@ -1,0 +1,265 @@
+-----------MEDIAN VALUE------------
+/*
+CREATE MEMBER [DS2DW_CUBE].[Measures].[Median Net Amount Line] AS Median   
+   ([Calendar Median].CurrentMember.Children
+      , [Measures].[Net Amount Line]  
+   ) 
+CREATE MEMBER [DS2DW_CUBE].[Measures].[Median Quantity] AS Median   
+   ([Calendar Median].CurrentMember.Children
+      , [Measures].[Quantity]  
+   ) 
+CREATE MEMBER [DS2DW_CUBE].[Measures].[Median Tax Line] AS Median   
+   ([Calendar Median].CurrentMember.Children
+      , [Measures].[Tax Line]  
+   )  
+CREATE MEMBER [DS2DW_CUBE].[Measures].[Median Total Amount Line] AS Median   
+   ([Calendar Median].CurrentMember.Children
+      , [Measures].[Total Amount Line]  
+   )  
+   */
+SELECT {
+	[Measures].[Median Net Amount Line],
+	[Measures].[Median Quantity], 
+	[Measures].[Median Tax Line], 
+	[Measures].[Median Total Amount Line]
+} ON 0, 
+NON EMPTY {
+   [Date].[Calendar Median].[Month Name]*   
+   [Product].[Product Categories].[Category].Members *  
+   [Customer].[Geography].[Country].Members 
+			}
+ON 1  
+FROM [DS2DW_CUBE] 
+
+----------MOVING AVERAGE------------
+/*
+WITH MEMBER [Measures].[Net Amount Line Avg] AS
+Avg
+(
+   [Date].[Calendar].CurrentMember.Lag(2) : 
+   [Date].[Calendar].CurrentMember, 
+   [Measures].[Net Amount Line]
+)
+
+MEMBER [Measures].[Quantity Avg] AS
+Avg
+(
+   [Date].[Calendar].CurrentMember.Lag(2) : 
+   [Date].[Calendar].CurrentMember, 
+   [Measures].[Quantity]
+)
+
+MEMBER [Measures].[Tax Line Avg] AS
+Avg
+(
+   [Date].[Calendar].CurrentMember.Lag(2) : 
+   [Date].[Calendar].CurrentMember, 
+   [Measures].[Tax Line]
+)
+
+MEMBER [Measures].[Total Amount Line Avg] AS
+Avg
+(
+   [Date].[Calendar].CurrentMember.Lag(2) : 
+   [Date].[Calendar].CurrentMember, 
+   [Measures].[Total Amount Line]
+)
+*/
+SELECT
+{ [Measures].[Mov Avg Net Amount Line], [Measures].[Mov Avg Quantity], [Measures].[Mov Avg Tax Line],
+[Measures].[Mov Avg Total Amount Line] } ON 0,
+NON EMPTY [Date].[Calendar].[Month].Members  ON 1
+FROM
+[DS2DW_CUBE]
+WHERE [Year].&[2009]
+
+---------------------AGES----------------
+
+WITH MEMBER [Measures].[Avg Net Amount Line] AS
+	CASE
+		WHEN [Age Ranges Hierarchy].CurrentMember.MemberValue='0 - 18' THEN Avg([Age Ranges Hierarchy].[Age Ranges].[0 - 18].Children, [Measures].[Net Amount Line])
+		WHEN [Age Ranges Hierarchy].CurrentMember.MemberValue='19 - 27' THEN Avg([Age Ranges Hierarchy].[Age Ranges].[19 - 27].Children, [Measures].[Net Amount Line])
+		WHEN [Age Ranges Hierarchy].CurrentMember.MemberValue='28 - 45' THEN Avg([Age Ranges Hierarchy].[Age Ranges].[28 - 45].Children, [Measures].[Net Amount Line])
+		WHEN [Age Ranges Hierarchy].CurrentMember.MemberValue='46 - 59' THEN Avg([Age Ranges Hierarchy].[Age Ranges].[46 - 59].Children, [Measures].[Net Amount Line])
+		WHEN [Age Ranges Hierarchy].CurrentMember.MemberValue='60 +' THEN Avg([Age Ranges Hierarchy].[Age Ranges].[60 +].Children, [Measures].[Net Amount Line])
+	END
+MEMBER [Measures].[Avg Quantity] AS
+	CASE
+		WHEN [Age Ranges Hierarchy].CurrentMember.MemberValue='0 - 18' THEN Avg([Age Ranges Hierarchy].[Age Ranges].[0 - 18].Children, [Measures].[Quantity])
+		WHEN [Age Ranges Hierarchy].CurrentMember.MemberValue='19 - 27' THEN Avg([Age Ranges Hierarchy].[Age Ranges].[19 - 27].Children, [Measures].[Quantity])
+		WHEN [Age Ranges Hierarchy].CurrentMember.MemberValue='28 - 45' THEN Avg([Age Ranges Hierarchy].[Age Ranges].[28 - 45].Children, [Measures].[Quantity])
+		WHEN [Age Ranges Hierarchy].CurrentMember.MemberValue='46 - 59' THEN Avg([Age Ranges Hierarchy].[Age Ranges].[46 - 59].Children, [Measures].[Quantity])
+		WHEN [Age Ranges Hierarchy].CurrentMember.MemberValue='60 +' THEN Avg([Age Ranges Hierarchy].[Age Ranges].[60 +].Children, [Measures].[Quantity])
+	END
+MEMBER [Measures].[Avg Tax Line] AS
+	CASE
+		WHEN [Age Ranges Hierarchy].CurrentMember.MemberValue='0 - 18' THEN Avg([Age Ranges Hierarchy].[Age Ranges].[0 - 18].Children, [Measures].[Tax Line])
+		WHEN [Age Ranges Hierarchy].CurrentMember.MemberValue='19 - 27' THEN Avg([Age Ranges Hierarchy].[Age Ranges].[19 - 27].Children, [Measures].[Tax Line])
+		WHEN [Age Ranges Hierarchy].CurrentMember.MemberValue='28 - 45' THEN Avg([Age Ranges Hierarchy].[Age Ranges].[28 - 45].Children, [Measures].[Tax Line])
+		WHEN [Age Ranges Hierarchy].CurrentMember.MemberValue='46 - 59' THEN Avg([Age Ranges Hierarchy].[Age Ranges].[46 - 59].Children, [Measures].[Tax Line])
+		WHEN [Age Ranges Hierarchy].CurrentMember.MemberValue='60 +' THEN Avg([Age Ranges Hierarchy].[Age Ranges].[60 +].Children, [Measures].[Tax Line])
+	END
+MEMBER [Measures].[Avg Total Amount Line] AS
+	CASE
+		WHEN [Age Ranges Hierarchy].CurrentMember.MemberValue='0 - 18' THEN Avg([Age Ranges Hierarchy].[Age Ranges].[0 - 18].Children, [Measures].[Total Amount Line])
+		WHEN [Age Ranges Hierarchy].CurrentMember.MemberValue='19 - 27' THEN Avg([Age Ranges Hierarchy].[Age Ranges].[19 - 27].Children, [Measures].[Total Amount Line])
+		WHEN [Age Ranges Hierarchy].CurrentMember.MemberValue='28 - 45' THEN Avg([Age Ranges Hierarchy].[Age Ranges].[28 - 45].Children, [Measures].[Total Amount Line])
+		WHEN [Age Ranges Hierarchy].CurrentMember.MemberValue='46 - 59' THEN Avg([Age Ranges Hierarchy].[Age Ranges].[46 - 59].Children, [Measures].[Total Amount Line])
+		WHEN [Age Ranges Hierarchy].CurrentMember.MemberValue='60 +' THEN Avg([Age Ranges Hierarchy].[Age Ranges].[60 +].Children, [Measures].[Total Amount Line])
+	END
+SELECT
+{
+[Measures].[Net Amount Line],[Measures].[Avg Net Amount Line],
+[Measures].[Quantity],[Measures].[Avg Quantity],
+[Measures].[Tax Line], [Measures].[Avg Tax Line],
+[Measures].[Total Amount Line], [Measures].[Avg Total Amount Line] 
+ } ON 0,
+{ 
+[Age Ranges Hierarchy].[Age Ranges]
+} ON 1
+FROM
+[DS2DW_CUBE]
+
+
+---------------------GENDER----------------
+WITH
+MEMBER [Measures].[Avg Net Amount Line] AS
+	CASE
+		WHEN [Gender Hierarchy].CurrentMember.MemberValue='M' THEN Avg([Gender Hierarchy].CurrentMember.Children, [Measures].[Net Amount Line])
+		WHEN [Gender Hierarchy].CurrentMember.MemberValue='F' THEN Avg([Gender Hierarchy].CurrentMember.Children, [Measures].[Net Amount Line])
+	END
+MEMBER [Measures].[Avg Quantity] AS
+	CASE
+		WHEN [Gender Hierarchy].CurrentMember.MemberValue='M' THEN Avg([Gender Hierarchy].CurrentMember.Children, [Measures].[Quantity])
+		WHEN [Gender Hierarchy].CurrentMember.MemberValue='F' THEN Avg([Gender Hierarchy].CurrentMember.Children, [Measures].[Quantity])
+	END
+MEMBER [Measures].[Avg Tax Line] AS
+	CASE
+		WHEN [Gender Hierarchy].CurrentMember.MemberValue='M' THEN Avg([Gender Hierarchy].CurrentMember.Children, [Measures].[Tax Line])
+		WHEN [Gender Hierarchy].CurrentMember.MemberValue='F' THEN Avg([Gender Hierarchy].CurrentMember.Children, [Measures].[Tax Line])
+	END
+MEMBER [Measures].[Avg Total Amount Line] AS
+	CASE
+		WHEN [Gender Hierarchy].CurrentMember.MemberValue='M' THEN Avg([Gender Hierarchy].CurrentMember.Children, [Measures].[Total Amount Line])
+		WHEN [Gender Hierarchy].CurrentMember.MemberValue='F' THEN Avg([Gender Hierarchy].CurrentMember.Children, [Measures].[Total Amount Line])
+	END
+SELECT
+{[Measures].[Net Amount Line],[Measures].[Avg Net Amount Line],
+ [Measures].[Quantity],[Measures].[Avg Quantity],
+ [Measures].[Tax Line], [Measures].[Avg Tax Line],
+ [Measures].[Total Amount Line], [Measures].[Avg Total Amount Line]} ON 0,
+{ [Gender Hierarchy].[Gender].Members} ON 1
+FROM
+[DS2DW_CUBE]
+
+-------INCOMES-------
+
+WITH 
+MEMBER [Measures].[Avg Net Amount Line] AS
+	CASE
+		WHEN [Income Ranges Hierarchy].CurrentMember.MemberValue='0 - 20000' THEN Avg([Income Ranges Hierarchy].[Income Ranges].[0 - 20000].Children, [Measures].[Net Amount Line])
+		WHEN [Income Ranges Hierarchy].CurrentMember.MemberValue='20001 - 40000' THEN Avg([Income Ranges Hierarchy].[Income Ranges].[20001 - 40000].Children, [Measures].[Net Amount Line])
+		WHEN [Income Ranges Hierarchy].CurrentMember.MemberValue='40001 - 60000' THEN Avg([Income Ranges Hierarchy].[Income Ranges].[40001 - 60000].Children, [Measures].[Net Amount Line])
+		WHEN [Income Ranges Hierarchy].CurrentMember.MemberValue='60001 - 80000' THEN Avg([Income Ranges Hierarchy].[Income Ranges].[60001 - 80000].Children, [Measures].[Net Amount Line])
+		WHEN [Income Ranges Hierarchy].CurrentMember.MemberValue='80001 - 100000' THEN Avg([Income Ranges Hierarchy].[Income Ranges].[80001 - 100000].Children, [Measures].[Net Amount Line])
+	END
+
+MEMBER [Measures].[Avg Quantity] AS
+	CASE
+		WHEN [Income Ranges Hierarchy].CurrentMember.MemberValue='0 - 20000' THEN Avg([Income Ranges Hierarchy].[Income Ranges].[0 - 20000].Children, [Measures].[Quantity])
+		WHEN [Income Ranges Hierarchy].CurrentMember.MemberValue='20001 - 40000' THEN Avg([Income Ranges Hierarchy].[Income Ranges].[20001 - 40000].Children, [Measures].[Quantity])
+		WHEN [Income Ranges Hierarchy].CurrentMember.MemberValue='40001 - 60000' THEN Avg([Income Ranges Hierarchy].[Income Ranges].[40001 - 60000].Children, [Measures].[Quantity])
+		WHEN [Income Ranges Hierarchy].CurrentMember.MemberValue='60001 - 80000' THEN Avg([Income Ranges Hierarchy].[Income Ranges].[60001 - 80000].Children, [Measures].[Quantity])
+		WHEN [Income Ranges Hierarchy].CurrentMember.MemberValue='80001 - 100000' THEN Avg([Income Ranges Hierarchy].[Income Ranges].[80001 - 100000].Children, [Measures].[Quantity])
+	END
+
+MEMBER [Measures].[Avg Tax Line] AS
+	CASE
+		WHEN [Income Ranges Hierarchy].CurrentMember.MemberValue='0 - 20000' THEN Avg([Income Ranges Hierarchy].[Income Ranges].[0 - 20000].Children, [Measures].[Tax Line])
+		WHEN [Income Ranges Hierarchy].CurrentMember.MemberValue='20001 - 40000' THEN Avg([Income Ranges Hierarchy].[Income Ranges].[20001 - 40000].Children, [Measures].[Tax Line])
+		WHEN [Income Ranges Hierarchy].CurrentMember.MemberValue='40001 - 60000' THEN Avg([Income Ranges Hierarchy].[Income Ranges].[40001 - 60000].Children, [Measures].[Tax Line])
+		WHEN [Income Ranges Hierarchy].CurrentMember.MemberValue='60001 - 80000' THEN Avg([Income Ranges Hierarchy].[Income Ranges].[60001 - 80000].Children, [Measures].[Tax Line])
+		WHEN [Income Ranges Hierarchy].CurrentMember.MemberValue='80001 - 100000' THEN Avg([Income Ranges Hierarchy].[Income Ranges].[80001 - 100000].Children, [Measures].[Tax Line])
+	END
+
+MEMBER [Measures].[Avg Total Amount Line] AS
+	CASE
+		WHEN [Income Ranges Hierarchy].CurrentMember.MemberValue='0 - 20000' THEN Avg([Income Ranges Hierarchy].[Income Ranges].[0 - 20000].Children, [Measures].[Total Amount Line])
+		WHEN [Income Ranges Hierarchy].CurrentMember.MemberValue='20001 - 40000' THEN Avg([Income Ranges Hierarchy].[Income Ranges].[20001 - 40000].Children, [Measures].[Total Amount Line])
+		WHEN [Income Ranges Hierarchy].CurrentMember.MemberValue='40001 - 60000' THEN Avg([Income Ranges Hierarchy].[Income Ranges].[40001 - 60000].Children, [Measures].[Total Amount Line])
+		WHEN [Income Ranges Hierarchy].CurrentMember.MemberValue='60001 - 80000' THEN Avg([Income Ranges Hierarchy].[Income Ranges].[60001 - 80000].Children, [Measures].[Total Amount Line])
+		WHEN [Income Ranges Hierarchy].CurrentMember.MemberValue='80001 - 100000' THEN Avg([Income Ranges Hierarchy].[Income Ranges].[80001 - 100000].Children, [Measures].[Total Amount Line])
+	END
+SELECT
+{[Measures].[Net Amount Line],[Measures].[Avg Net Amount Line],
+ [Measures].[Quantity], [Measures].[Avg Quantity],
+ [Measures].[Tax Line], [Measures].[Avg Tax Line],
+ [Measures].[Total Amount Line], [Measures].[Avg Total Amount Line] 
+ } ON 0,
+{ 
+[Income Ranges Hierarchy].[Income Ranges]
+} ON 1
+FROM
+[DS2DW_CUBE]
+
+
+-------PRODUCT CATEGORIES-----------------
+WITH
+MEMBER [Measures].[Avg Net Amount Line] AS
+Avg(Descendants ([Product Categories].CurrentMember, [Product Categories].[Product]), [Measures].[Net Amount Line])
+
+MEMBER [Measures].[Avg Quantity] AS
+Avg(Descendants ([Product Categories].CurrentMember, [Product Categories].[Product]), [Measures].[Quantity])
+
+MEMBER [Measures].[Avg Tax Line] AS
+Avg(Descendants ([Product Categories].CurrentMember, [Product Categories].[Product]), [Measures].[Tax Line])
+
+MEMBER [Measures].[Avg Total Amount Line] AS
+Avg(Descendants ([Product Categories].CurrentMember, [Product Categories].[Product]), [Measures].[Total Amount Line])
+
+SELECT
+{[Measures].[Net Amount Line],[Measures].[Avg Net Amount Line],
+ [Measures].[Quantity],[Measures].[Avg Quantity],
+ [Measures].[Tax Line], [Measures].[Avg Tax Line],
+ [Measures].[Total Amount Line], [Measures].[Avg Total Amount Line]} ON 0,
+{ [Product Categories].[Category].Members} ON 1
+FROM
+[DS2DW_CUBE]
+
+
+------DAYS-----------------
+
+WITH
+MEMBER [Measures].[Avg Net Amount Line] AS
+Avg(Descendants ([Product Categories].CurrentMember, [Product Categories].[Product]), [Measures].[Net Amount Line])
+
+MEMBER [Measures].[Avg Quantity] AS
+Avg(Descendants ([Product Categories].CurrentMember, [Product Categories].[Product]), [Measures].[Quantity])
+
+MEMBER [Measures].[Avg Tax Line] AS
+Avg(Descendants ([Product Categories].CurrentMember, [Product Categories].[Product]), [Measures].[Tax Line])
+
+MEMBER [Measures].[Avg Total Amount Line] AS
+Avg(Descendants ([Product Categories].CurrentMember, [Product Categories].[Product]), [Measures].[Total Amount Line])
+
+SELECT
+{[Product].[Product Categories].[Category]
+ } ON 0,
+ NON EMPTY
+{ [Calendar].[Full Date].Members} ON 1
+FROM
+[DS2DW_CUBE]
+WHERE 
+[Measures].[Avg Net Amount Line]
+
+/*
+ [Measures].[Quantity],[Measures].[Avg Quantity],
+ [Measures].[Tax Line], [Measures].[Avg Tax Line],
+ [Measures].[Total Amount Line], [Measures].[Avg Total Amount Line]
+
+ , [Measures].[Avg Net Amount Line],[Measures].[Avg Quantity],
+[Measures].[Avg Tax Line],
+ [Measures].[Avg Total Amount Line]
+ */
+ 
+ 

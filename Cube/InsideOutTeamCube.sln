@@ -1,0 +1,20 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{D2ABAB84-BF74-430A-B69E-9DC6D40DDA17}") = "InsideOutTeamCubeCopy", "InsideOutTeamCubeCopy\InsideOutTeamCubeCopy.dwproj", "{ECF9FFA7-9BC4-453F-8D19-65C4D453C45C}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Development|Default = Development|Default
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{ECF9FFA7-9BC4-453F-8D19-65C4D453C45C}.Development|Default.ActiveCfg = Development
+		{ECF9FFA7-9BC4-453F-8D19-65C4D453C45C}.Development|Default.Build.0 = Development
+		{ECF9FFA7-9BC4-453F-8D19-65C4D453C45C}.Development|Default.Deploy.0 = Development
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
