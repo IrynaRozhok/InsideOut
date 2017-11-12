@@ -1,39 +1,39 @@
 ﻿<?xml version="1.0"?>
 <DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
   DTS:refId="Package"
-  DTS:CreationDate="10/20/2017 2:51:06 PM"
+  DTS:CreationDate="10/25/2017 12:32:32 AM"
   DTS:CreationName="Microsoft.Package"
-  DTS:CreatorComputerName="IDEA-PC"
-  DTS:CreatorName="idea-PC\Admin"
-  DTS:DTSID="{8E3AF22B-F645-4DC6-936C-D1EFBC6E15D7}"
+  DTS:CreatorComputerName="DESKTOP-I701QVJ"
+  DTS:CreatorName="DESKTOP-I701QVJ\Asus"
+  DTS:DTSID="{B48F5933-9FDF-4034-974F-911BDAABF356}"
   DTS:ExecutableType="Microsoft.Package"
   DTS:LastModifiedProductVersion="13.0.1601.5"
   DTS:LocaleID="1049"
-  DTS:ObjectName="FactPackage"
+  DTS:ObjectName="Fact_increm"
   DTS:PackageType="5"
-  DTS:VersionBuild="68"
-  DTS:VersionGUID="{EF0A937D-6FAE-4CC5-A697-DCB4104AA54F}">
+  DTS:VersionBuild="39"
+  DTS:VersionGUID="{16878382-2DEB-4DB0-BAAE-91494F990E51}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
     <DTS:ConnectionManager
       DTS:refId="Package.ConnectionManagers[DESKTOP-S1GF1V9.DS2DW1]"
       DTS:CreationName="ADO.NET:System.Data.SqlClient.SqlConnection, System.Data, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089"
-      DTS:DTSID="{92D478C3-0B0F-4458-BC40-83923F02BF2A}"
+      DTS:DTSID="{3C449E48-E3A6-4220-A9B1-B55CA0DB049B}"
       DTS:ObjectName="DESKTOP-S1GF1V9.DS2DW1">
       <DTS:ObjectData>
         <DTS:ConnectionManager
-          DTS:ConnectionString="Data Source=DESKTOP-S1GF1V9;Initial Catalog=DS2DW;Integrated Security=True;Application Name=SSIS-FactPackage-{92D478C3-0B0F-4458-BC40-83923F02BF2A}DESKTOP-S1GF1V9.DS2DW1;" />
+          DTS:ConnectionString="Data Source=DESKTOP-S1GF1V9;Initial Catalog=DS2DW;Integrated Security=True;Application Name=SSIS-Fact_increm-{3C449E48-E3A6-4220-A9B1-B55CA0DB049B}DESKTOP-S1GF1V9.DS2DW1;" />
       </DTS:ObjectData>
     </DTS:ConnectionManager>
     <DTS:ConnectionManager
       DTS:refId="Package.ConnectionManagers[DESKTOP-S1GF1V9.DS2OLTP1]"
       DTS:CreationName="ADO.NET:System.Data.SqlClient.SqlConnection, System.Data, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089"
-      DTS:DTSID="{3A095A9E-4428-4ED6-8A7F-D360E47C5580}"
+      DTS:DTSID="{4A12BBC6-2907-4570-BFB3-C2CC494EA213}"
       DTS:ObjectName="DESKTOP-S1GF1V9.DS2OLTP1">
       <DTS:ObjectData>
         <DTS:ConnectionManager
-          DTS:ConnectionString="Data Source=DESKTOP-S1GF1V9;Initial Catalog=DS2OLTP;Integrated Security=True;Application Name=SSIS-FactPackage-{3A095A9E-4428-4ED6-8A7F-D360E47C5580}DESKTOP-S1GF1V9.DS2OLTP1;" />
+          DTS:ConnectionString="Data Source=DESKTOP-S1GF1V9;Initial Catalog=DS2OLTP;Integrated Security=True;Application Name=SSIS-Fact_increm-{4A12BBC6-2907-4570-BFB3-C2CC494EA213}DESKTOP-S1GF1V9.DS2OLTP1;" />
       </DTS:ObjectData>
     </DTS:ConnectionManager>
     <DTS:ConnectionManager
@@ -194,7 +194,7 @@
   <DTS:Variables>
     <DTS:Variable
       DTS:CreationName=""
-      DTS:DTSID="{28250A96-82C0-4C85-B201-A563C3C40A57}"
+      DTS:DTSID="{C135BB30-62B7-47A0-8E37-63283D51E2EC}"
       DTS:IncludeInDebugDump="2345"
       DTS:Namespace="User"
       DTS:ObjectName="CDC_State_Fact">
@@ -208,7 +208,7 @@
       DTS:refId="Package\CDC Control Task - End"
       DTS:CreationName="Attunity.CdcControlTask"
       DTS:Description="CDC Control Task"
-      DTS:DTSID="{787B50BE-7D8E-4E67-8494-7E47E183DA46}"
+      DTS:DTSID="{E790BAF2-0BB3-4614-BCF9-3E7D56530B71}"
       DTS:ExecutableType="Attunity.CdcControlTask"
       DTS:LocaleID="-1"
       DTS:ObjectName="CDC Control Task - End"
@@ -218,7 +218,7 @@
       <DTS:ObjectData>
         <CDCControlTask
           Connection="DESKTOP-S1GF1V9.DS2OLTP1"
-          TaskOperation="MarkInitialLoadEnd"
+          TaskOperation="MarkProcessedRange"
           OperationParameter=""
           StateConnection="DESKTOP-S1GF1V9.DS2DW1"
           StateVariable="User::CDC_State_Fact"
@@ -234,7 +234,7 @@
       DTS:refId="Package\CDC Control Task - Start"
       DTS:CreationName="Attunity.CdcControlTask"
       DTS:Description="CDC Control Task"
-      DTS:DTSID="{673E79B5-E214-467E-985C-1EE3315EB400}"
+      DTS:DTSID="{598ED561-3723-4D19-8A1A-A7627A30ADFC}"
       DTS:ExecutableType="Attunity.CdcControlTask"
       DTS:LocaleID="-1"
       DTS:ObjectName="CDC Control Task - Start"
@@ -244,7 +244,7 @@
       <DTS:ObjectData>
         <CDCControlTask
           Connection="DESKTOP-S1GF1V9.DS2OLTP1"
-          TaskOperation="MarkInitialLoadStart"
+          TaskOperation="GetProcessingRange"
           OperationParameter=""
           StateConnection="DESKTOP-S1GF1V9.DS2DW1"
           StateVariable="User::CDC_State_Fact"
@@ -260,7 +260,7 @@
       DTS:refId="Package\Drop or truncate Staging Tables"
       DTS:CreationName="Microsoft.ExecuteSQLTask"
       DTS:Description="Execute SQL Task"
-      DTS:DTSID="{43C6A654-2C08-4C7C-9383-D28230B7B4FC}"
+      DTS:DTSID="{099ede0b-63b5-47e1-a724-dcf3351e5e86}"
       DTS:ExecutableType="Microsoft.ExecuteSQLTask"
       DTS:LocaleID="-1"
       DTS:ObjectName="Drop or truncate Staging Tables"
@@ -277,7 +277,7 @@
       DTS:refId="Package\Loading into Fact"
       DTS:CreationName="Microsoft.Pipeline"
       DTS:Description="Data Flow Task"
-      DTS:DTSID="{8CEE8BF5-4CC5-433A-BFEB-716810AF114E}"
+      DTS:DTSID="{18733955-B074-40C0-8F92-3C2E987EED83}"
       DTS:ExecutableType="Microsoft.Pipeline"
       DTS:LocaleID="-1"
       DTS:ObjectName="Loading into Fact"
@@ -1342,7 +1342,7 @@ where [refTable].[FullDate] = ?</property>
                     <arrayElement
                       dataType="System.String"><![CDATA[UTF8]]></arrayElement>
                     <arrayElement
-                      dataType="System.String"><![CDATA[<?xml version="1.0" encoding="utf-8"?><Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003"><PropertyGroup><ProjectTypeGuids>{30D016F9-3734-4E33-A861-5E7D899E18F3};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids><Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration><Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform><ProductVersion>8.0.30703</ProductVersion><SchemaVersion>2.0</SchemaVersion><ProjectGuid>{fbede45e-f5ad-40f6-83f9-95ce735a68d7}</ProjectGuid><OutputType>Library</OutputType><AppDesignerFolder>Properties</AppDesignerFolder><RootNamespace>SC_3c48df63b080430b95991caa5569797d</RootNamespace><AssemblyName>SC_37702F4EA1E542F5BC368AFE46A7041A</AssemblyName><TargetFrameworkVersion>v4.5</TargetFrameworkVersion><FileAlignment>512</FileAlignment><ResolveAssemblyReferenceIgnoreTargetFrameworkAttributeVersionMismatch>true</ResolveAssemblyReferenceIgnoreTargetFrameworkAttributeVersionMismatch></PropertyGroup><PropertyGroup Condition=" '$(Configuration)' == 'Debug' "><DebugSymbols>true</DebugSymbols><DebugType>full</DebugType><Optimize>false</Optimize><OutputPath>.\bin\Debug\</OutputPath><EnableUnmanagedDebugging>false</EnableUnmanagedDebugging><DefineConstants>DEBUG;TRACE</DefineConstants><ErrorReport>prompt</ErrorReport><WarningLevel>4</WarningLevel></PropertyGroup><PropertyGroup Condition=" '$(Configuration)' == 'Release' "><DebugSymbols>false</DebugSymbols><Optimize>true</Optimize><OutputPath>.\bin\Release\</OutputPath><EnableUnmanagedDebugging>false</EnableUnmanagedDebugging><DefineConstants>TRACE</DefineConstants><ErrorReport>prompt</ErrorReport><WarningLevel>4</WarningLevel></PropertyGroup><ItemGroup><Reference Include="System" /><Reference Include="System.Data" /><Reference Include="System.Windows.Forms" /><Reference Include="System.Xml" /><Reference Include="Microsoft.SqlServer.TxScript, Version=13.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" /><Reference Include="Microsoft.SqlServer.DTSRuntimeWrap, Version=13.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" /><Reference Include="Microsoft.SqlServer.DTSPipelineWrap, Version=13.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" /><Reference Include="Microsoft.SqlServer.PipelineHost, Version=13.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" /><Compile Include="main.cs" /><Compile Include="BufferWrapper.cs" /><Compile Include="ComponentWrapper.cs" /></ItemGroup><ItemGroup><AppDesigner Include="Properties\" /><Compile Include="Properties\AssemblyInfo.cs"><SubType>Code</SubType></Compile><EmbeddedResource Include="Properties\Resources.resx"><Generator>ResXFileCodeGenerator</Generator><LastGenOutput>Resources.Designer.cs</LastGenOutput></EmbeddedResource><Compile Include="Properties\Resources.Designer.cs"><AutoGen>True</AutoGen><DependentUpon>Resources.resx</DependentUpon></Compile><None Include="Properties\Settings.settings"><Generator>SettingsSingleFileGenerator</Generator><LastGenOutput>Settings.Designer.cs</LastGenOutput></None><Compile Include="Properties\Settings.Designer.cs"><AutoGen>True</AutoGen><DependentUpon>Settings.settings</DependentUpon></Compile></ItemGroup><!-- Include the build rules for a C# project.--><Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" /><!-- This section defines VSTA properties that describe the host-changable project properties. --><ProjectExtensions><VisualStudio><FlavorProperties GUID="{30D016F9-3734-4E33-A861-5E7D899E18F3}"><ProjectProperties HostName="ScriptComponent" HostPackage="{B3A685AA-7EAF-4BC6-9940-57959FA5AC07}" ApplicationType="usd" Language="cs" TemplatesPath="" DebugInfoExeName="" DebugInfoCommandLine="" DebugInfoWorkingDir="" IconImageList="" /><Host Name="ScriptComponent" GeneratedNamespace="SC_3c48df63b080430b95991caa5569797d" IconIndex="0"></Host><ProjectClient><HostIdentifier>SSIS_SC130</HostIdentifier></ProjectClient></FlavorProperties></VisualStudio></ProjectExtensions></Project>]]></arrayElement>
+                      dataType="System.String"><![CDATA[<?xml version="1.0" encoding="utf-8"?><Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003"><PropertyGroup><ProjectTypeGuids>{30D016F9-3734-4E33-A861-5E7D899E18F3};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids><Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration><Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform><ProductVersion>8.0.30703</ProductVersion><SchemaVersion>2.0</SchemaVersion><ProjectGuid>{fbede45e-f5ad-40f6-83f9-95ce735a68d7}</ProjectGuid><OutputType>Library</OutputType><AppDesignerFolder>Properties</AppDesignerFolder><RootNamespace>SC_3c48df63b080430b95991caa5569797d</RootNamespace><AssemblyName>SC_AE6554F398BA485D8E662798FB553B19</AssemblyName><TargetFrameworkVersion>v4.5</TargetFrameworkVersion><FileAlignment>512</FileAlignment><ResolveAssemblyReferenceIgnoreTargetFrameworkAttributeVersionMismatch>true</ResolveAssemblyReferenceIgnoreTargetFrameworkAttributeVersionMismatch></PropertyGroup><PropertyGroup Condition=" '$(Configuration)' == 'Debug' "><DebugSymbols>true</DebugSymbols><DebugType>full</DebugType><Optimize>false</Optimize><OutputPath>.\bin\Debug\</OutputPath><EnableUnmanagedDebugging>false</EnableUnmanagedDebugging><DefineConstants>DEBUG;TRACE</DefineConstants><ErrorReport>prompt</ErrorReport><WarningLevel>4</WarningLevel></PropertyGroup><PropertyGroup Condition=" '$(Configuration)' == 'Release' "><DebugSymbols>false</DebugSymbols><Optimize>true</Optimize><OutputPath>.\bin\Release\</OutputPath><EnableUnmanagedDebugging>false</EnableUnmanagedDebugging><DefineConstants>TRACE</DefineConstants><ErrorReport>prompt</ErrorReport><WarningLevel>4</WarningLevel></PropertyGroup><ItemGroup><Reference Include="System" /><Reference Include="System.Data" /><Reference Include="System.Windows.Forms" /><Reference Include="System.Xml" /><Reference Include="Microsoft.SqlServer.TxScript, Version=13.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" /><Reference Include="Microsoft.SqlServer.DTSRuntimeWrap, Version=13.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" /><Reference Include="Microsoft.SqlServer.DTSPipelineWrap, Version=13.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" /><Reference Include="Microsoft.SqlServer.PipelineHost, Version=13.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" /><Compile Include="main.cs" /><Compile Include="BufferWrapper.cs" /><Compile Include="ComponentWrapper.cs" /></ItemGroup><ItemGroup><AppDesigner Include="Properties\" /><Compile Include="Properties\AssemblyInfo.cs"><SubType>Code</SubType></Compile><EmbeddedResource Include="Properties\Resources.resx"><Generator>ResXFileCodeGenerator</Generator><LastGenOutput>Resources.Designer.cs</LastGenOutput></EmbeddedResource><Compile Include="Properties\Resources.Designer.cs"><AutoGen>True</AutoGen><DependentUpon>Resources.resx</DependentUpon></Compile><None Include="Properties\Settings.settings"><Generator>SettingsSingleFileGenerator</Generator><LastGenOutput>Settings.Designer.cs</LastGenOutput></None><Compile Include="Properties\Settings.Designer.cs"><AutoGen>True</AutoGen><DependentUpon>Settings.settings</DependentUpon></Compile></ItemGroup><!-- Include the build rules for a C# project.--><Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" /><!-- This section defines VSTA properties that describe the host-changable project properties. --><ProjectExtensions><VisualStudio><FlavorProperties GUID="{30D016F9-3734-4E33-A861-5E7D899E18F3}"><ProjectProperties HostName="ScriptComponent" HostPackage="{B3A685AA-7EAF-4BC6-9940-57959FA5AC07}" ApplicationType="usd" Language="cs" TemplatesPath="" DebugInfoExeName="" DebugInfoCommandLine="" DebugInfoWorkingDir="" IconImageList="" /><Host Name="ScriptComponent" GeneratedNamespace="SC_3c48df63b080430b95991caa5569797d" IconIndex="0"></Host><ProjectClient><HostIdentifier>SSIS_SC130</HostIdentifier></ProjectClient></FlavorProperties></VisualStudio></ProjectExtensions></Project>]]></arrayElement>
                     <arrayElement
                       dataType="System.String"><![CDATA[Properties\Resources.resx]]></arrayElement>
                     <arrayElement
@@ -1828,20 +1828,20 @@ public class Variables
                       dataType="System.String"><![CDATA[<?xml version="1.0" encoding="UTF-16" standalone="yes"?>
 <c:Project xmlns:c="http://schemas.microsoft.com/codeprojectml/2010/08/main" xmlns:msb="http://schemas.microsoft.com/developer/msbuild/2003" runtimeVersion="3.0" schemaVersion="1.0">
 	<msb:PropertyGroup>
-		<msb:Language>msBuild</msb:Language>
 		<msb:CodeName>SC_3c48df63b080430b95991caa5569797d</msb:CodeName>
+		<msb:Language>msBuild</msb:Language>
 		<msb:DisplayName>SC_3c48df63b080430b95991caa5569797d</msb:DisplayName>
 		<msb:ProjectId>{92E79DCD-DA28-4C48-BC0D-18BAAA12BC3D}</msb:ProjectId>
 	</msb:PropertyGroup>
 	<msb:ItemGroup>
 		<msb:Project Include="SC_3c48df63b080430b95991caa5569797d.csproj"/>
-		<msb:File Include="Properties\Settings.settings"/>
 		<msb:File Include="Properties\AssemblyInfo.cs"/>
+		<msb:File Include="Properties\Settings.settings"/>
 		<msb:File Include="Properties\Resources.resx"/>
 		<msb:File Include="Properties\Resources.Designer.cs"/>
-		<msb:File Include="BufferWrapper.cs"/>
-		<msb:File Include="main.cs"/>
 		<msb:File Include="Properties\Settings.Designer.cs"/>
+		<msb:File Include="main.cs"/>
+		<msb:File Include="BufferWrapper.cs"/>
 		<msb:File Include="ComponentWrapper.cs"/>
 	</msb:ItemGroup>
 </c:Project>]]></arrayElement>
@@ -1974,11 +1974,11 @@ namespace SC_3c48df63b080430b95991caa5569797d.Properties {
                   <arrayElements
                     arrayElementCount="2">
                     <arrayElement
-                      dataType="System.String"><![CDATA[SC_37702F4EA1E542F5BC368AFE46A7041A.dll]]></arrayElement>
+                      dataType="System.String"><![CDATA[SC_AE6554F398BA485D8E662798FB553B19.dll]]></arrayElement>
                     <arrayElement
                       dataType="System.String"><![CDATA[TVqQAAMAAAAEAAAA//8AALgAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
 AAAAgAAAAA4fug4AtAnNIbgBTM0hVGhpcyBwcm9ncmFtIGNhbm5vdCBiZSBydW4gaW4gRE9TIG1v
-ZGUuDQ0KJAAAAAAAAABQRQAATAEDANsRBloAAAAAAAAAAOAAIiALATAAABYAAAAIAAAAAAAAWjQA
+ZGUuDQ0KJAAAAAAAAABQRQAATAEDAA74B1oAAAAAAAAAAOAAIiALATAAABYAAAAIAAAAAAAAWjQA
 AAAgAAAAQAAAAAAAEAAgAAAAAgAABAAAAAAAAAAGAAAAAAAAAACAAAAAAgAAAAAAAAMAYIUAABAA
 ABAAAAAAEAAAEAAAAAAAABAAAAAAAAAAAAAAAAg0AABPAAAAAEAAAEgEAAAAAAAAAAAAAAAAAAAA
 AAAAAGAAAAwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
@@ -2002,7 +2002,7 @@ AAADAAAACwAAAAwAAAABAAAABQAAAAEAAAAAAHkDAQAAAAAABgBzAqEFBgAHA6EFBgC/AY4FDwAV
 BgAABgDsAW0EBgBWAm0EBgA3Am0EBgDuAm0EBgCTAm0EBgCsAm0EBgADAm0EBgAeAkIDCgDHAgwB
 DgAaAFgFBgCPBBUECgA3BQwBEgAoBQwBCgDfBAwBCgDbBgwBBgCeBhUEBgCiAY4FBgBIBcEFBgDT
 BFgEFgByAWMDFgDTAWMDFgBaAUMEBgCHAaEFDgABAFgFBgB/BBUEBgBcAxUEBgDCBBUEBgAtARUE
-BgDKABUEBgBgB20EAAAAADwAAAAAAAEAAQABABAAKAQAABAAAQABAAEAEAAbBQAAQQABAAUAAQAQ
+BgDKABUEBgBgB20EAAAAAGAAAAAAAAEAAQABABAAKAQAABAAAQABAAEAEAAbBQAAQQABAAUAAQAQ
 AL0GAABNAAEAEAABABAAkgYAAFEAAwAUAAEAEABTBgAAUQAEABUAAAAQAMgFJAZRAAUAFgAAARAA
 ggYkBmkABwAaAAYAkgaGAAYAUwaKAAEAywaOAAEAywaOABEAHASSABEASgGWABEArACaAFAgAAAA
 AMYAJQMGAAEAWCAAAAAAxgAwAwYAAQBgIAAAAADGAD0HngABAMggAAAAAIYYgQUGAAIA0CAAAAAA
@@ -2022,11 +2022,11 @@ LgArAEsBLgAzAEsBLgA7AEsBLgBDACIBLgBLAFEBLgBTAEsBLgBbAGgBQwBjALIB4QB7ALIB4wBr
 ALIBKQFzABkBSQFzABkBGwADAAEABwAJAAgACwAAAMAA1gAAAKUD2gAAADcE1gAAANUD2gAAALEE
 3gAAAOwD2gAAAPIA3gAAALoD2gAAAEgF4gAAAFIB5wAAALUG7AACAAYAAwACAAcABQACAAgABwAC
 AAkACQABAAoACwABAAsADQABAAwADwABAA0AEQACABcAEwACABgAFQABABkAFQACABoAFwAEgAAA
-AQAAAAAAAAAAAAAAAABFAAAABAAAAAAAAAAAAAAAdACjAAAAAAANAAAAAAAAAAAAAAB9AOsGAAAA
+AQAAAAAAAAAAAAAAAAA8AAAABAAAAAAAAAAAAAAAdACjAAAAAAANAAAAAAAAAAAAAAB9AOsGAAAA
 AA0AAAAAAAAAAAAAAH0A9wQAAAAADQAAAAAAAAAAAAAAfQAIBwAAAAAEAAAAAAAAAAAAAAB0ABUE
 AAAAAAAAAAABAAAA0gUAAAAAAAAASURUU0NvbXBvbmVudE1ldGFEYXRhMTAwAElEVFNDb21wb25l
-bnRNZXRhRGF0YTEzMABHZXRJbnQzMgA8TW9kdWxlPgBTQ18zNzcwMkY0RUExRTU0MkY1QkMzNjhB
-RkU0NkE3MDQxQQBJbnB1dElEAEdldElkZW50aWZpY2F0aW9uU3RyaW5nQnlJRABnZXRfQ29tcG9u
+bnRNZXRhRGF0YTEzMABHZXRJbnQzMgBTQ19BRTY1NTRGMzk4QkE0ODVEOEU2NjI3OThGQjU1M0Ix
+OQA8TW9kdWxlPgBJbnB1dElEAEdldElkZW50aWZpY2F0aW9uU3RyaW5nQnlJRABnZXRfQ29tcG9u
 ZW50TWV0YURhdGEAbXNjb3JsaWIAZGVmYXVsdEluc3RhbmNlAGdldF9FcnJvckNvZGUAUnVudGlt
 ZVR5cGVIYW5kbGUAR2V0VHlwZUZyb21IYW5kbGUAc2V0X2Vycm9yQ29sdW1uTmFtZQBJbnB1dE5h
 bWUATWljcm9zb2Z0LlNxbFNlcnZlci5EdHMuUGlwZWxpbmUAVHlwZQBnZXRfQ3VsdHVyZQBzZXRf
@@ -2040,7 +2040,7 @@ Ymx5UHJvZHVjdEF0dHJpYnV0ZQBBc3NlbWJseUNvcHlyaWdodEF0dHJpYnV0ZQBTU0lTU2NyaXB0
 Q29tcG9uZW50RW50cnlQb2ludEF0dHJpYnV0ZQBBc3NlbWJseUNvbXBhbnlBdHRyaWJ1dGUAUnVu
 dGltZUNvbXBhdGliaWxpdHlBdHRyaWJ1dGUAUHJlRXhlY3V0ZQBQb3N0RXhlY3V0ZQB2YWx1ZQBT
 eXN0ZW0uUnVudGltZS5WZXJzaW9uaW5nAFN0cmluZwBTeXN0ZW0uQ29tcG9uZW50TW9kZWwAU0Nf
-Mzc3MDJGNEVBMUU1NDJGNUJDMzY4QUZFNDZBNzA0MUEuZGxsAGdldF9FcnJvckNvZGVfSXNOdWxs
+QUU2NTU0RjM5OEJBNDg1RDhFNjYyNzk4RkI1NTNCMTkuZGxsAGdldF9FcnJvckNvZGVfSXNOdWxs
 AHNldF9lcnJvckNvbHVtbk5hbWVfSXNOdWxsAGdldF9FcnJvckNvbHVtbl9Jc051bGwAc2V0X2Vy
 cm9yRGVzY3JpcHRpb25fSXNOdWxsAFNldE51bGwAc2V0X0l0ZW0AU3lzdGVtAHJlc291cmNlTWFu
 AFNjcmlwdE1haW4AZ2V0X0Vycm9yQ29sdW1uAFN5c3RlbS5Db25maWd1cmF0aW9uAFN5c3RlbS5H
@@ -2063,7 +2063,7 @@ cgBvAHAAZQByAHQAeQAgAGMAYQBuAG4AbwB0ACAAYgBlACAAcwBlAHQAIAB0AG8AIABGAGEAbABz
 AGUALgAgAEEAcwBzAGkAZwBuACAAYQAgAHYAYQBsAHUAZQAgAHQAbwAgAHQAaABlACAAYwBvAGwA
 dQBtAG4AIABpAG4AcwB0AGUAYQBkAC4AAA9JAG4AcAB1AHQAIAAwAABxUwBDAF8AMwBjADQAOABk
 AGYANgAzAGIAMAA4ADAANAAzADAAYgA5ADUAOQA5ADEAYwBhAGEANQA1ADYAOQA3ADkANwBkAC4A
-UAByAG8AcABlAHIAdABpAGUAcwAuAFIAZQBzAG8AdQByAGMAZQBzAAAjjLMx2OyWSqBJNzcprmEZ
+UAByAG8AcABlAHIAdABpAGUAcwAuAFIAZQBzAG8AdQByAGMAZQBzAABf/4LVJNYSS6wO3aLXwinG
 AAQgAQEIAyAAAQUgAQEREQQgAQEOBSABARFhBAcBEjkEIAAScQQgAQ4ICSADARJFHQgSSQMGEkUD
 Bh0IBCABCAgEIAECCAUgAgEIHAMgAAIGIAICDhF9BSABHQgICAABEoCBEYCFBSAAEoCJByACAQ4S
 gIkIt3pcVhk04IkIiYRdzYCAzJEDBhIUAwYSGAMGEk0DBhJZAwYSXQMGEiAFIAEBEgwDIAAIBCAB
@@ -2093,13 +2093,13 @@ ADAANABiADAAAAAaAAEAAQBDAG8AbQBtAGUAbgB0AHMAAAAAAAAAIgABAAEAQwBvAG0AcABhAG4A
 eQBOAGEAbQBlAAAAAAAAAAAAcAAkAAEARgBpAGwAZQBEAGUAcwBjAHIAaQBwAHQAaQBvAG4AAAAA
 AFMAQwBfADMAYwA0ADgAZABmADYAMwBiADAAOAAwADQAMwAwAGIAOQA1ADkAOQAxAGMAYQBhADUA
 NQA2ADkANwA5ADcAZAAAADAACAABAEYAaQBsAGUAVgBlAHIAcwBpAG8AbgAAAAAAMQAuADAALgAw
-AC4AMAAAAHAAKAABAEkAbgB0AGUAcgBuAGEAbABOAGEAbQBlAAAAUwBDAF8AMwA3ADcAMAAyAEYA
-NABFAEEAMQBFADUANAAyAEYANQBCAEMAMwA2ADgAQQBGAEUANAA2AEEANwAwADQAMQBBAC4AZABs
+AC4AMAAAAHAAKAABAEkAbgB0AGUAcgBuAGEAbABOAGEAbQBlAAAAUwBDAF8AQQBFADYANQA1ADQA
+RgAzADkAOABCAEEANAA4ADUARAA4AEUANgA2ADIANwA5ADgARgBCADUANQAzAEIAMQA5AC4AZABs
 AGwAAABIABIAAQBMAGUAZwBhAGwAQwBvAHAAeQByAGkAZwBoAHQAAABDAG8AcAB5AHIAaQBnAGgA
 dAAgAEAAIAAgADIAMAAxADcAAAAqAAEAAQBMAGUAZwBhAGwAVAByAGEAZABlAG0AYQByAGsAcwAA
-AAAAAAAAAHgAKAABAE8AcgBpAGcAaQBuAGEAbABGAGkAbABlAG4AYQBtAGUAAABTAEMAXwAzADcA
-NwAwADIARgA0AEUAQQAxAEUANQA0ADIARgA1AEIAQwAzADYAOABBAEYARQA0ADYAQQA3ADAANAAx
-AEEALgBkAGwAbAAAAGgAJAABAFAAcgBvAGQAdQBjAHQATgBhAG0AZQAAAAAAUwBDAF8AMwBjADQA
+AAAAAAAAAHgAKAABAE8AcgBpAGcAaQBuAGEAbABGAGkAbABlAG4AYQBtAGUAAABTAEMAXwBBAEUA
+NgA1ADUANABGADMAOQA4AEIAQQA0ADgANQBEADgARQA2ADYAMgA3ADkAOABGAEIANQA1ADMAQgAx
+ADkALgBkAGwAbAAAAGgAJAABAFAAcgBvAGQAdQBjAHQATgBhAG0AZQAAAAAAUwBDAF8AMwBjADQA
 OABkAGYANgAzAGIAMAA4ADAANAAzADAAYgA5ADUAOQA5ADEAYwBhAGEANQA1ADYAOQA3ADkANwBk
 AAAANAAIAAEAUAByAG8AZAB1AGMAdABWAGUAcgBzAGkAbwBuAAAAMQAuADAALgAwAC4AMAAAADgA
 CAABAEEAcwBzAGUAbQBiAGwAeQAgAFYAZQByAHMAaQBvAG4AAAAxAC4AMAAuADAALgAwAAAAAAAA
@@ -2126,7 +2126,7 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=]]></arrayElement>
                   dataType="System.String"
                   description="Specifies the name of the Microsoft Visual Studio Tools for Applications project. Project names must be unique within a package."
                   name="VSTAProjectName"
-                  typeConverter="NOTBROWSABLE">SC_37702f4ea1e542f5bc368afe46a7041a</property>
+                  typeConverter="NOTBROWSABLE">SC_ae6554f398ba485d8e662798fb553b19</property>
                 <property
                   dataType="System.String"
                   description="Specifies the programming language used by the script."
@@ -4354,20 +4354,20 @@ where [refTable].[ProductBusinessID] = ?</property>
               name="Derived Column Output"
               startId="Package\Loading into Fact\Calculated Column.Outputs[Derived Column Output]" />
             <path
-              refId="Package\Loading into Fact.Paths[Error Output]"
+              refId="Package\Loading into Fact.Paths[Error Output1]"
               endId="Package\Loading into Fact\Union All.Inputs[Union All Input 1]"
               name="Error Output"
               startId="Package\Loading into Fact\DW Destination.Outputs[OLE DB Destination Error Output]" />
             <path
-              refId="Package\Loading into Fact.Paths[Error Output1]"
+              refId="Package\Loading into Fact.Paths[Error Output]"
               endId="Package\Loading into Fact\Union All.Inputs[Union All Input 2]"
               name="Error Output"
               startId="Package\Loading into Fact\Conditional Split.Outputs[Conditional Split Error Output]" />
             <path
               refId="Package\Loading into Fact.Paths[Lookup Match Output]"
-              endId="Package\Loading into Fact\Customer Lookup.Inputs[Lookup Input]"
+              endId="Package\Loading into Fact\Calculated Column.Inputs[Derived Column Input]"
               name="Lookup Match Output"
-              startId="Package\Loading into Fact\Date Lookup.Outputs[Lookup Match Output]" />
+              startId="Package\Loading into Fact\Customer Lookup.Outputs[Lookup Match Output]" />
             <path
               refId="Package\Loading into Fact.Paths[Lookup Match Output1]"
               endId="Package\Loading into Fact\Date Lookup.Inputs[Lookup Input]"
@@ -4375,9 +4375,9 @@ where [refTable].[ProductBusinessID] = ?</property>
               startId="Package\Loading into Fact\Product Lookup.Outputs[Lookup Match Output]" />
             <path
               refId="Package\Loading into Fact.Paths[Lookup Match Output2]"
-              endId="Package\Loading into Fact\Calculated Column.Inputs[Derived Column Input]"
+              endId="Package\Loading into Fact\Customer Lookup.Inputs[Lookup Input]"
               name="Lookup Match Output"
-              startId="Package\Loading into Fact\Customer Lookup.Outputs[Lookup Match Output]" />
+              startId="Package\Loading into Fact\Date Lookup.Outputs[Lookup Match Output]" />
             <path
               refId="Package\Loading into Fact.Paths[Merge Join Output]"
               endId="Package\Loading into Fact\Conditional Split.Inputs[Conditional Split Input]"
@@ -4405,14 +4405,14 @@ where [refTable].[ProductBusinessID] = ?</property>
               startId="Package\Loading into Fact\Error Description.Outputs[Output 0]" />
             <path
               refId="Package\Loading into Fact.Paths[Sort Output]"
-              endId="Package\Loading into Fact\Merge Join.Inputs[Merge Join Left Input]"
-              name="Sort Output"
-              startId="Package\Loading into Fact\Sort.Outputs[Sort Output]" />
-            <path
-              refId="Package\Loading into Fact.Paths[Sort Output1]"
               endId="Package\Loading into Fact\Merge Join.Inputs[Merge Join Right Input]"
               name="Sort Output"
               startId="Package\Loading into Fact\Sort 1.Outputs[Sort Output]" />
+            <path
+              refId="Package\Loading into Fact.Paths[Sort Output1]"
+              endId="Package\Loading into Fact\Merge Join.Inputs[Merge Join Left Input]"
+              name="Sort Output"
+              startId="Package\Loading into Fact\Sort.Outputs[Sort Output]" />
             <path
               refId="Package\Loading into Fact.Paths[Union All Output 1]"
               endId="Package\Loading into Fact\Error Description.Inputs[Input 0]"
@@ -4431,191 +4431,1682 @@ where [refTable].[ProductBusinessID] = ?</property>
       DTS:refId="Package\Loading into Fact_Staging"
       DTS:CreationName="Microsoft.Pipeline"
       DTS:Description="Data Flow Task"
-      DTS:DTSID="{E062C108-15AA-4666-ABF2-764EF8CD327F}"
+      DTS:DTSID="{19839034-D64D-414C-8DC2-CCB51F3F3BAE}"
       DTS:ExecutableType="Microsoft.Pipeline"
       DTS:LocaleID="-1"
       DTS:ObjectName="Loading into Fact_Staging"
-      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
       <DTS:Variables />
       <DTS:ObjectData>
         <pipeline
           version="1">
           <components>
             <component
-              refId="Package\Loading into Fact_Staging\Orders Source Table"
-              componentClassID="Microsoft.OLEDBSource"
-              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
-              description="OLE DB Source"
-              name="Orders Source Table"
+              refId="Package\Loading into Fact_Staging\CDC Orderlines Source Table"
+              componentClassID="Microsoft.ManagedComponentHost"
+              contactInfo="Attunity Ltd.; All Rights Reserved; http://www.attunity.com;"
+              description="Reads change data from a SQL Server change table making it available for processing by downstream data-flow components. Only changes within the current processing range determined by the CDC Control task are read"
+              name="CDC Orderlines Source Table"
               usesDispositions="true"
-              version="7">
+              version="6">
               <properties>
                 <property
-                  dataType="System.Int32"
-                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
-                  name="CommandTimeout">0</property>
-                <property
                   dataType="System.String"
-                  description="Specifies the name of the database object used to open a rowset."
-                  name="OpenRowset"></property>
-                <property
-                  dataType="System.String"
-                  description="Specifies the variable that contains the name of the database object used to open a rowset."
-                  name="OpenRowsetVariable"></property>
-                <property
-                  dataType="System.String"
-                  description="The SQL command to be executed."
-                  name="SqlCommand"
-                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT        ORDERS.ORDERID, ORDERS.ORDERDATE, ORDERS.CUSTOMERID, ORDERLINES.PROD_ID, ORDERLINES.QUANTITY
-FROM            ORDERS INNER JOIN
-                         ORDERLINES ON ORDERS.ORDERID = ORDERLINES.ORDERID</property>
-                <property
-                  dataType="System.String"
-                  description="The variable that contains the SQL command to be executed."
-                  name="SqlCommandVariable"></property>
+                  description="An SSIS string package variable to store the CDC state of the current CDC state."
+                  expressionType="Notify"
+                  name="StateVariable"
+                  typeConverter="Attunity.SqlServer.CDCSrc.PackageVariablesTypeConverter">User::CDC_State_Fact</property>
                 <property
                   dataType="System.Int32"
-                  description="Specifies the column code page to use when code page information is unavailable from the data source."
-                  name="DefaultCodePage">1251</property>
+                  description="Specifies the content of the metadata columns and the rows returned. Modes starting with ‘All’ return all changes and modes starting with ‘Net’ return net changes."
+                  expressionType="Notify"
+                  name="CDCProcessingMode"
+                  typeConverter="Attunity.SqlServer.CDCSrc.CdcProcessingMode">2</property>
+                <property
+                  dataType="System.String"
+                  description="The name of the CDC capture instance. By default the capture instance name is in the form of &quot;&lt;owner&gt;_&lt;table&gt;&quot;. The actual table that stores the changes is the CDC table named &quot;cdc&quot;.&quot;&lt;capture-instance&gt;_CT&quot;"
+                  expressionType="Notify"
+                  name="CaptureInstance">dbo_ORDERLINES</property>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time out."
+                  expressionType="Notify"
+                  name="CommandTimeout">30</property>
                 <property
                   dataType="System.Boolean"
-                  description="Forces the use of the DefaultCodePage property value when describing character data."
-                  name="AlwaysUseDefaultCodePage">false</property>
-                <property
-                  dataType="System.Int32"
-                  description="Specifies the mode used to access the database."
-                  name="AccessMode"
-                  typeConverter="AccessMode">2</property>
+                  description="If true, a special output column called ‘__$reprocessing ’ is added. This output column is true for each data row during the initial processing range, or when the previous CDC run&#xA;was stopped without finishing. The default value is false (the __$reprocessing output column is not generated). This special output column allows the SSIS developer to handle consistency errors differently when working on the Initial Processing Range or the previous CDC run was stopped."
+                  expressionType="Notify"
+                  name="ReprocessingIndication">false</property>
                 <property
                   dataType="System.String"
-                  description="The mappings between the parameters in the SQL command and variables."
-                  name="ParameterMapping"></property>
+                  name="UserComponentTypeName">Attunity.CdcSourceComponent</property>
               </properties>
               <connections>
                 <connection
-                  refId="Package\Loading into Fact_Staging\Orders Source Table.Connections[OleDbConnection]"
-                  connectionManagerID="{3D3A5F14-D74C-4F82-BC68-B152D2D50E95}:external"
-                  connectionManagerRefId="Project.ConnectionManagers[DESKTOP-S1GF1V9.DS2OLTP]"
-                  description="The OLE DB runtime connection used to access the database."
-                  name="OleDbConnection" />
+                  refId="Package\Loading into Fact_Staging\CDC Orderlines Source Table.Connections[Connection]"
+                  connectionManagerID="Package.ConnectionManagers[DESKTOP-S1GF1V9.DS2OLTP1]"
+                  connectionManagerRefId="Package.ConnectionManagers[DESKTOP-S1GF1V9.DS2OLTP1]"
+                  name="Connection" />
               </connections>
               <outputs>
                 <output
-                  refId="Package\Loading into Fact_Staging\Orders Source Table.Outputs[OLE DB Source Output]"
-                  name="OLE DB Source Output">
+                  refId="Package\Loading into Fact_Staging\CDC Orderlines Source Table.Outputs[Output]"
+                  name="Output">
                   <outputColumns>
                     <outputColumn
-                      refId="Package\Loading into Fact_Staging\Orders Source Table.Outputs[OLE DB Source Output].Columns[ORDERID]"
-                      dataType="i4"
-                      errorOrTruncationOperation="Conversion"
+                      refId="Package\Loading into Fact_Staging\CDC Orderlines Source Table.Outputs[Output].Columns[__$start_lsn]"
+                      dataType="bytes"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Loading into Fact_Staging\Orders Source Table.Outputs[OLE DB Source Output].ExternalColumns[ORDERID]"
-                      lineageId="Package\Loading into Fact_Staging\Orders Source Table.Outputs[OLE DB Source Output].Columns[ORDERID]"
+                      externalMetadataColumnId="Package\Loading into Fact_Staging\CDC Orderlines Source Table.Outputs[Output].ExternalColumns[__$start_lsn]"
+                      length="10"
+                      lineageId="Package\Loading into Fact_Staging\CDC Orderlines Source Table.Outputs[Output].Columns[__$start_lsn]"
+                      name="__$start_lsn"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Loading into Fact_Staging\CDC Orderlines Source Table.Outputs[Output].Columns[__$operation]"
+                      dataType="i4"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Loading into Fact_Staging\CDC Orderlines Source Table.Outputs[Output].ExternalColumns[__$operation]"
+                      lineageId="Package\Loading into Fact_Staging\CDC Orderlines Source Table.Outputs[Output].Columns[__$operation]"
+                      name="__$operation"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Loading into Fact_Staging\CDC Orderlines Source Table.Outputs[Output].Columns[__$update_mask]"
+                      dataType="bytes"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Loading into Fact_Staging\CDC Orderlines Source Table.Outputs[Output].ExternalColumns[__$update_mask]"
+                      length="128"
+                      lineageId="Package\Loading into Fact_Staging\CDC Orderlines Source Table.Outputs[Output].Columns[__$update_mask]"
+                      name="__$update_mask"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Loading into Fact_Staging\CDC Orderlines Source Table.Outputs[Output].Columns[ORDERLINEID]"
+                      dataType="i2"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Loading into Fact_Staging\CDC Orderlines Source Table.Outputs[Output].ExternalColumns[ORDERLINEID]"
+                      lineageId="Package\Loading into Fact_Staging\CDC Orderlines Source Table.Outputs[Output].Columns[ORDERLINEID]"
+                      name="ORDERLINEID"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Loading into Fact_Staging\CDC Orderlines Source Table.Outputs[Output].Columns[ORDERID]"
+                      dataType="i4"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Loading into Fact_Staging\CDC Orderlines Source Table.Outputs[Output].ExternalColumns[ORDERID]"
+                      lineageId="Package\Loading into Fact_Staging\CDC Orderlines Source Table.Outputs[Output].Columns[ORDERID]"
                       name="ORDERID"
                       truncationRowDisposition="FailComponent" />
                     <outputColumn
-                      refId="Package\Loading into Fact_Staging\Orders Source Table.Outputs[OLE DB Source Output].Columns[ORDERDATE]"
-                      dataType="dbTimeStamp"
-                      errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Loading into Fact_Staging\Orders Source Table.Outputs[OLE DB Source Output].ExternalColumns[ORDERDATE]"
-                      lineageId="Package\Loading into Fact_Staging\Orders Source Table.Outputs[OLE DB Source Output].Columns[ORDERDATE]"
-                      name="ORDERDATE"
-                      truncationRowDisposition="FailComponent" />
-                    <outputColumn
-                      refId="Package\Loading into Fact_Staging\Orders Source Table.Outputs[OLE DB Source Output].Columns[CUSTOMERID]"
+                      refId="Package\Loading into Fact_Staging\CDC Orderlines Source Table.Outputs[Output].Columns[PROD_ID]"
                       dataType="i4"
-                      errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Loading into Fact_Staging\Orders Source Table.Outputs[OLE DB Source Output].ExternalColumns[CUSTOMERID]"
-                      lineageId="Package\Loading into Fact_Staging\Orders Source Table.Outputs[OLE DB Source Output].Columns[CUSTOMERID]"
-                      name="CUSTOMERID"
-                      truncationRowDisposition="FailComponent" />
-                    <outputColumn
-                      refId="Package\Loading into Fact_Staging\Orders Source Table.Outputs[OLE DB Source Output].Columns[PROD_ID]"
-                      dataType="i4"
-                      errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Loading into Fact_Staging\Orders Source Table.Outputs[OLE DB Source Output].ExternalColumns[PROD_ID]"
-                      lineageId="Package\Loading into Fact_Staging\Orders Source Table.Outputs[OLE DB Source Output].Columns[PROD_ID]"
+                      externalMetadataColumnId="Package\Loading into Fact_Staging\CDC Orderlines Source Table.Outputs[Output].ExternalColumns[PROD_ID]"
+                      lineageId="Package\Loading into Fact_Staging\CDC Orderlines Source Table.Outputs[Output].Columns[PROD_ID]"
                       name="PROD_ID"
                       truncationRowDisposition="FailComponent" />
                     <outputColumn
-                      refId="Package\Loading into Fact_Staging\Orders Source Table.Outputs[OLE DB Source Output].Columns[QUANTITY]"
+                      refId="Package\Loading into Fact_Staging\CDC Orderlines Source Table.Outputs[Output].Columns[QUANTITY]"
                       dataType="i2"
-                      errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Loading into Fact_Staging\Orders Source Table.Outputs[OLE DB Source Output].ExternalColumns[QUANTITY]"
-                      lineageId="Package\Loading into Fact_Staging\Orders Source Table.Outputs[OLE DB Source Output].Columns[QUANTITY]"
+                      externalMetadataColumnId="Package\Loading into Fact_Staging\CDC Orderlines Source Table.Outputs[Output].ExternalColumns[QUANTITY]"
+                      lineageId="Package\Loading into Fact_Staging\CDC Orderlines Source Table.Outputs[Output].Columns[QUANTITY]"
                       name="QUANTITY"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Loading into Fact_Staging\CDC Orderlines Source Table.Outputs[Output].Columns[ORDERDATE]"
+                      dataType="dbTimeStamp"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Loading into Fact_Staging\CDC Orderlines Source Table.Outputs[Output].ExternalColumns[ORDERDATE]"
+                      lineageId="Package\Loading into Fact_Staging\CDC Orderlines Source Table.Outputs[Output].Columns[ORDERDATE]"
+                      name="ORDERDATE"
                       truncationRowDisposition="FailComponent" />
                   </outputColumns>
                   <externalMetadataColumns
                     isUsed="True">
                     <externalMetadataColumn
-                      refId="Package\Loading into Fact_Staging\Orders Source Table.Outputs[OLE DB Source Output].ExternalColumns[ORDERID]"
+                      refId="Package\Loading into Fact_Staging\CDC Orderlines Source Table.Outputs[Output].ExternalColumns[__$start_lsn]"
+                      dataType="bytes"
+                      length="10"
+                      name="__$start_lsn" />
+                    <externalMetadataColumn
+                      refId="Package\Loading into Fact_Staging\CDC Orderlines Source Table.Outputs[Output].ExternalColumns[__$operation]"
+                      dataType="i4"
+                      name="__$operation" />
+                    <externalMetadataColumn
+                      refId="Package\Loading into Fact_Staging\CDC Orderlines Source Table.Outputs[Output].ExternalColumns[__$update_mask]"
+                      dataType="bytes"
+                      length="128"
+                      name="__$update_mask" />
+                    <externalMetadataColumn
+                      refId="Package\Loading into Fact_Staging\CDC Orderlines Source Table.Outputs[Output].ExternalColumns[ORDERLINEID]"
+                      dataType="i2"
+                      name="ORDERLINEID" />
+                    <externalMetadataColumn
+                      refId="Package\Loading into Fact_Staging\CDC Orderlines Source Table.Outputs[Output].ExternalColumns[ORDERID]"
                       dataType="i4"
                       name="ORDERID" />
                     <externalMetadataColumn
-                      refId="Package\Loading into Fact_Staging\Orders Source Table.Outputs[OLE DB Source Output].ExternalColumns[ORDERDATE]"
-                      dataType="dbTimeStamp"
-                      name="ORDERDATE" />
-                    <externalMetadataColumn
-                      refId="Package\Loading into Fact_Staging\Orders Source Table.Outputs[OLE DB Source Output].ExternalColumns[CUSTOMERID]"
-                      dataType="i4"
-                      name="CUSTOMERID" />
-                    <externalMetadataColumn
-                      refId="Package\Loading into Fact_Staging\Orders Source Table.Outputs[OLE DB Source Output].ExternalColumns[PROD_ID]"
+                      refId="Package\Loading into Fact_Staging\CDC Orderlines Source Table.Outputs[Output].ExternalColumns[PROD_ID]"
                       dataType="i4"
                       name="PROD_ID" />
                     <externalMetadataColumn
-                      refId="Package\Loading into Fact_Staging\Orders Source Table.Outputs[OLE DB Source Output].ExternalColumns[QUANTITY]"
+                      refId="Package\Loading into Fact_Staging\CDC Orderlines Source Table.Outputs[Output].ExternalColumns[QUANTITY]"
                       dataType="i2"
                       name="QUANTITY" />
+                    <externalMetadataColumn
+                      refId="Package\Loading into Fact_Staging\CDC Orderlines Source Table.Outputs[Output].ExternalColumns[ORDERDATE]"
+                      dataType="dbTimeStamp"
+                      name="ORDERDATE" />
                   </externalMetadataColumns>
                 </output>
                 <output
-                  refId="Package\Loading into Fact_Staging\Orders Source Table.Outputs[OLE DB Source Error Output]"
+                  refId="Package\Loading into Fact_Staging\CDC Orderlines Source Table.Outputs[ErrorOutput]"
                   isErrorOut="true"
-                  name="OLE DB Source Error Output">
+                  name="ErrorOutput">
                   <outputColumns>
                     <outputColumn
-                      refId="Package\Loading into Fact_Staging\Orders Source Table.Outputs[OLE DB Source Error Output].Columns[ORDERID]"
+                      refId="Package\Loading into Fact_Staging\CDC Orderlines Source Table.Outputs[ErrorOutput].Columns[ErrorCode]"
                       dataType="i4"
-                      lineageId="Package\Loading into Fact_Staging\Orders Source Table.Outputs[OLE DB Source Error Output].Columns[ORDERID]"
-                      name="ORDERID" />
-                    <outputColumn
-                      refId="Package\Loading into Fact_Staging\Orders Source Table.Outputs[OLE DB Source Error Output].Columns[ORDERDATE]"
-                      dataType="dbTimeStamp"
-                      lineageId="Package\Loading into Fact_Staging\Orders Source Table.Outputs[OLE DB Source Error Output].Columns[ORDERDATE]"
-                      name="ORDERDATE" />
-                    <outputColumn
-                      refId="Package\Loading into Fact_Staging\Orders Source Table.Outputs[OLE DB Source Error Output].Columns[CUSTOMERID]"
-                      dataType="i4"
-                      lineageId="Package\Loading into Fact_Staging\Orders Source Table.Outputs[OLE DB Source Error Output].Columns[CUSTOMERID]"
-                      name="CUSTOMERID" />
-                    <outputColumn
-                      refId="Package\Loading into Fact_Staging\Orders Source Table.Outputs[OLE DB Source Error Output].Columns[PROD_ID]"
-                      dataType="i4"
-                      lineageId="Package\Loading into Fact_Staging\Orders Source Table.Outputs[OLE DB Source Error Output].Columns[PROD_ID]"
-                      name="PROD_ID" />
-                    <outputColumn
-                      refId="Package\Loading into Fact_Staging\Orders Source Table.Outputs[OLE DB Source Error Output].Columns[QUANTITY]"
-                      dataType="i2"
-                      lineageId="Package\Loading into Fact_Staging\Orders Source Table.Outputs[OLE DB Source Error Output].Columns[QUANTITY]"
-                      name="QUANTITY" />
-                    <outputColumn
-                      refId="Package\Loading into Fact_Staging\Orders Source Table.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
-                      dataType="i4"
-                      lineageId="Package\Loading into Fact_Staging\Orders Source Table.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      lineageId="Package\Loading into Fact_Staging\CDC Orderlines Source Table.Outputs[ErrorOutput].Columns[ErrorCode]"
                       name="ErrorCode"
                       specialFlags="1" />
                     <outputColumn
-                      refId="Package\Loading into Fact_Staging\Orders Source Table.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      refId="Package\Loading into Fact_Staging\CDC Orderlines Source Table.Outputs[ErrorOutput].Columns[ErrorColumn]"
                       dataType="i4"
-                      lineageId="Package\Loading into Fact_Staging\Orders Source Table.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      lineageId="Package\Loading into Fact_Staging\CDC Orderlines Source Table.Outputs[ErrorOutput].Columns[ErrorColumn]"
                       name="ErrorColumn"
                       specialFlags="2" />
+                    <outputColumn
+                      refId="Package\Loading into Fact_Staging\CDC Orderlines Source Table.Outputs[ErrorOutput].Columns[__$start_lsn]"
+                      dataType="bytes"
+                      length="10"
+                      lineageId="Package\Loading into Fact_Staging\CDC Orderlines Source Table.Outputs[ErrorOutput].Columns[__$start_lsn]"
+                      name="__$start_lsn" />
+                    <outputColumn
+                      refId="Package\Loading into Fact_Staging\CDC Orderlines Source Table.Outputs[ErrorOutput].Columns[__$operation]"
+                      dataType="i4"
+                      lineageId="Package\Loading into Fact_Staging\CDC Orderlines Source Table.Outputs[ErrorOutput].Columns[__$operation]"
+                      name="__$operation" />
+                    <outputColumn
+                      refId="Package\Loading into Fact_Staging\CDC Orderlines Source Table.Outputs[ErrorOutput].Columns[__$update_mask]"
+                      dataType="bytes"
+                      length="128"
+                      lineageId="Package\Loading into Fact_Staging\CDC Orderlines Source Table.Outputs[ErrorOutput].Columns[__$update_mask]"
+                      name="__$update_mask" />
+                    <outputColumn
+                      refId="Package\Loading into Fact_Staging\CDC Orderlines Source Table.Outputs[ErrorOutput].Columns[ORDERLINEID]"
+                      dataType="i2"
+                      lineageId="Package\Loading into Fact_Staging\CDC Orderlines Source Table.Outputs[ErrorOutput].Columns[ORDERLINEID]"
+                      name="ORDERLINEID" />
+                    <outputColumn
+                      refId="Package\Loading into Fact_Staging\CDC Orderlines Source Table.Outputs[ErrorOutput].Columns[ORDERID]"
+                      dataType="i4"
+                      lineageId="Package\Loading into Fact_Staging\CDC Orderlines Source Table.Outputs[ErrorOutput].Columns[ORDERID]"
+                      name="ORDERID" />
+                    <outputColumn
+                      refId="Package\Loading into Fact_Staging\CDC Orderlines Source Table.Outputs[ErrorOutput].Columns[PROD_ID]"
+                      dataType="i4"
+                      lineageId="Package\Loading into Fact_Staging\CDC Orderlines Source Table.Outputs[ErrorOutput].Columns[PROD_ID]"
+                      name="PROD_ID" />
+                    <outputColumn
+                      refId="Package\Loading into Fact_Staging\CDC Orderlines Source Table.Outputs[ErrorOutput].Columns[QUANTITY]"
+                      dataType="i2"
+                      lineageId="Package\Loading into Fact_Staging\CDC Orderlines Source Table.Outputs[ErrorOutput].Columns[QUANTITY]"
+                      name="QUANTITY" />
+                    <outputColumn
+                      refId="Package\Loading into Fact_Staging\CDC Orderlines Source Table.Outputs[ErrorOutput].Columns[ORDERDATE]"
+                      dataType="dbTimeStamp"
+                      lineageId="Package\Loading into Fact_Staging\CDC Orderlines Source Table.Outputs[ErrorOutput].Columns[ORDERDATE]"
+                      name="ORDERDATE" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Loading into Fact_Staging\CDC Orders Source Table"
+              componentClassID="Microsoft.ManagedComponentHost"
+              contactInfo="Attunity Ltd.; All Rights Reserved; http://www.attunity.com;"
+              description="Reads change data from a SQL Server change table making it available for processing by downstream data-flow components. Only changes within the current processing range determined by the CDC Control task are read"
+              name="CDC Orders Source Table"
+              usesDispositions="true"
+              version="6">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="An SSIS string package variable to store the CDC state of the current CDC state."
+                  expressionType="Notify"
+                  name="StateVariable"
+                  typeConverter="Attunity.SqlServer.CDCSrc.PackageVariablesTypeConverter">User::CDC_State_Fact</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the content of the metadata columns and the rows returned. Modes starting with ‘All’ return all changes and modes starting with ‘Net’ return net changes."
+                  expressionType="Notify"
+                  name="CDCProcessingMode"
+                  typeConverter="Attunity.SqlServer.CDCSrc.CdcProcessingMode">2</property>
+                <property
+                  dataType="System.String"
+                  description="The name of the CDC capture instance. By default the capture instance name is in the form of &quot;&lt;owner&gt;_&lt;table&gt;&quot;. The actual table that stores the changes is the CDC table named &quot;cdc&quot;.&quot;&lt;capture-instance&gt;_CT&quot;"
+                  expressionType="Notify"
+                  name="CaptureInstance">dbo_ORDERS</property>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time out."
+                  expressionType="Notify"
+                  name="CommandTimeout">30</property>
+                <property
+                  dataType="System.Boolean"
+                  description="If true, a special output column called ‘__$reprocessing ’ is added. This output column is true for each data row during the initial processing range, or when the previous CDC run&#xA;was stopped without finishing. The default value is false (the __$reprocessing output column is not generated). This special output column allows the SSIS developer to handle consistency errors differently when working on the Initial Processing Range or the previous CDC run was stopped."
+                  expressionType="Notify"
+                  name="ReprocessingIndication">false</property>
+                <property
+                  dataType="System.String"
+                  name="UserComponentTypeName">Attunity.CdcSourceComponent</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Loading into Fact_Staging\CDC Orders Source Table.Connections[Connection]"
+                  connectionManagerID="Package.ConnectionManagers[DESKTOP-S1GF1V9.DS2OLTP1]"
+                  connectionManagerRefId="Package.ConnectionManagers[DESKTOP-S1GF1V9.DS2OLTP1]"
+                  name="Connection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Loading into Fact_Staging\CDC Orders Source Table.Outputs[Output]"
+                  name="Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Loading into Fact_Staging\CDC Orders Source Table.Outputs[Output].Columns[__$start_lsn]"
+                      dataType="bytes"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Loading into Fact_Staging\CDC Orders Source Table.Outputs[Output].ExternalColumns[__$start_lsn]"
+                      length="10"
+                      lineageId="Package\Loading into Fact_Staging\CDC Orders Source Table.Outputs[Output].Columns[__$start_lsn]"
+                      name="__$start_lsn"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Loading into Fact_Staging\CDC Orders Source Table.Outputs[Output].Columns[__$operation]"
+                      dataType="i4"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Loading into Fact_Staging\CDC Orders Source Table.Outputs[Output].ExternalColumns[__$operation]"
+                      lineageId="Package\Loading into Fact_Staging\CDC Orders Source Table.Outputs[Output].Columns[__$operation]"
+                      name="__$operation"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Loading into Fact_Staging\CDC Orders Source Table.Outputs[Output].Columns[__$update_mask]"
+                      dataType="bytes"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Loading into Fact_Staging\CDC Orders Source Table.Outputs[Output].ExternalColumns[__$update_mask]"
+                      length="128"
+                      lineageId="Package\Loading into Fact_Staging\CDC Orders Source Table.Outputs[Output].Columns[__$update_mask]"
+                      name="__$update_mask"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Loading into Fact_Staging\CDC Orders Source Table.Outputs[Output].Columns[ORDERID]"
+                      dataType="i4"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Loading into Fact_Staging\CDC Orders Source Table.Outputs[Output].ExternalColumns[ORDERID]"
+                      lineageId="Package\Loading into Fact_Staging\CDC Orders Source Table.Outputs[Output].Columns[ORDERID]"
+                      name="ORDERID"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Loading into Fact_Staging\CDC Orders Source Table.Outputs[Output].Columns[ORDERDATE]"
+                      dataType="dbTimeStamp"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Loading into Fact_Staging\CDC Orders Source Table.Outputs[Output].ExternalColumns[ORDERDATE]"
+                      lineageId="Package\Loading into Fact_Staging\CDC Orders Source Table.Outputs[Output].Columns[ORDERDATE]"
+                      name="ORDERDATE"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Loading into Fact_Staging\CDC Orders Source Table.Outputs[Output].Columns[CUSTOMERID]"
+                      dataType="i4"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Loading into Fact_Staging\CDC Orders Source Table.Outputs[Output].ExternalColumns[CUSTOMERID]"
+                      lineageId="Package\Loading into Fact_Staging\CDC Orders Source Table.Outputs[Output].Columns[CUSTOMERID]"
+                      name="CUSTOMERID"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Loading into Fact_Staging\CDC Orders Source Table.Outputs[Output].Columns[NETAMOUNT]"
+                      dataType="cy"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Loading into Fact_Staging\CDC Orders Source Table.Outputs[Output].ExternalColumns[NETAMOUNT]"
+                      lineageId="Package\Loading into Fact_Staging\CDC Orders Source Table.Outputs[Output].Columns[NETAMOUNT]"
+                      name="NETAMOUNT"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Loading into Fact_Staging\CDC Orders Source Table.Outputs[Output].Columns[TAX]"
+                      dataType="cy"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Loading into Fact_Staging\CDC Orders Source Table.Outputs[Output].ExternalColumns[TAX]"
+                      lineageId="Package\Loading into Fact_Staging\CDC Orders Source Table.Outputs[Output].Columns[TAX]"
+                      name="TAX"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Loading into Fact_Staging\CDC Orders Source Table.Outputs[Output].Columns[TOTALAMOUNT]"
+                      dataType="cy"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Loading into Fact_Staging\CDC Orders Source Table.Outputs[Output].ExternalColumns[TOTALAMOUNT]"
+                      lineageId="Package\Loading into Fact_Staging\CDC Orders Source Table.Outputs[Output].Columns[TOTALAMOUNT]"
+                      name="TOTALAMOUNT"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Loading into Fact_Staging\CDC Orders Source Table.Outputs[Output].ExternalColumns[__$start_lsn]"
+                      dataType="bytes"
+                      length="10"
+                      name="__$start_lsn" />
+                    <externalMetadataColumn
+                      refId="Package\Loading into Fact_Staging\CDC Orders Source Table.Outputs[Output].ExternalColumns[__$operation]"
+                      dataType="i4"
+                      name="__$operation" />
+                    <externalMetadataColumn
+                      refId="Package\Loading into Fact_Staging\CDC Orders Source Table.Outputs[Output].ExternalColumns[__$update_mask]"
+                      dataType="bytes"
+                      length="128"
+                      name="__$update_mask" />
+                    <externalMetadataColumn
+                      refId="Package\Loading into Fact_Staging\CDC Orders Source Table.Outputs[Output].ExternalColumns[ORDERID]"
+                      dataType="i4"
+                      name="ORDERID" />
+                    <externalMetadataColumn
+                      refId="Package\Loading into Fact_Staging\CDC Orders Source Table.Outputs[Output].ExternalColumns[ORDERDATE]"
+                      dataType="dbTimeStamp"
+                      name="ORDERDATE" />
+                    <externalMetadataColumn
+                      refId="Package\Loading into Fact_Staging\CDC Orders Source Table.Outputs[Output].ExternalColumns[CUSTOMERID]"
+                      dataType="i4"
+                      name="CUSTOMERID" />
+                    <externalMetadataColumn
+                      refId="Package\Loading into Fact_Staging\CDC Orders Source Table.Outputs[Output].ExternalColumns[NETAMOUNT]"
+                      dataType="cy"
+                      name="NETAMOUNT" />
+                    <externalMetadataColumn
+                      refId="Package\Loading into Fact_Staging\CDC Orders Source Table.Outputs[Output].ExternalColumns[TAX]"
+                      dataType="cy"
+                      name="TAX" />
+                    <externalMetadataColumn
+                      refId="Package\Loading into Fact_Staging\CDC Orders Source Table.Outputs[Output].ExternalColumns[TOTALAMOUNT]"
+                      dataType="cy"
+                      name="TOTALAMOUNT" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Loading into Fact_Staging\CDC Orders Source Table.Outputs[ErrorOutput]"
+                  isErrorOut="true"
+                  name="ErrorOutput">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Loading into Fact_Staging\CDC Orders Source Table.Outputs[ErrorOutput].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Loading into Fact_Staging\CDC Orders Source Table.Outputs[ErrorOutput].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Loading into Fact_Staging\CDC Orders Source Table.Outputs[ErrorOutput].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Loading into Fact_Staging\CDC Orders Source Table.Outputs[ErrorOutput].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                    <outputColumn
+                      refId="Package\Loading into Fact_Staging\CDC Orders Source Table.Outputs[ErrorOutput].Columns[__$start_lsn]"
+                      dataType="bytes"
+                      length="10"
+                      lineageId="Package\Loading into Fact_Staging\CDC Orders Source Table.Outputs[ErrorOutput].Columns[__$start_lsn]"
+                      name="__$start_lsn" />
+                    <outputColumn
+                      refId="Package\Loading into Fact_Staging\CDC Orders Source Table.Outputs[ErrorOutput].Columns[__$operation]"
+                      dataType="i4"
+                      lineageId="Package\Loading into Fact_Staging\CDC Orders Source Table.Outputs[ErrorOutput].Columns[__$operation]"
+                      name="__$operation" />
+                    <outputColumn
+                      refId="Package\Loading into Fact_Staging\CDC Orders Source Table.Outputs[ErrorOutput].Columns[__$update_mask]"
+                      dataType="bytes"
+                      length="128"
+                      lineageId="Package\Loading into Fact_Staging\CDC Orders Source Table.Outputs[ErrorOutput].Columns[__$update_mask]"
+                      name="__$update_mask" />
+                    <outputColumn
+                      refId="Package\Loading into Fact_Staging\CDC Orders Source Table.Outputs[ErrorOutput].Columns[ORDERID]"
+                      dataType="i4"
+                      lineageId="Package\Loading into Fact_Staging\CDC Orders Source Table.Outputs[ErrorOutput].Columns[ORDERID]"
+                      name="ORDERID" />
+                    <outputColumn
+                      refId="Package\Loading into Fact_Staging\CDC Orders Source Table.Outputs[ErrorOutput].Columns[ORDERDATE]"
+                      dataType="dbTimeStamp"
+                      lineageId="Package\Loading into Fact_Staging\CDC Orders Source Table.Outputs[ErrorOutput].Columns[ORDERDATE]"
+                      name="ORDERDATE" />
+                    <outputColumn
+                      refId="Package\Loading into Fact_Staging\CDC Orders Source Table.Outputs[ErrorOutput].Columns[CUSTOMERID]"
+                      dataType="i4"
+                      lineageId="Package\Loading into Fact_Staging\CDC Orders Source Table.Outputs[ErrorOutput].Columns[CUSTOMERID]"
+                      name="CUSTOMERID" />
+                    <outputColumn
+                      refId="Package\Loading into Fact_Staging\CDC Orders Source Table.Outputs[ErrorOutput].Columns[NETAMOUNT]"
+                      dataType="cy"
+                      lineageId="Package\Loading into Fact_Staging\CDC Orders Source Table.Outputs[ErrorOutput].Columns[NETAMOUNT]"
+                      name="NETAMOUNT" />
+                    <outputColumn
+                      refId="Package\Loading into Fact_Staging\CDC Orders Source Table.Outputs[ErrorOutput].Columns[TAX]"
+                      dataType="cy"
+                      lineageId="Package\Loading into Fact_Staging\CDC Orders Source Table.Outputs[ErrorOutput].Columns[TAX]"
+                      name="TAX" />
+                    <outputColumn
+                      refId="Package\Loading into Fact_Staging\CDC Orders Source Table.Outputs[ErrorOutput].Columns[TOTALAMOUNT]"
+                      dataType="cy"
+                      lineageId="Package\Loading into Fact_Staging\CDC Orders Source Table.Outputs[ErrorOutput].Columns[TOTALAMOUNT]"
+                      name="TOTALAMOUNT" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Loading into Fact_Staging\CDC Splitter"
+              componentClassID="Microsoft.ManagedComponentHost"
+              contactInfo="Attunity Ltd.; All Rights Reserved; http://www.attunity.com;"
+              description="Directs a stream of net change records into different outputs based on the type of the change (Insert, Delete and Update). This allows specific handling for different types of change records."
+              name="CDC Splitter"
+              usesDispositions="true"
+              version="6">
+              <properties>
+                <property
+                  dataType="System.String"
+                  name="UserComponentTypeName">Attunity.CdcSplitterComponent</property>
+              </properties>
+              <inputs>
+                <input
+                  refId="Package\Loading into Fact_Staging\CDC Splitter.Inputs[Input]"
+                  errorOrTruncationOperation="Operation of the changed row is not a valid one"
+                  errorRowDisposition="FailComponent"
+                  name="Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Loading into Fact_Staging\CDC Splitter.Inputs[Input].Columns[__$start_lsn]"
+                      cachedDataType="bytes"
+                      cachedLength="10"
+                      cachedName="__$start_lsn"
+                      lineageId="Package\Loading into Fact_Staging\CDC Orders Source Table.Outputs[Output].Columns[__$start_lsn]" />
+                    <inputColumn
+                      refId="Package\Loading into Fact_Staging\CDC Splitter.Inputs[Input].Columns[__$operation]"
+                      cachedDataType="i4"
+                      cachedName="__$operation"
+                      lineageId="Package\Loading into Fact_Staging\CDC Orders Source Table.Outputs[Output].Columns[__$operation]" />
+                    <inputColumn
+                      refId="Package\Loading into Fact_Staging\CDC Splitter.Inputs[Input].Columns[__$update_mask]"
+                      cachedDataType="bytes"
+                      cachedLength="128"
+                      cachedName="__$update_mask"
+                      lineageId="Package\Loading into Fact_Staging\CDC Orders Source Table.Outputs[Output].Columns[__$update_mask]" />
+                    <inputColumn
+                      refId="Package\Loading into Fact_Staging\CDC Splitter.Inputs[Input].Columns[ORDERID]"
+                      cachedDataType="i4"
+                      cachedName="ORDERID"
+                      lineageId="Package\Loading into Fact_Staging\CDC Orders Source Table.Outputs[Output].Columns[ORDERID]" />
+                    <inputColumn
+                      refId="Package\Loading into Fact_Staging\CDC Splitter.Inputs[Input].Columns[ORDERDATE]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="ORDERDATE"
+                      lineageId="Package\Loading into Fact_Staging\CDC Orders Source Table.Outputs[Output].Columns[ORDERDATE]" />
+                    <inputColumn
+                      refId="Package\Loading into Fact_Staging\CDC Splitter.Inputs[Input].Columns[CUSTOMERID]"
+                      cachedDataType="i4"
+                      cachedName="CUSTOMERID"
+                      lineageId="Package\Loading into Fact_Staging\CDC Orders Source Table.Outputs[Output].Columns[CUSTOMERID]" />
+                    <inputColumn
+                      refId="Package\Loading into Fact_Staging\CDC Splitter.Inputs[Input].Columns[NETAMOUNT]"
+                      cachedDataType="cy"
+                      cachedName="NETAMOUNT"
+                      lineageId="Package\Loading into Fact_Staging\CDC Orders Source Table.Outputs[Output].Columns[NETAMOUNT]" />
+                    <inputColumn
+                      refId="Package\Loading into Fact_Staging\CDC Splitter.Inputs[Input].Columns[TAX]"
+                      cachedDataType="cy"
+                      cachedName="TAX"
+                      lineageId="Package\Loading into Fact_Staging\CDC Orders Source Table.Outputs[Output].Columns[TAX]" />
+                    <inputColumn
+                      refId="Package\Loading into Fact_Staging\CDC Splitter.Inputs[Input].Columns[TOTALAMOUNT]"
+                      cachedDataType="cy"
+                      cachedName="TOTALAMOUNT"
+                      lineageId="Package\Loading into Fact_Staging\CDC Orders Source Table.Outputs[Output].Columns[TOTALAMOUNT]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Loading into Fact_Staging\CDC Splitter.Outputs[InsertOutput]"
+                  exclusionGroup="1"
+                  name="InsertOutput"
+                  synchronousInputId="Package\Loading into Fact_Staging\CDC Splitter.Inputs[Input]">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="Output type - Insert."
+                      name="OutputType"
+                      typeConverter="Attunity.SqlServer.CDCSplit.OutputType">0</property>
+                  </properties>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Loading into Fact_Staging\CDC Splitter.Outputs[DeleteOutput]"
+                  exclusionGroup="1"
+                  name="DeleteOutput"
+                  synchronousInputId="Package\Loading into Fact_Staging\CDC Splitter.Inputs[Input]">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="Output type - Delete."
+                      name="OutputType"
+                      typeConverter="Attunity.SqlServer.CDCSplit.OutputType">2</property>
+                  </properties>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Loading into Fact_Staging\CDC Splitter.Outputs[UpdateOutput]"
+                  exclusionGroup="1"
+                  name="UpdateOutput"
+                  synchronousInputId="Package\Loading into Fact_Staging\CDC Splitter.Inputs[Input]">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="Output type - Update."
+                      name="OutputType"
+                      typeConverter="Attunity.SqlServer.CDCSplit.OutputType">1</property>
+                  </properties>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Loading into Fact_Staging\CDC Splitter.Outputs[ErrorOutput]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="ErrorOutput"
+                  synchronousInputId="Package\Loading into Fact_Staging\CDC Splitter.Inputs[Input]">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="Output type - Error."
+                      name="OutputType"
+                      typeConverter="Attunity.SqlServer.CDCSplit.OutputType">3</property>
+                  </properties>
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Loading into Fact_Staging\CDC Splitter.Outputs[ErrorOutput].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Loading into Fact_Staging\CDC Splitter.Outputs[ErrorOutput].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Loading into Fact_Staging\CDC Splitter.Outputs[ErrorOutput].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Loading into Fact_Staging\CDC Splitter.Outputs[ErrorOutput].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Loading into Fact_Staging\CDC Splitter 1"
+              componentClassID="Microsoft.ManagedComponentHost"
+              contactInfo="Attunity Ltd.; All Rights Reserved; http://www.attunity.com;"
+              description="Directs a stream of net change records into different outputs based on the type of the change (Insert, Delete and Update). This allows specific handling for different types of change records."
+              name="CDC Splitter 1"
+              usesDispositions="true"
+              version="6">
+              <properties>
+                <property
+                  dataType="System.String"
+                  name="UserComponentTypeName">Attunity.CdcSplitterComponent</property>
+              </properties>
+              <inputs>
+                <input
+                  refId="Package\Loading into Fact_Staging\CDC Splitter 1.Inputs[Input]"
+                  errorOrTruncationOperation="Operation of the changed row is not a valid one"
+                  errorRowDisposition="FailComponent"
+                  name="Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Loading into Fact_Staging\CDC Splitter 1.Inputs[Input].Columns[__$start_lsn]"
+                      cachedDataType="bytes"
+                      cachedLength="10"
+                      cachedName="__$start_lsn"
+                      lineageId="Package\Loading into Fact_Staging\CDC Orderlines Source Table.Outputs[Output].Columns[__$start_lsn]" />
+                    <inputColumn
+                      refId="Package\Loading into Fact_Staging\CDC Splitter 1.Inputs[Input].Columns[__$operation]"
+                      cachedDataType="i4"
+                      cachedName="__$operation"
+                      lineageId="Package\Loading into Fact_Staging\CDC Orderlines Source Table.Outputs[Output].Columns[__$operation]" />
+                    <inputColumn
+                      refId="Package\Loading into Fact_Staging\CDC Splitter 1.Inputs[Input].Columns[__$update_mask]"
+                      cachedDataType="bytes"
+                      cachedLength="128"
+                      cachedName="__$update_mask"
+                      lineageId="Package\Loading into Fact_Staging\CDC Orderlines Source Table.Outputs[Output].Columns[__$update_mask]" />
+                    <inputColumn
+                      refId="Package\Loading into Fact_Staging\CDC Splitter 1.Inputs[Input].Columns[ORDERLINEID]"
+                      cachedDataType="i2"
+                      cachedName="ORDERLINEID"
+                      lineageId="Package\Loading into Fact_Staging\CDC Orderlines Source Table.Outputs[Output].Columns[ORDERLINEID]" />
+                    <inputColumn
+                      refId="Package\Loading into Fact_Staging\CDC Splitter 1.Inputs[Input].Columns[ORDERID]"
+                      cachedDataType="i4"
+                      cachedName="ORDERID"
+                      lineageId="Package\Loading into Fact_Staging\CDC Orderlines Source Table.Outputs[Output].Columns[ORDERID]" />
+                    <inputColumn
+                      refId="Package\Loading into Fact_Staging\CDC Splitter 1.Inputs[Input].Columns[PROD_ID]"
+                      cachedDataType="i4"
+                      cachedName="PROD_ID"
+                      lineageId="Package\Loading into Fact_Staging\CDC Orderlines Source Table.Outputs[Output].Columns[PROD_ID]" />
+                    <inputColumn
+                      refId="Package\Loading into Fact_Staging\CDC Splitter 1.Inputs[Input].Columns[QUANTITY]"
+                      cachedDataType="i2"
+                      cachedName="QUANTITY"
+                      lineageId="Package\Loading into Fact_Staging\CDC Orderlines Source Table.Outputs[Output].Columns[QUANTITY]" />
+                    <inputColumn
+                      refId="Package\Loading into Fact_Staging\CDC Splitter 1.Inputs[Input].Columns[ORDERDATE]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="ORDERDATE"
+                      lineageId="Package\Loading into Fact_Staging\CDC Orderlines Source Table.Outputs[Output].Columns[ORDERDATE]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Loading into Fact_Staging\CDC Splitter 1.Outputs[InsertOutput]"
+                  exclusionGroup="1"
+                  name="InsertOutput"
+                  synchronousInputId="Package\Loading into Fact_Staging\CDC Splitter 1.Inputs[Input]">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="Output type - Insert."
+                      name="OutputType"
+                      typeConverter="Attunity.SqlServer.CDCSplit.OutputType">0</property>
+                  </properties>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Loading into Fact_Staging\CDC Splitter 1.Outputs[DeleteOutput]"
+                  exclusionGroup="1"
+                  name="DeleteOutput"
+                  synchronousInputId="Package\Loading into Fact_Staging\CDC Splitter 1.Inputs[Input]">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="Output type - Delete."
+                      name="OutputType"
+                      typeConverter="Attunity.SqlServer.CDCSplit.OutputType">2</property>
+                  </properties>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Loading into Fact_Staging\CDC Splitter 1.Outputs[UpdateOutput]"
+                  exclusionGroup="1"
+                  name="UpdateOutput"
+                  synchronousInputId="Package\Loading into Fact_Staging\CDC Splitter 1.Inputs[Input]">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="Output type - Update."
+                      name="OutputType"
+                      typeConverter="Attunity.SqlServer.CDCSplit.OutputType">1</property>
+                  </properties>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Loading into Fact_Staging\CDC Splitter 1.Outputs[ErrorOutput]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="ErrorOutput"
+                  synchronousInputId="Package\Loading into Fact_Staging\CDC Splitter 1.Inputs[Input]">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="Output type - Error."
+                      name="OutputType"
+                      typeConverter="Attunity.SqlServer.CDCSplit.OutputType">3</property>
+                  </properties>
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Loading into Fact_Staging\CDC Splitter 1.Outputs[ErrorOutput].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Loading into Fact_Staging\CDC Splitter 1.Outputs[ErrorOutput].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Loading into Fact_Staging\CDC Splitter 1.Outputs[ErrorOutput].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Loading into Fact_Staging\CDC Splitter 1.Outputs[ErrorOutput].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Loading into Fact_Staging\Merge Join"
+              componentClassID="Microsoft.MergeJoin"
+              contactInfo="Merge Join;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+              description="Combine two sorted data flows into one using the FULL, LEFT, or INNER join. We recommend this transformation when data flows can be sorted at their sources."
+              name="Merge Join"
+              version="1">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the type of join to perform."
+                  name="JoinType"
+                  typeConverter="JoinType">1</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the number of columns in the ordering key."
+                  name="NumKeyColumns">1</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the null values are treated as equal values."
+                  name="TreatNullsAsEqual">true</property>
+                <property
+                  dataType="System.Int32"
+                  description="Indicates the requested maximum buffers per input before blocking."
+                  name="MaxBuffersPerInput">5</property>
+              </properties>
+              <inputs>
+                <input
+                  refId="Package\Loading into Fact_Staging\Merge Join.Inputs[Merge Join Left Input]"
+                  hasSideEffects="true"
+                  name="Merge Join Left Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Loading into Fact_Staging\Merge Join.Inputs[Merge Join Left Input].Columns[ORDERLINEID]"
+                      cachedDataType="i2"
+                      cachedName="ORDERLINEID"
+                      cachedSortKeyPosition="2"
+                      lineageId="Package\Loading into Fact_Staging\Sort by OrderID_.Outputs[Sort Output].Columns[ORDERLINEID]" />
+                    <inputColumn
+                      refId="Package\Loading into Fact_Staging\Merge Join.Inputs[Merge Join Left Input].Columns[ORDERID]"
+                      cachedDataType="i4"
+                      cachedName="ORDERID"
+                      cachedSortKeyPosition="1"
+                      lineageId="Package\Loading into Fact_Staging\Sort by OrderID_.Outputs[Sort Output].Columns[ORDERID]" />
+                    <inputColumn
+                      refId="Package\Loading into Fact_Staging\Merge Join.Inputs[Merge Join Left Input].Columns[PROD_ID]"
+                      cachedDataType="i4"
+                      cachedName="PROD_ID"
+                      lineageId="Package\Loading into Fact_Staging\Sort by OrderID_.Outputs[Sort Output].Columns[PROD_ID]" />
+                    <inputColumn
+                      refId="Package\Loading into Fact_Staging\Merge Join.Inputs[Merge Join Left Input].Columns[QUANTITY]"
+                      cachedDataType="i2"
+                      cachedName="QUANTITY"
+                      lineageId="Package\Loading into Fact_Staging\Sort by OrderID_.Outputs[Sort Output].Columns[QUANTITY]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+                <input
+                  refId="Package\Loading into Fact_Staging\Merge Join.Inputs[Merge Join Right Input]"
+                  hasSideEffects="true"
+                  name="Merge Join Right Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Loading into Fact_Staging\Merge Join.Inputs[Merge Join Right Input].Columns[ORDERID]"
+                      cachedDataType="i4"
+                      cachedName="ORDERID"
+                      cachedSortKeyPosition="1"
+                      lineageId="Package\Loading into Fact_Staging\Sort by OrderID.Outputs[Sort Output].Columns[ORDERID]" />
+                    <inputColumn
+                      refId="Package\Loading into Fact_Staging\Merge Join.Inputs[Merge Join Right Input].Columns[ORDERDATE]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="ORDERDATE"
+                      lineageId="Package\Loading into Fact_Staging\Sort by OrderID.Outputs[Sort Output].Columns[ORDERDATE]" />
+                    <inputColumn
+                      refId="Package\Loading into Fact_Staging\Merge Join.Inputs[Merge Join Right Input].Columns[CUSTOMERID]"
+                      cachedDataType="i4"
+                      cachedName="CUSTOMERID"
+                      lineageId="Package\Loading into Fact_Staging\Sort by OrderID.Outputs[Sort Output].Columns[CUSTOMERID]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Loading into Fact_Staging\Merge Join.Outputs[Merge Join Output]"
+                  isSorted="true"
+                  name="Merge Join Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Loading into Fact_Staging\Merge Join.Outputs[Merge Join Output].Columns[ORDERID]"
+                      dataType="i4"
+                      lineageId="Package\Loading into Fact_Staging\Merge Join.Outputs[Merge Join Output].Columns[ORDERID]"
+                      name="ORDERID"
+                      sortKeyPosition="1">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="The input column associated with this output column"
+                          name="InputColumnID">#{Package\Loading into Fact_Staging\Merge Join.Inputs[Merge Join Right Input].Columns[ORDERID]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Loading into Fact_Staging\Merge Join.Outputs[Merge Join Output].Columns[ORDERDATE]"
+                      dataType="dbTimeStamp"
+                      lineageId="Package\Loading into Fact_Staging\Merge Join.Outputs[Merge Join Output].Columns[ORDERDATE]"
+                      name="ORDERDATE">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="The input column associated with this output column"
+                          name="InputColumnID">#{Package\Loading into Fact_Staging\Merge Join.Inputs[Merge Join Right Input].Columns[ORDERDATE]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Loading into Fact_Staging\Merge Join.Outputs[Merge Join Output].Columns[CUSTOMERID]"
+                      dataType="i4"
+                      lineageId="Package\Loading into Fact_Staging\Merge Join.Outputs[Merge Join Output].Columns[CUSTOMERID]"
+                      name="CUSTOMERID">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="The input column associated with this output column"
+                          name="InputColumnID">#{Package\Loading into Fact_Staging\Merge Join.Inputs[Merge Join Right Input].Columns[CUSTOMERID]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Loading into Fact_Staging\Merge Join.Outputs[Merge Join Output].Columns[PROD_ID]"
+                      dataType="i4"
+                      lineageId="Package\Loading into Fact_Staging\Merge Join.Outputs[Merge Join Output].Columns[PROD_ID]"
+                      name="PROD_ID">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="The input column associated with this output column"
+                          name="InputColumnID">#{Package\Loading into Fact_Staging\Merge Join.Inputs[Merge Join Left Input].Columns[PROD_ID]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Loading into Fact_Staging\Merge Join.Outputs[Merge Join Output].Columns[QUANTITY]"
+                      dataType="i2"
+                      lineageId="Package\Loading into Fact_Staging\Merge Join.Outputs[Merge Join Output].Columns[QUANTITY]"
+                      name="QUANTITY">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="The input column associated with this output column"
+                          name="InputColumnID">#{Package\Loading into Fact_Staging\Merge Join.Inputs[Merge Join Left Input].Columns[QUANTITY]}</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Loading into Fact_Staging\Sort by OrderID"
+              componentClassID="Microsoft.Sort"
+              contactInfo="Sort;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+              description="Sorts input data in ascending or descending order when it cannot be sorted at its source. For example, sort sales data by 'customer id' before it is written to a flat file and delivered to another department. Note: We do not recommend this transformation for large data flows."
+              name="Sort by OrderID"
+              version="1">
+              <properties>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the Sort transformation removes rows with duplicate sort values."
+                  name="EliminateDuplicates">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the maximum number of threads to use for sorting."
+                  expressionType="Notify"
+                  name="MaximumThreads">-1</property>
+              </properties>
+              <inputs>
+                <input
+                  refId="Package\Loading into Fact_Staging\Sort by OrderID.Inputs[Sort Input]"
+                  name="Sort Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Loading into Fact_Staging\Sort by OrderID.Inputs[Sort Input].Columns[__$start_lsn]"
+                      cachedDataType="bytes"
+                      cachedLength="10"
+                      cachedName="__$start_lsn"
+                      lineageId="Package\Loading into Fact_Staging\CDC Orders Source Table.Outputs[Output].Columns[__$start_lsn]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Loading into Fact_Staging\Sort by OrderID.Inputs[Sort Input].Columns[__$operation]"
+                      cachedDataType="i4"
+                      cachedName="__$operation"
+                      lineageId="Package\Loading into Fact_Staging\CDC Orders Source Table.Outputs[Output].Columns[__$operation]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Loading into Fact_Staging\Sort by OrderID.Inputs[Sort Input].Columns[__$update_mask]"
+                      cachedDataType="bytes"
+                      cachedLength="128"
+                      cachedName="__$update_mask"
+                      lineageId="Package\Loading into Fact_Staging\CDC Orders Source Table.Outputs[Output].Columns[__$update_mask]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Loading into Fact_Staging\Sort by OrderID.Inputs[Sort Input].Columns[ORDERID]"
+                      cachedDataType="i4"
+                      cachedName="ORDERID"
+                      lineageId="Package\Loading into Fact_Staging\CDC Orders Source Table.Outputs[Output].Columns[ORDERID]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">1</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Loading into Fact_Staging\Sort by OrderID.Inputs[Sort Input].Columns[ORDERDATE]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="ORDERDATE"
+                      lineageId="Package\Loading into Fact_Staging\CDC Orders Source Table.Outputs[Output].Columns[ORDERDATE]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Loading into Fact_Staging\Sort by OrderID.Inputs[Sort Input].Columns[CUSTOMERID]"
+                      cachedDataType="i4"
+                      cachedName="CUSTOMERID"
+                      lineageId="Package\Loading into Fact_Staging\CDC Orders Source Table.Outputs[Output].Columns[CUSTOMERID]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Loading into Fact_Staging\Sort by OrderID.Inputs[Sort Input].Columns[NETAMOUNT]"
+                      cachedDataType="cy"
+                      cachedName="NETAMOUNT"
+                      lineageId="Package\Loading into Fact_Staging\CDC Orders Source Table.Outputs[Output].Columns[NETAMOUNT]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Loading into Fact_Staging\Sort by OrderID.Inputs[Sort Input].Columns[TAX]"
+                      cachedDataType="cy"
+                      cachedName="TAX"
+                      lineageId="Package\Loading into Fact_Staging\CDC Orders Source Table.Outputs[Output].Columns[TAX]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Loading into Fact_Staging\Sort by OrderID.Inputs[Sort Input].Columns[TOTALAMOUNT]"
+                      cachedDataType="cy"
+                      cachedName="TOTALAMOUNT"
+                      lineageId="Package\Loading into Fact_Staging\CDC Orders Source Table.Outputs[Output].Columns[TOTALAMOUNT]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Loading into Fact_Staging\Sort by OrderID.Outputs[Sort Output]"
+                  isSorted="true"
+                  name="Sort Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Loading into Fact_Staging\Sort by OrderID.Outputs[Sort Output].Columns[__$start_lsn]"
+                      dataType="bytes"
+                      length="10"
+                      lineageId="Package\Loading into Fact_Staging\Sort by OrderID.Outputs[Sort Output].Columns[__$start_lsn]"
+                      name="__$start_lsn">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Loading into Fact_Staging\CDC Orders Source Table.Outputs[Output].Columns[__$start_lsn]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Loading into Fact_Staging\Sort by OrderID.Outputs[Sort Output].Columns[__$operation]"
+                      dataType="i4"
+                      lineageId="Package\Loading into Fact_Staging\Sort by OrderID.Outputs[Sort Output].Columns[__$operation]"
+                      name="__$operation">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Loading into Fact_Staging\CDC Orders Source Table.Outputs[Output].Columns[__$operation]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Loading into Fact_Staging\Sort by OrderID.Outputs[Sort Output].Columns[__$update_mask]"
+                      dataType="bytes"
+                      length="128"
+                      lineageId="Package\Loading into Fact_Staging\Sort by OrderID.Outputs[Sort Output].Columns[__$update_mask]"
+                      name="__$update_mask">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Loading into Fact_Staging\CDC Orders Source Table.Outputs[Output].Columns[__$update_mask]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Loading into Fact_Staging\Sort by OrderID.Outputs[Sort Output].Columns[ORDERID]"
+                      dataType="i4"
+                      lineageId="Package\Loading into Fact_Staging\Sort by OrderID.Outputs[Sort Output].Columns[ORDERID]"
+                      name="ORDERID"
+                      sortKeyPosition="1">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Loading into Fact_Staging\CDC Orders Source Table.Outputs[Output].Columns[ORDERID]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Loading into Fact_Staging\Sort by OrderID.Outputs[Sort Output].Columns[ORDERDATE]"
+                      dataType="dbTimeStamp"
+                      lineageId="Package\Loading into Fact_Staging\Sort by OrderID.Outputs[Sort Output].Columns[ORDERDATE]"
+                      name="ORDERDATE">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Loading into Fact_Staging\CDC Orders Source Table.Outputs[Output].Columns[ORDERDATE]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Loading into Fact_Staging\Sort by OrderID.Outputs[Sort Output].Columns[CUSTOMERID]"
+                      dataType="i4"
+                      lineageId="Package\Loading into Fact_Staging\Sort by OrderID.Outputs[Sort Output].Columns[CUSTOMERID]"
+                      name="CUSTOMERID">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Loading into Fact_Staging\CDC Orders Source Table.Outputs[Output].Columns[CUSTOMERID]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Loading into Fact_Staging\Sort by OrderID.Outputs[Sort Output].Columns[NETAMOUNT]"
+                      dataType="cy"
+                      lineageId="Package\Loading into Fact_Staging\Sort by OrderID.Outputs[Sort Output].Columns[NETAMOUNT]"
+                      name="NETAMOUNT">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Loading into Fact_Staging\CDC Orders Source Table.Outputs[Output].Columns[NETAMOUNT]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Loading into Fact_Staging\Sort by OrderID.Outputs[Sort Output].Columns[TAX]"
+                      dataType="cy"
+                      lineageId="Package\Loading into Fact_Staging\Sort by OrderID.Outputs[Sort Output].Columns[TAX]"
+                      name="TAX">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Loading into Fact_Staging\CDC Orders Source Table.Outputs[Output].Columns[TAX]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Loading into Fact_Staging\Sort by OrderID.Outputs[Sort Output].Columns[TOTALAMOUNT]"
+                      dataType="cy"
+                      lineageId="Package\Loading into Fact_Staging\Sort by OrderID.Outputs[Sort Output].Columns[TOTALAMOUNT]"
+                      name="TOTALAMOUNT">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Loading into Fact_Staging\CDC Orders Source Table.Outputs[Output].Columns[TOTALAMOUNT]}</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Loading into Fact_Staging\Sort by OrderID, CustomerID, ProductId, DateID"
+              componentClassID="Microsoft.Sort"
+              contactInfo="Sort;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+              description="Sorts input data in ascending or descending order when it cannot be sorted at its source. For example, sort sales data by 'customer id' before it is written to a flat file and delivered to another department. Note: We do not recommend this transformation for large data flows."
+              name="Sort by OrderID, CustomerID, ProductId, DateID"
+              version="1">
+              <properties>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the Sort transformation removes rows with duplicate sort values."
+                  name="EliminateDuplicates">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the maximum number of threads to use for sorting."
+                  expressionType="Notify"
+                  name="MaximumThreads">-1</property>
+              </properties>
+              <inputs>
+                <input
+                  refId="Package\Loading into Fact_Staging\Sort by OrderID, CustomerID, ProductId, DateID.Inputs[Sort Input]"
+                  name="Sort Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Loading into Fact_Staging\Sort by OrderID, CustomerID, ProductId, DateID.Inputs[Sort Input].Columns[ORDERID]"
+                      cachedDataType="i4"
+                      cachedName="ORDERID"
+                      cachedSortKeyPosition="1"
+                      lineageId="Package\Loading into Fact_Staging\Merge Join.Outputs[Merge Join Output].Columns[ORDERID]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">1</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Loading into Fact_Staging\Sort by OrderID, CustomerID, ProductId, DateID.Inputs[Sort Input].Columns[ORDERDATE]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="ORDERDATE"
+                      lineageId="Package\Loading into Fact_Staging\Merge Join.Outputs[Merge Join Output].Columns[ORDERDATE]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">2</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Loading into Fact_Staging\Sort by OrderID, CustomerID, ProductId, DateID.Inputs[Sort Input].Columns[CUSTOMERID]"
+                      cachedDataType="i4"
+                      cachedName="CUSTOMERID"
+                      lineageId="Package\Loading into Fact_Staging\Merge Join.Outputs[Merge Join Output].Columns[CUSTOMERID]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">3</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Loading into Fact_Staging\Sort by OrderID, CustomerID, ProductId, DateID.Inputs[Sort Input].Columns[PROD_ID]"
+                      cachedDataType="i4"
+                      cachedName="PROD_ID"
+                      lineageId="Package\Loading into Fact_Staging\Merge Join.Outputs[Merge Join Output].Columns[PROD_ID]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">4</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Loading into Fact_Staging\Sort by OrderID, CustomerID, ProductId, DateID.Inputs[Sort Input].Columns[QUANTITY]"
+                      cachedDataType="i2"
+                      cachedName="QUANTITY"
+                      lineageId="Package\Loading into Fact_Staging\Merge Join.Outputs[Merge Join Output].Columns[QUANTITY]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Loading into Fact_Staging\Sort by OrderID, CustomerID, ProductId, DateID.Outputs[Sort Output]"
+                  isSorted="true"
+                  name="Sort Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Loading into Fact_Staging\Sort by OrderID, CustomerID, ProductId, DateID.Outputs[Sort Output].Columns[ORDERID]"
+                      dataType="i4"
+                      lineageId="Package\Loading into Fact_Staging\Sort by OrderID, CustomerID, ProductId, DateID.Outputs[Sort Output].Columns[ORDERID]"
+                      name="ORDERID"
+                      sortKeyPosition="1">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Loading into Fact_Staging\Merge Join.Outputs[Merge Join Output].Columns[ORDERID]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Loading into Fact_Staging\Sort by OrderID, CustomerID, ProductId, DateID.Outputs[Sort Output].Columns[ORDERDATE]"
+                      dataType="dbTimeStamp"
+                      lineageId="Package\Loading into Fact_Staging\Sort by OrderID, CustomerID, ProductId, DateID.Outputs[Sort Output].Columns[ORDERDATE]"
+                      name="ORDERDATE"
+                      sortKeyPosition="2">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Loading into Fact_Staging\Merge Join.Outputs[Merge Join Output].Columns[ORDERDATE]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Loading into Fact_Staging\Sort by OrderID, CustomerID, ProductId, DateID.Outputs[Sort Output].Columns[CUSTOMERID]"
+                      dataType="i4"
+                      lineageId="Package\Loading into Fact_Staging\Sort by OrderID, CustomerID, ProductId, DateID.Outputs[Sort Output].Columns[CUSTOMERID]"
+                      name="CUSTOMERID"
+                      sortKeyPosition="3">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Loading into Fact_Staging\Merge Join.Outputs[Merge Join Output].Columns[CUSTOMERID]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Loading into Fact_Staging\Sort by OrderID, CustomerID, ProductId, DateID.Outputs[Sort Output].Columns[PROD_ID]"
+                      dataType="i4"
+                      lineageId="Package\Loading into Fact_Staging\Sort by OrderID, CustomerID, ProductId, DateID.Outputs[Sort Output].Columns[PROD_ID]"
+                      name="PROD_ID"
+                      sortKeyPosition="4">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Loading into Fact_Staging\Merge Join.Outputs[Merge Join Output].Columns[PROD_ID]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Loading into Fact_Staging\Sort by OrderID, CustomerID, ProductId, DateID.Outputs[Sort Output].Columns[QUANTITY]"
+                      dataType="i2"
+                      lineageId="Package\Loading into Fact_Staging\Sort by OrderID, CustomerID, ProductId, DateID.Outputs[Sort Output].Columns[QUANTITY]"
+                      name="QUANTITY">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Loading into Fact_Staging\Merge Join.Outputs[Merge Join Output].Columns[QUANTITY]}</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Loading into Fact_Staging\Sort by OrderID_"
+              componentClassID="Microsoft.Sort"
+              contactInfo="Sort;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+              description="Sorts input data in ascending or descending order when it cannot be sorted at its source. For example, sort sales data by 'customer id' before it is written to a flat file and delivered to another department. Note: We do not recommend this transformation for large data flows."
+              name="Sort by OrderID_"
+              version="1">
+              <properties>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the Sort transformation removes rows with duplicate sort values."
+                  name="EliminateDuplicates">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the maximum number of threads to use for sorting."
+                  expressionType="Notify"
+                  name="MaximumThreads">-1</property>
+              </properties>
+              <inputs>
+                <input
+                  refId="Package\Loading into Fact_Staging\Sort by OrderID_.Inputs[Sort Input]"
+                  name="Sort Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Loading into Fact_Staging\Sort by OrderID_.Inputs[Sort Input].Columns[__$start_lsn]"
+                      cachedDataType="bytes"
+                      cachedLength="10"
+                      cachedName="__$start_lsn"
+                      lineageId="Package\Loading into Fact_Staging\CDC Orderlines Source Table.Outputs[Output].Columns[__$start_lsn]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Loading into Fact_Staging\Sort by OrderID_.Inputs[Sort Input].Columns[__$operation]"
+                      cachedDataType="i4"
+                      cachedName="__$operation"
+                      lineageId="Package\Loading into Fact_Staging\CDC Orderlines Source Table.Outputs[Output].Columns[__$operation]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Loading into Fact_Staging\Sort by OrderID_.Inputs[Sort Input].Columns[__$update_mask]"
+                      cachedDataType="bytes"
+                      cachedLength="128"
+                      cachedName="__$update_mask"
+                      lineageId="Package\Loading into Fact_Staging\CDC Orderlines Source Table.Outputs[Output].Columns[__$update_mask]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Loading into Fact_Staging\Sort by OrderID_.Inputs[Sort Input].Columns[ORDERLINEID]"
+                      cachedDataType="i2"
+                      cachedName="ORDERLINEID"
+                      lineageId="Package\Loading into Fact_Staging\CDC Orderlines Source Table.Outputs[Output].Columns[ORDERLINEID]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">2</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Loading into Fact_Staging\Sort by OrderID_.Inputs[Sort Input].Columns[ORDERID]"
+                      cachedDataType="i4"
+                      cachedName="ORDERID"
+                      lineageId="Package\Loading into Fact_Staging\CDC Orderlines Source Table.Outputs[Output].Columns[ORDERID]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">1</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Loading into Fact_Staging\Sort by OrderID_.Inputs[Sort Input].Columns[PROD_ID]"
+                      cachedDataType="i4"
+                      cachedName="PROD_ID"
+                      lineageId="Package\Loading into Fact_Staging\CDC Orderlines Source Table.Outputs[Output].Columns[PROD_ID]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Loading into Fact_Staging\Sort by OrderID_.Inputs[Sort Input].Columns[QUANTITY]"
+                      cachedDataType="i2"
+                      cachedName="QUANTITY"
+                      lineageId="Package\Loading into Fact_Staging\CDC Orderlines Source Table.Outputs[Output].Columns[QUANTITY]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Loading into Fact_Staging\Sort by OrderID_.Inputs[Sort Input].Columns[ORDERDATE]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="ORDERDATE"
+                      lineageId="Package\Loading into Fact_Staging\CDC Orderlines Source Table.Outputs[Output].Columns[ORDERDATE]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Loading into Fact_Staging\Sort by OrderID_.Outputs[Sort Output]"
+                  isSorted="true"
+                  name="Sort Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Loading into Fact_Staging\Sort by OrderID_.Outputs[Sort Output].Columns[__$start_lsn]"
+                      dataType="bytes"
+                      length="10"
+                      lineageId="Package\Loading into Fact_Staging\Sort by OrderID_.Outputs[Sort Output].Columns[__$start_lsn]"
+                      name="__$start_lsn">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Loading into Fact_Staging\CDC Orderlines Source Table.Outputs[Output].Columns[__$start_lsn]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Loading into Fact_Staging\Sort by OrderID_.Outputs[Sort Output].Columns[__$operation]"
+                      dataType="i4"
+                      lineageId="Package\Loading into Fact_Staging\Sort by OrderID_.Outputs[Sort Output].Columns[__$operation]"
+                      name="__$operation">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Loading into Fact_Staging\CDC Orderlines Source Table.Outputs[Output].Columns[__$operation]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Loading into Fact_Staging\Sort by OrderID_.Outputs[Sort Output].Columns[__$update_mask]"
+                      dataType="bytes"
+                      length="128"
+                      lineageId="Package\Loading into Fact_Staging\Sort by OrderID_.Outputs[Sort Output].Columns[__$update_mask]"
+                      name="__$update_mask">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Loading into Fact_Staging\CDC Orderlines Source Table.Outputs[Output].Columns[__$update_mask]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Loading into Fact_Staging\Sort by OrderID_.Outputs[Sort Output].Columns[ORDERLINEID]"
+                      dataType="i2"
+                      lineageId="Package\Loading into Fact_Staging\Sort by OrderID_.Outputs[Sort Output].Columns[ORDERLINEID]"
+                      name="ORDERLINEID"
+                      sortKeyPosition="2">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Loading into Fact_Staging\CDC Orderlines Source Table.Outputs[Output].Columns[ORDERLINEID]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Loading into Fact_Staging\Sort by OrderID_.Outputs[Sort Output].Columns[ORDERID]"
+                      dataType="i4"
+                      lineageId="Package\Loading into Fact_Staging\Sort by OrderID_.Outputs[Sort Output].Columns[ORDERID]"
+                      name="ORDERID"
+                      sortKeyPosition="1">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Loading into Fact_Staging\CDC Orderlines Source Table.Outputs[Output].Columns[ORDERID]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Loading into Fact_Staging\Sort by OrderID_.Outputs[Sort Output].Columns[PROD_ID]"
+                      dataType="i4"
+                      lineageId="Package\Loading into Fact_Staging\Sort by OrderID_.Outputs[Sort Output].Columns[PROD_ID]"
+                      name="PROD_ID">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Loading into Fact_Staging\CDC Orderlines Source Table.Outputs[Output].Columns[PROD_ID]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Loading into Fact_Staging\Sort by OrderID_.Outputs[Sort Output].Columns[QUANTITY]"
+                      dataType="i2"
+                      lineageId="Package\Loading into Fact_Staging\Sort by OrderID_.Outputs[Sort Output].Columns[QUANTITY]"
+                      name="QUANTITY">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Loading into Fact_Staging\CDC Orderlines Source Table.Outputs[Output].Columns[QUANTITY]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Loading into Fact_Staging\Sort by OrderID_.Outputs[Sort Output].Columns[ORDERDATE]"
+                      dataType="dbTimeStamp"
+                      lineageId="Package\Loading into Fact_Staging\Sort by OrderID_.Outputs[Sort Output].Columns[ORDERDATE]"
+                      name="ORDERDATE">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Loading into Fact_Staging\CDC Orderlines Source Table.Outputs[Output].Columns[ORDERDATE]}</property>
+                      </properties>
+                    </outputColumn>
                   </outputColumns>
                   <externalMetadataColumns />
                 </output>
@@ -4637,7 +6128,7 @@ FROM            ORDERS INNER JOIN
                 <property
                   dataType="System.String"
                   description="Specifies the name of the database object used to open a rowset."
-                  name="OpenRowset">[OrdersFact]</property>
+                  name="OpenRowset">[dbo].[OrdersFact]</property>
                 <property
                   dataType="System.String"
                   description="Specifies the variable that contains the name of the database object used to open a rowset."
@@ -4697,32 +6188,36 @@ FROM            ORDERS INNER JOIN
                       refId="Package\Loading into Fact_Staging\Staging Destination.Inputs[OLE DB Destination Input].Columns[ORDERID]"
                       cachedDataType="i4"
                       cachedName="ORDERID"
+                      cachedSortKeyPosition="1"
                       externalMetadataColumnId="Package\Loading into Fact_Staging\Staging Destination.Inputs[OLE DB Destination Input].ExternalColumns[ORDERID]"
-                      lineageId="Package\Loading into Fact_Staging\Orders Source Table.Outputs[OLE DB Source Output].Columns[ORDERID]" />
+                      lineageId="Package\Loading into Fact_Staging\Sort by OrderID, CustomerID, ProductId, DateID.Outputs[Sort Output].Columns[ORDERID]" />
                     <inputColumn
                       refId="Package\Loading into Fact_Staging\Staging Destination.Inputs[OLE DB Destination Input].Columns[ORDERDATE]"
                       cachedDataType="dbTimeStamp"
                       cachedName="ORDERDATE"
+                      cachedSortKeyPosition="2"
                       externalMetadataColumnId="Package\Loading into Fact_Staging\Staging Destination.Inputs[OLE DB Destination Input].ExternalColumns[ORDERDATE]"
-                      lineageId="Package\Loading into Fact_Staging\Orders Source Table.Outputs[OLE DB Source Output].Columns[ORDERDATE]" />
+                      lineageId="Package\Loading into Fact_Staging\Sort by OrderID, CustomerID, ProductId, DateID.Outputs[Sort Output].Columns[ORDERDATE]" />
                     <inputColumn
                       refId="Package\Loading into Fact_Staging\Staging Destination.Inputs[OLE DB Destination Input].Columns[CUSTOMERID]"
                       cachedDataType="i4"
                       cachedName="CUSTOMERID"
+                      cachedSortKeyPosition="3"
                       externalMetadataColumnId="Package\Loading into Fact_Staging\Staging Destination.Inputs[OLE DB Destination Input].ExternalColumns[CUSTOMERID]"
-                      lineageId="Package\Loading into Fact_Staging\Orders Source Table.Outputs[OLE DB Source Output].Columns[CUSTOMERID]" />
+                      lineageId="Package\Loading into Fact_Staging\Sort by OrderID, CustomerID, ProductId, DateID.Outputs[Sort Output].Columns[CUSTOMERID]" />
                     <inputColumn
                       refId="Package\Loading into Fact_Staging\Staging Destination.Inputs[OLE DB Destination Input].Columns[PROD_ID]"
                       cachedDataType="i4"
                       cachedName="PROD_ID"
+                      cachedSortKeyPosition="4"
                       externalMetadataColumnId="Package\Loading into Fact_Staging\Staging Destination.Inputs[OLE DB Destination Input].ExternalColumns[PROD_ID]"
-                      lineageId="Package\Loading into Fact_Staging\Orders Source Table.Outputs[OLE DB Source Output].Columns[PROD_ID]" />
+                      lineageId="Package\Loading into Fact_Staging\Sort by OrderID, CustomerID, ProductId, DateID.Outputs[Sort Output].Columns[PROD_ID]" />
                     <inputColumn
                       refId="Package\Loading into Fact_Staging\Staging Destination.Inputs[OLE DB Destination Input].Columns[QUANTITY]"
                       cachedDataType="i2"
                       cachedName="QUANTITY"
                       externalMetadataColumnId="Package\Loading into Fact_Staging\Staging Destination.Inputs[OLE DB Destination Input].ExternalColumns[QUANTITY]"
-                      lineageId="Package\Loading into Fact_Staging\Orders Source Table.Outputs[OLE DB Source Output].Columns[QUANTITY]" />
+                      lineageId="Package\Loading into Fact_Staging\Sort by OrderID, CustomerID, ProductId, DateID.Outputs[Sort Output].Columns[QUANTITY]" />
                   </inputColumns>
                   <externalMetadataColumns
                     isUsed="True">
@@ -4781,10 +6276,45 @@ FROM            ORDERS INNER JOIN
           </components>
           <paths>
             <path
-              refId="Package\Loading into Fact_Staging.Paths[OLE DB Source Output]"
+              refId="Package\Loading into Fact_Staging.Paths[InsertOutput]"
+              endId="Package\Loading into Fact_Staging\Sort by OrderID.Inputs[Sort Input]"
+              name="InsertOutput"
+              startId="Package\Loading into Fact_Staging\CDC Splitter.Outputs[InsertOutput]" />
+            <path
+              refId="Package\Loading into Fact_Staging.Paths[InsertOutput1]"
+              endId="Package\Loading into Fact_Staging\Sort by OrderID_.Inputs[Sort Input]"
+              name="InsertOutput"
+              startId="Package\Loading into Fact_Staging\CDC Splitter 1.Outputs[InsertOutput]" />
+            <path
+              refId="Package\Loading into Fact_Staging.Paths[Merge Join Output]"
+              endId="Package\Loading into Fact_Staging\Sort by OrderID, CustomerID, ProductId, DateID.Inputs[Sort Input]"
+              name="Merge Join Output"
+              startId="Package\Loading into Fact_Staging\Merge Join.Outputs[Merge Join Output]" />
+            <path
+              refId="Package\Loading into Fact_Staging.Paths[Output]"
+              endId="Package\Loading into Fact_Staging\CDC Splitter.Inputs[Input]"
+              name="Output"
+              startId="Package\Loading into Fact_Staging\CDC Orders Source Table.Outputs[Output]" />
+            <path
+              refId="Package\Loading into Fact_Staging.Paths[Output1]"
+              endId="Package\Loading into Fact_Staging\CDC Splitter 1.Inputs[Input]"
+              name="Output"
+              startId="Package\Loading into Fact_Staging\CDC Orderlines Source Table.Outputs[Output]" />
+            <path
+              refId="Package\Loading into Fact_Staging.Paths[Sort Output]"
+              endId="Package\Loading into Fact_Staging\Merge Join.Inputs[Merge Join Right Input]"
+              name="Sort Output"
+              startId="Package\Loading into Fact_Staging\Sort by OrderID.Outputs[Sort Output]" />
+            <path
+              refId="Package\Loading into Fact_Staging.Paths[Sort Output1]"
+              endId="Package\Loading into Fact_Staging\Merge Join.Inputs[Merge Join Left Input]"
+              name="Sort Output"
+              startId="Package\Loading into Fact_Staging\Sort by OrderID_.Outputs[Sort Output]" />
+            <path
+              refId="Package\Loading into Fact_Staging.Paths[Sort Output2]"
               endId="Package\Loading into Fact_Staging\Staging Destination.Inputs[OLE DB Destination Input]"
-              name="OLE DB Source Output"
-              startId="Package\Loading into Fact_Staging\Orders Source Table.Outputs[OLE DB Source Output]" />
+              name="Sort Output"
+              startId="Package\Loading into Fact_Staging\Sort by OrderID, CustomerID, ProductId, DateID.Outputs[Sort Output]" />
           </paths>
         </pipeline>
       </DTS:ObjectData>
@@ -4794,7 +6324,7 @@ FROM            ORDERS INNER JOIN
     <DTS:PrecedenceConstraint
       DTS:refId="Package.PrecedenceConstraints[Constraint]"
       DTS:CreationName=""
-      DTS:DTSID="{AF6A4242-BA96-4DA0-97F7-DCA92C0F635A}"
+      DTS:DTSID="{529EE637-CEB8-4341-82F1-BD12A0A51812}"
       DTS:From="Package\CDC Control Task - Start"
       DTS:LogicalAnd="True"
       DTS:ObjectName="Constraint"
@@ -4802,7 +6332,7 @@ FROM            ORDERS INNER JOIN
     <DTS:PrecedenceConstraint
       DTS:refId="Package.PrecedenceConstraints[Constraint 1]"
       DTS:CreationName=""
-      DTS:DTSID="{328A3EF2-C966-4970-8757-A7917E1364A6}"
+      DTS:DTSID="{8DA0938F-9F1A-4738-A506-1A9CCEAF71D7}"
       DTS:From="Package\Loading into Fact_Staging"
       DTS:LogicalAnd="True"
       DTS:ObjectName="Constraint 1"
@@ -4810,7 +6340,7 @@ FROM            ORDERS INNER JOIN
     <DTS:PrecedenceConstraint
       DTS:refId="Package.PrecedenceConstraints[Constraint 2]"
       DTS:CreationName=""
-      DTS:DTSID="{A605EB9E-79F9-4EAA-B9DE-ACE4CC4CAD9C}"
+      DTS:DTSID="{379EEC6B-B0FB-415A-B96F-48DF92B8F414}"
       DTS:From="Package\Loading into Fact"
       DTS:LogicalAnd="True"
       DTS:ObjectName="Constraint 2"
@@ -4818,7 +6348,7 @@ FROM            ORDERS INNER JOIN
     <DTS:PrecedenceConstraint
       DTS:refId="Package.PrecedenceConstraints[Constraint 3]"
       DTS:CreationName=""
-      DTS:DTSID="{56B470D7-6103-4E55-BE76-2103EB0F8D31}"
+      DTS:DTSID="{D5E2AAEF-5890-4B4A-9AB8-3722EED88474}"
       DTS:From="Package\Drop or truncate Staging Tables"
       DTS:LogicalAnd="True"
       DTS:ObjectName="Constraint 3"
@@ -4837,72 +6367,24 @@ FROM            ORDERS INNER JOIN
       <GraphLayout
         Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
-          Size="190,42"
-          Id="Package\CDC Control Task - End"
-          TopLeft="78,325" />
-        <NodeLayout
           Size="194,42"
           Id="Package\CDC Control Task - Start"
-          TopLeft="77,18" />
+          TopLeft="221,18" />
         <NodeLayout
-          Size="230,42"
-          Id="Package\Drop or truncate Staging Tables"
-          TopLeft="61,247" />
+          Size="190,42"
+          Id="Package\CDC Control Task - End"
+          TopLeft="222,326" />
         <NodeLayout
           Size="160,42"
           Id="Package\Loading into Fact"
-          TopLeft="94,171" />
+          TopLeft="238,173" />
         <NodeLayout
           Size="201,42"
           Id="Package\Loading into Fact_Staging"
-          TopLeft="75.5,93.5" />
+          TopLeft="217,94" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint]"
-          TopLeft="175,60">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,33.5"
-              Start="0,0"
-              End="0,26">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,26" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package.PrecedenceConstraints[Constraint 1]"
-          TopLeft="175,135.5">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,35.5"
-              Start="0,0"
-              End="0,28">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,28" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package.PrecedenceConstraints[Constraint 2]"
-          TopLeft="175,213">
+          TopLeft="317.75,60">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -4923,8 +6405,56 @@ FROM            ORDERS INNER JOIN
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 1]"
+          TopLeft="317.75,136">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,37"
+              Start="0,0"
+              End="0,29.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,29.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="230,42"
+          Id="Package\Drop or truncate Staging Tables"
+          TopLeft="204,248" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 2]"
+          TopLeft="318.5,215">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,33"
+              Start="0,0"
+              End="0,25.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,25.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 3]"
-          TopLeft="174.5,289">
+          TopLeft="318,290">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -4955,89 +6485,89 @@ FROM            ORDERS INNER JOIN
         <NodeLayout
           Size="152,42"
           Id="Package\Loading into Fact\Product Lookup"
-          TopLeft="197,20" />
+          TopLeft="214,21.5" />
         <NodeLayout
           Size="167,42"
           Id="Package\Loading into Fact\Fact Source Staging Table"
-          TopLeft="8,112" />
+          TopLeft="25,114.5" />
         <NodeLayout
           Size="120,42"
           Id="Package\Loading into Fact\Multicast"
-          TopLeft="200,343" />
+          TopLeft="217,345.5" />
         <NodeLayout
           Size="172,42"
           Id="Package\Loading into Fact\Flat File Destination"
-          TopLeft="603,215" />
+          TopLeft="620,217.5" />
         <NodeLayout
           Size="98,42"
           Id="Package\Loading into Fact\Sort"
-          TopLeft="349,271" />
+          TopLeft="366,273.5" />
         <NodeLayout
           Size="130,42"
           Id="Package\Loading into Fact\Merge Join"
-          TopLeft="420,194" />
+          TopLeft="437,196.5" />
         <NodeLayout
           Size="155,42"
           Id="Package\Loading into Fact\Conditional Split"
-          TopLeft="408,115" />
+          TopLeft="425,117.5" />
         <NodeLayout
           Size="161,42"
           Id="Package\Loading into Fact\Customer Lookup"
-          TopLeft="195,202" />
+          TopLeft="212,204.5" />
         <NodeLayout
           Size="107,42"
           Id="Package\Loading into Fact\Sort 1"
-          TopLeft="506,274" />
+          TopLeft="523,276.5" />
         <NodeLayout
           Size="138,42"
           Id="Package\Loading into Fact\Date Lookup"
-          TopLeft="204,112" />
+          TopLeft="221,114.5" />
         <NodeLayout
           Size="158,42"
           Id="Package\Loading into Fact\Error Description"
-          TopLeft="614,124" />
+          TopLeft="631,125.25" />
         <NodeLayout
           Size="152,42"
           Id="Package\Loading into Fact\DW Destination"
-          TopLeft="390,23" />
+          TopLeft="407,25.5" />
         <NodeLayout
           Size="121,42"
           Id="Package\Loading into Fact\Union All"
-          TopLeft="619,27" />
+          TopLeft="636,29.5" />
         <NodeLayout
           Size="127,42"
           Id="Package\Loading into Fact\Aggregate"
-          TopLeft="428,344" />
+          TopLeft="445,346.5" />
         <NodeLayout
           Size="166,42"
           Id="Package\Loading into Fact\Calculated Column"
-          TopLeft="17,278" />
+          TopLeft="34,280.5" />
         <EdgeLayout
           Id="Package\Loading into Fact.Paths[OLE DB Source Output]"
-          TopLeft="91.5,112">
+          TopLeft="108.5,114.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="157.5,-50"
+              EndConnector="157.5,-51"
               Start="0,0"
-              End="157.5,-42.5">
+              End="157.5,-43.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,-25.6875" />
+                    End="0,-26.28125" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,-25.6875"
-                    Point2="0,-29.6875"
-                    Point3="4,-29.6875" />
+                    Point1="0,-26.28125"
+                    Point2="0,-30.28125"
+                    Point3="4,-30.28125" />
                   <mssgle:LineSegment
-                    End="153.5,-29.6875" />
+                    End="153.5,-30.28125" />
                   <mssgle:CubicBezierSegment
-                    Point1="153.5,-29.6875"
-                    Point2="157.5,-29.6875"
-                    Point3="157.5,-33.6875" />
+                    Point1="153.5,-30.28125"
+                    Point2="157.5,-30.28125"
+                    Point3="157.5,-34.28125" />
                   <mssgle:LineSegment
-                    End="157.5,-42.5" />
+                    End="157.5,-43.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -5048,7 +6578,7 @@ FROM            ORDERS INNER JOIN
         </EdgeLayout>
         <EdgeLayout
           Id="Package\Loading into Fact.Paths[Multicast Output 2]"
-          TopLeft="278.666666666667,343">
+          TopLeft="295.666666666667,345.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -5059,9 +6589,9 @@ FROM            ORDERS INNER JOIN
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,-8.23684210526316" />
+                    End="0,-8.23684210526318" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,-8.23684210526316"
+                    Point1="0,-8.23684210526318"
                     Point2="0,-12.2368421052632"
                     Point3="4,-12.2368421052632" />
                   <mssgle:LineSegment
@@ -5082,7 +6612,7 @@ FROM            ORDERS INNER JOIN
         </EdgeLayout>
         <EdgeLayout
           Id="Package\Loading into Fact.Paths[Multicast Output 1]"
-          TopLeft="320,364.5">
+          TopLeft="337,367">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -5104,7 +6634,7 @@ FROM            ORDERS INNER JOIN
         </EdgeLayout>
         <EdgeLayout
           Id="Package\Loading into Fact.Paths[Merge Join Output]"
-          TopLeft="485.25,194">
+          TopLeft="502.25,196.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -5125,8 +6655,8 @@ FROM            ORDERS INNER JOIN
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package\Loading into Fact.Paths[Lookup Match Output2]"
-          TopLeft="275.5,244">
+          Id="Package\Loading into Fact.Paths[Lookup Match Output]"
+          TopLeft="292.5,246.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -5162,43 +6692,43 @@ FROM            ORDERS INNER JOIN
         </EdgeLayout>
         <EdgeLayout
           Id="Package\Loading into Fact.Paths[Lookup Match Output1]"
-          TopLeft="297,62">
+          TopLeft="314,63.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="-24,50"
+              EndConnector="-24,51"
               Start="0,0"
-              End="-24,42.5">
+              End="-24,43.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,16.3125" />
+                    End="0,16.71875" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,16.3125"
-                    Point2="0,20.3125"
-                    Point3="-4,20.3125" />
+                    Point1="0,16.71875"
+                    Point2="0,20.71875"
+                    Point3="-4,20.71875" />
                   <mssgle:LineSegment
-                    End="-20,20.3125" />
+                    End="-20,20.71875" />
                   <mssgle:CubicBezierSegment
-                    Point1="-20,20.3125"
-                    Point2="-24,20.3125"
-                    Point3="-24,24.3125" />
+                    Point1="-20,20.71875"
+                    Point2="-24,20.71875"
+                    Point3="-24,24.71875" />
                   <mssgle:LineSegment
-                    End="-24,42.5" />
+                    End="-24,43.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="-60.19138671875,25.3125,96.3827734375,11.609375"
+              BoundingBox="-60.19138671875,25.71875,96.3827734375,11.609375"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package\Loading into Fact.Paths[Lookup Match Output]"
-          TopLeft="274.25,154">
+          Id="Package\Loading into Fact.Paths[Lookup Match Output2]"
+          TopLeft="291.25,156.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -5221,8 +6751,8 @@ FROM            ORDERS INNER JOIN
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package\Loading into Fact.Paths[Error Output1]"
-          TopLeft="510,115">
+          Id="Package\Loading into Fact.Paths[Error Output]"
+          TopLeft="527,117.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -5252,13 +6782,13 @@ FROM            ORDERS INNER JOIN
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="46.9969466145833,-17.9189931113068,56.6727734375,11.43359375"
+              BoundingBox="46.9969466145835,-17.9189931113068,56.6727734375,11.43359375"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package\Loading into Fact.Paths[Error Output]"
-          TopLeft="542,46">
+          Id="Package\Loading into Fact.Paths[Error Output1]"
+          TopLeft="559,48.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -5282,7 +6812,7 @@ FROM            ORDERS INNER JOIN
         </EdgeLayout>
         <EdgeLayout
           Id="Package\Loading into Fact.Paths[Derived Column Output]"
-          TopLeft="100,320">
+          TopLeft="117,322.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -5293,9 +6823,9 @@ FROM            ORDERS INNER JOIN
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,9.61842105263158" />
+                    End="0,9.61842105263162" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,9.61842105263158"
+                    Point1="0,9.61842105263162"
                     Point2="0,13.6184210526316"
                     Point3="4,13.6184210526316" />
                   <mssgle:LineSegment
@@ -5316,7 +6846,7 @@ FROM            ORDERS INNER JOIN
         </EdgeLayout>
         <EdgeLayout
           Id="Package\Loading into Fact.Paths[Case]"
-          TopLeft="463.5,115">
+          TopLeft="480.5,117.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -5340,7 +6870,7 @@ FROM            ORDERS INNER JOIN
         </EdgeLayout>
         <EdgeLayout
           Id="Package\Loading into Fact.Paths[Aggregate Output 1]"
-          TopLeft="491.5,344">
+          TopLeft="508.5,346.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -5374,7 +6904,7 @@ FROM            ORDERS INNER JOIN
         </EdgeLayout>
         <EdgeLayout
           Id="Package\Loading into Fact.Paths[_]"
-          TopLeft="510,115">
+          TopLeft="527,117.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -5404,24 +6934,24 @@ FROM            ORDERS INNER JOIN
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="71.5257161458333,-17.9189931113068,7.615234375,2.634765625"
+              BoundingBox="71.5257161458335,-17.9189931113068,7.615234375,2.634765625"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
           Id="Package\Loading into Fact.Paths[Union All Output 1]"
-          TopLeft="695.666666666667,69">
+          TopLeft="712.666666666667,71.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,55"
+              EndConnector="0,53.75"
               Start="0,0"
-              End="0,47.5">
+              End="0,46.25">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,47.5" />
+                    End="0,46.25" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -5431,8 +6961,8 @@ FROM            ORDERS INNER JOIN
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package\Loading into Fact.Paths[Sort Output1]"
-          TopLeft="559.5,274">
+          Id="Package\Loading into Fact.Paths[Sort Output]"
+          TopLeft="576.5,276.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -5465,8 +6995,8 @@ FROM            ORDERS INNER JOIN
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package\Loading into Fact.Paths[Sort Output]"
-          TopLeft="398,271">
+          Id="Package\Loading into Fact.Paths[Sort Output1]"
+          TopLeft="415,273.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -5500,18 +7030,254 @@ FROM            ORDERS INNER JOIN
         </EdgeLayout>
         <EdgeLayout
           Id="Package\Loading into Fact.Paths[Output 0]"
-          TopLeft="691,166">
+          TopLeft="708,167.25">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,49"
+              EndConnector="0,50.25"
               Start="0,0"
-              End="0,41.5">
+              End="0,42.75">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,41.5" />
+                    End="0,42.75" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <TaskHost
+    design-time-name="Package\Loading into Fact_Staging">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="32" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="145,42"
+          Id="Package\Loading into Fact_Staging\CDC Splitter 1"
+          TopLeft="439,82" />
+        <NodeLayout
+          Size="136,42"
+          Id="Package\Loading into Fact_Staging\CDC Splitter"
+          TopLeft="150,82" />
+        <NodeLayout
+          Size="215,42"
+          Id="Package\Loading into Fact_Staging\CDC Orderlines Source Table"
+          TopLeft="399,12" />
+        <NodeLayout
+          Size="309,42"
+          Id="Package\Loading into Fact_Staging\Sort by OrderID, CustomerID, ProductId, DateID"
+          TopLeft="211,275" />
+        <NodeLayout
+          Size="154,42"
+          Id="Package\Loading into Fact_Staging\Sort by OrderID"
+          TopLeft="142,161" />
+        <NodeLayout
+          Size="198,42"
+          Id="Package\Loading into Fact_Staging\CDC Orders Source Table"
+          TopLeft="118,11" />
+        <NodeLayout
+          Size="130,42"
+          Id="Package\Loading into Fact_Staging\Merge Join"
+          TopLeft="300,210" />
+        <NodeLayout
+          Size="160,42"
+          Id="Package\Loading into Fact_Staging\Sort by OrderID_"
+          TopLeft="432,160" />
+        <EdgeLayout
+          Id="Package\Loading into Fact_Staging.Paths[Sort Output1]"
+          TopLeft="432,181">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-46.6666666666667,29"
+              Start="0,0"
+              End="-46.6666666666667,21.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="-42.6666666666667,0" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-42.6666666666667,0"
+                    Point2="-46.6666666666667,0"
+                    Point3="-46.6666666666667,4" />
+                  <mssgle:LineSegment
+                    End="-46.6666666666667,21.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Loading into Fact_Staging.Paths[Sort Output]"
+          TopLeft="296,182">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="48.6666666666667,28"
+              Start="0,0"
+              End="48.6666666666667,20.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="44.6666666666667,0" />
+                  <mssgle:CubicBezierSegment
+                    Point1="44.6666666666667,0"
+                    Point2="48.6666666666667,0"
+                    Point3="48.6666666666667,4" />
+                  <mssgle:LineSegment
+                    End="48.6666666666667,20.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Loading into Fact_Staging.Paths[Output1]"
+          TopLeft="509,54">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,28"
+              Start="0,0"
+              End="0,20.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,20.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Loading into Fact_Staging.Paths[Output]"
+          TopLeft="217.5,53">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,29"
+              Start="0,0"
+              End="0,21.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,21.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Loading into Fact_Staging.Paths[Merge Join Output]"
+          TopLeft="365.25,252">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,23"
+              Start="0,0"
+              End="0,15.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,15.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Loading into Fact_Staging.Paths[InsertOutput1]"
+          TopLeft="511.75,124">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,36"
+              Start="0,0"
+              End="0,28.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,28.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-28.97798828125,8.533203125,57.9559765625,11.43359375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Loading into Fact_Staging.Paths[InsertOutput]"
+          TopLeft="218.5,124">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,37"
+              Start="0,0"
+              End="0,29.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,29.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-28.97798828125,9.033203125,57.9559765625,11.43359375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="171,42"
+          Id="Package\Loading into Fact_Staging\Staging Destination"
+          TopLeft="278,344" />
+        <EdgeLayout
+          Id="Package\Loading into Fact_Staging.Paths[Sort Output2]"
+          TopLeft="364.5,317">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,27"
+              Start="0,0"
+              End="0,19.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,19.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -5524,12 +7290,28 @@ FROM            ORDERS INNER JOIN
     </LayoutInfo>
   </TaskHost>
   <PipelineComponentMetadata
+    design-time-name="Package\Loading into Fact_Staging\CDC Orderlines Source Table">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Loading into Fact_Staging\CDC Orders Source Table">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
     design-time-name="Package\Loading into Fact\Product Lookup">
     <Properties>
       <Property>
         <Name>OverwriteParamsSQLProp</Name>
         <Value
-          type="q2:string">false</Value>
+          type="q2:boolean">false</Value>
       </Property>
       <Property>
         <Name>UsedTableName</Name>
@@ -5539,7 +7321,7 @@ FROM            ORDERS INNER JOIN
       <Property>
         <Name>TableInfoObjectType</Name>
         <Value
-          type="q4:string">0</Value>
+          type="q4:int">0</Value>
       </Property>
       <Property>
         <Name>DataSourceViewID</Name>
@@ -5548,116 +7330,6 @@ FROM            ORDERS INNER JOIN
   </PipelineComponentMetadata>
   <PipelineComponentMetadata
     design-time-name="Package\Loading into Fact\Fact Source Staging Table">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q2:string">Table</Value>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\Loading into Fact\Customer Lookup">
-    <Properties>
-      <Property>
-        <Name>OverwriteParamsSQLProp</Name>
-        <Value
-          type="q2:string">false</Value>
-      </Property>
-      <Property>
-        <Name>UsedTableName</Name>
-        <Value
-          type="q3:string">[dbo].[CustomerDim]</Value>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q4:string">0</Value>
-      </Property>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\Loading into Fact\Date Lookup">
-    <Properties>
-      <Property>
-        <Name>OverwriteParamsSQLProp</Name>
-        <Value
-          type="q2:string">false</Value>
-      </Property>
-      <Property>
-        <Name>UsedTableName</Name>
-        <Value
-          type="q3:string">[dbo].[DateDim]</Value>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q4:string">0</Value>
-      </Property>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\Loading into Fact\DW Destination">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q2:string">Table</Value>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <TaskHost
-    design-time-name="Package\Loading into Fact_Staging">
-    <LayoutInfo>
-      <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
-        <NodeLayout
-          Size="171,42"
-          Id="Package\Loading into Fact_Staging\Staging Destination"
-          TopLeft="122,140" />
-        <NodeLayout
-          Size="175,42"
-          Id="Package\Loading into Fact_Staging\Orders Source Table"
-          TopLeft="124,46" />
-        <EdgeLayout
-          Id="Package\Loading into Fact_Staging.Paths[OLE DB Source Output]"
-          TopLeft="209.5,88">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,52"
-              Start="0,0"
-              End="0,44.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,44.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-      </GraphLayout>
-    </LayoutInfo>
-  </TaskHost>
-  <PipelineComponentMetadata
-    design-time-name="Package\Loading into Fact_Staging\Orders Source Table">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>
