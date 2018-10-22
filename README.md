@@ -22,3 +22,5 @@ Run scripts from `1_InitialData` folder in following order:
 5. UpdateCustomerStates.sql
 6. UpdateCustomerCity.sql
 7. USAStates.sql
+
+Diploma was successfully defended.
